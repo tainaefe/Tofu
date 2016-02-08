@@ -67,6 +67,7 @@ final class AccountsController: UITableViewController, NSFetchedResultsControlle
 
   private func updateState() {
     if fetchedResultsController.fetchedObjects?.count == 0 {
+      setEditing(false, animated: true)
       tableView.backgroundView = emptyLabel
       tableView.separatorStyle = .None
       navigationItem.leftBarButtonItem = nil
