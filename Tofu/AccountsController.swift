@@ -27,10 +27,6 @@ final class AccountsController: UITableViewController, NSFetchedResultsControlle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    for subview in view.subviews {
-      guard let scrollView = subview as? UIScrollView else { continue }
-      scrollView.delaysContentTouches = false
-    }
     let request = NSFetchRequest(entityName: Account.entityName)
     request.sortDescriptors = [NSSortDescriptor(key: "position", ascending: true)]
     fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
