@@ -12,6 +12,7 @@ final class Account: NSManagedObject {
   @NSManaged private var algorithmValue: Int16
   @NSManaged private(set) var timeBased: Bool
   @NSManaged private var periodOrCounter: Int64
+  private var secret: NSData?
 
   var identifier: String? {
     guard let issuer = issuer where issuer.characters.count > 0 else { return name }
@@ -104,15 +105,18 @@ final class Account: NSManagedObject {
   }
 
   func valueForDate(date: NSDate) -> String {
+    if secret == nil {
+      secret = keychain.get(keychainKey)!
+    }
     if timeBased {
       return TOTP(
-        secret: keychain.get(keychainKey)!,
+        secret: secret!,
         algorithm: algorithm,
         digits: Int(digits),
         period: UInt64(periodOrCounter)).valueForDate(date)
     }
     return HOTP(
-      secret: keychain.get(keychainKey)!,
+      secret: secret!,
       algorithm: algorithm,
       digits: Int(digits)).valueForCounter(UInt64(periodOrCounter))
   }
