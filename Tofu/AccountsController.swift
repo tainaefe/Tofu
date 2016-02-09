@@ -141,7 +141,7 @@ final class AccountsController: UITableViewController, NSFetchedResultsControlle
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    if editing, let cell = tableView.cellForRowAtIndexPath(indexPath) as? AccountCell {
+    if let cell = tableView.cellForRowAtIndexPath(indexPath) as? AccountCell {
       performSegueWithIdentifier("EditAccountSegue", sender: cell)
     }
   }
