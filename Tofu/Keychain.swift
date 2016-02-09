@@ -5,7 +5,7 @@ private let genericPassword = kSecClassGenericPassword as String
 private let accountAttribute = kSecAttrAccount as String
 private let dataAttribute = kSecValueData as String
 private let itemAccessibility = kSecAttrAccessible as String
-private let whenUnlockedThisDeviceOnly = kSecAttrAccessibleWhenUnlockedThisDeviceOnly as String
+private let whenUnlocked = kSecAttrAccessibleWhenUnlocked as String
 private let returnData = kSecReturnData as String
 private let matchLimit = kSecMatchLimit as String
 private let encoding = NSUnicodeStringEncoding
@@ -16,7 +16,7 @@ struct Keychain {
       itemClass: genericPassword,
       accountAttribute: key,
       dataAttribute: value,
-      itemAccessibility: whenUnlockedThisDeviceOnly,
+      itemAccessibility: whenUnlocked,
     ]
     SecItemAdd(query as CFDictionaryRef, nil)
   }
