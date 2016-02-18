@@ -7,32 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2506E6E31C6F83AE00E694D3 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506E6E21C6F83AE00E694D3 /* Password.swift */; };
+		2506E6E51C6F9A5A00E694D3 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */; };
+		259FAC501C765BB00013B4F7 /* AccountCreationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */; };
+		259FAC521C765F4B0013B4F7 /* AccountUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259FAC511C765F4B0013B4F7 /* AccountUpdateDelegate.swift */; };
+		259FAC541C765FEB0013B4F7 /* AlgorithmSelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259FAC531C765FEB0013B4F7 /* AlgorithmSelectionDelegate.swift */; };
 		25A81D0E1C500E9C008E51B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D0D1C500E9C008E51B9 /* AppDelegate.swift */; };
-		25A81D101C500E9C008E51B9 /* AccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D0F1C500E9C008E51B9 /* AccountsController.swift */; };
+		25A81D101C500E9C008E51B9 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D0F1C500E9C008E51B9 /* AccountsViewController.swift */; };
 		25A81D131C500E9C008E51B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25A81D111C500E9C008E51B9 /* Main.storyboard */; };
 		25A81D151C500E9C008E51B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25A81D141C500E9C008E51B9 /* Assets.xcassets */; };
 		25A81D181C500E9C008E51B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25A81D161C500E9C008E51B9 /* LaunchScreen.storyboard */; };
-		25A81D231C500E9C008E51B9 /* TofuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D221C500E9C008E51B9 /* TofuTests.swift */; };
 		25A81D2E1C500E9C008E51B9 /* TofuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D2D1C500E9C008E51B9 /* TofuUITests.swift */; };
 		25A81D3C1C502755008E51B9 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D3B1C502755008E51B9 /* Keychain.swift */; };
-		25A81D3E1C51758C008E51B9 /* AddAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D3D1C51758C008E51B9 /* AddAccountController.swift */; };
-		25A81D411C5176A6008E51B9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D3F1C5176A6008E51B9 /* Model.xcdatamodeld */; };
+		25A81D3E1C51758C008E51B9 /* AccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D3D1C51758C008E51B9 /* AccountCreationViewController.swift */; };
 		25A81D431C5176F0008E51B9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D421C5176F0008E51B9 /* Account.swift */; };
 		25A81D451C53923D008E51B9 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D441C53923D008E51B9 /* NSData.swift */; };
 		25A81D471C539253008E51B9 /* NSDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D461C539253008E51B9 /* NSDataTests.swift */; };
-		25A81D491C540044008E51B9 /* HOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D481C540044008E51B9 /* HOTP.swift */; };
-		25A81D4B1C540058008E51B9 /* HOTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D4A1C540058008E51B9 /* HOTPTests.swift */; };
-		25A81D4D1C540369008E51B9 /* TOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D4C1C540369008E51B9 /* TOTP.swift */; };
-		25A81D4F1C540642008E51B9 /* TOTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D4E1C540642008E51B9 /* TOTPTests.swift */; };
+		25A81D4B1C540058008E51B9 /* PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D4A1C540058008E51B9 /* PasswordTests.swift */; };
 		25A81D511C551F17008E51B9 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D501C551F17008E51B9 /* AccountCell.swift */; };
 		25A81D531C5558A2008E51B9 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D521C5558A2008E51B9 /* AccountTests.swift */; };
-		25A81D551C5BC31B008E51B9 /* EditAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D541C5BC31B008E51B9 /* EditAccountController.swift */; };
-		25A81D571C5DFC5C008E51B9 /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D561C5DFC5C008E51B9 /* ScanController.swift */; };
-		25A81D591C5E9320008E51B9 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D581C5E9320008E51B9 /* ManagedObjectContextSettable.swift */; };
+		25A81D551C5BC31B008E51B9 /* AccountUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D541C5BC31B008E51B9 /* AccountUpdateViewController.swift */; };
+		25A81D571C5DFC5C008E51B9 /* ScanningAccountCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D561C5DFC5C008E51B9 /* ScanningAccountCreationViewController.swift */; };
 		25A81D5B1C5F656A008E51B9 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A81D5A1C5F656A008E51B9 /* CircularProgressView.swift */; };
-		25CF8B6A1C5784D500665FFE /* HOTPAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF8B691C5784D500665FFE /* HOTPAlgorithm.swift */; };
-		25CF8B6C1C57946B00665FFE /* AlgorithmsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF8B6B1C57946B00665FFE /* AlgorithmsController.swift */; };
-		25CF8B6E1C57A59100665FFE /* AlgorithmsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF8B6D1C57A59100665FFE /* AlgorithmsControllerDelegate.swift */; };
+		25CF8B6C1C57946B00665FFE /* AlgorithmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF8B6B1C57946B00665FFE /* AlgorithmsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,39 +50,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2506E6E21C6F83AE00E694D3 /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
+		2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		2508F1151C526E3A00164467 /* Tofu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tofu-Bridging-Header.h"; sourceTree = "<group>"; };
+		259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationDelegate.swift; sourceTree = "<group>"; };
+		259FAC511C765F4B0013B4F7 /* AccountUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountUpdateDelegate.swift; sourceTree = "<group>"; };
+		259FAC531C765FEB0013B4F7 /* AlgorithmSelectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmSelectionDelegate.swift; sourceTree = "<group>"; };
 		25A81D0A1C500E9C008E51B9 /* Tofu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tofu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25A81D0D1C500E9C008E51B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25A81D0F1C500E9C008E51B9 /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
+		25A81D0F1C500E9C008E51B9 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		25A81D121C500E9C008E51B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25A81D141C500E9C008E51B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25A81D171C500E9C008E51B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25A81D191C500E9C008E51B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25A81D1E1C500E9C008E51B9 /* TofuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TofuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25A81D221C500E9C008E51B9 /* TofuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TofuTests.swift; sourceTree = "<group>"; };
 		25A81D241C500E9C008E51B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25A81D291C500E9C008E51B9 /* TofuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TofuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25A81D2D1C500E9C008E51B9 /* TofuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TofuUITests.swift; sourceTree = "<group>"; };
 		25A81D2F1C500E9C008E51B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25A81D3B1C502755008E51B9 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		25A81D3D1C51758C008E51B9 /* AddAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountController.swift; sourceTree = "<group>"; };
-		25A81D401C5176A6008E51B9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		25A81D3D1C51758C008E51B9 /* AccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationViewController.swift; sourceTree = "<group>"; };
 		25A81D421C5176F0008E51B9 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		25A81D441C53923D008E51B9 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
 		25A81D461C539253008E51B9 /* NSDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataTests.swift; sourceTree = "<group>"; };
-		25A81D481C540044008E51B9 /* HOTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOTP.swift; sourceTree = "<group>"; };
-		25A81D4A1C540058008E51B9 /* HOTPTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOTPTests.swift; sourceTree = "<group>"; };
-		25A81D4C1C540369008E51B9 /* TOTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOTP.swift; sourceTree = "<group>"; };
-		25A81D4E1C540642008E51B9 /* TOTPTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOTPTests.swift; sourceTree = "<group>"; };
+		25A81D4A1C540058008E51B9 /* PasswordTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordTests.swift; sourceTree = "<group>"; };
 		25A81D501C551F17008E51B9 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		25A81D521C5558A2008E51B9 /* AccountTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
-		25A81D541C5BC31B008E51B9 /* EditAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAccountController.swift; sourceTree = "<group>"; };
-		25A81D561C5DFC5C008E51B9 /* ScanController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
-		25A81D581C5E9320008E51B9 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
+		25A81D541C5BC31B008E51B9 /* AccountUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountUpdateViewController.swift; sourceTree = "<group>"; };
+		25A81D561C5DFC5C008E51B9 /* ScanningAccountCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningAccountCreationViewController.swift; sourceTree = "<group>"; };
 		25A81D5A1C5F656A008E51B9 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		25CF8B691C5784D500665FFE /* HOTPAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HOTPAlgorithm.swift; sourceTree = "<group>"; };
-		25CF8B6B1C57946B00665FFE /* AlgorithmsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmsController.swift; sourceTree = "<group>"; };
-		25CF8B6D1C57A59100665FFE /* AlgorithmsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmsControllerDelegate.swift; sourceTree = "<group>"; };
+		25CF8B6B1C57946B00665FFE /* AlgorithmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +107,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		259FAC551C7665620013B4F7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */,
+				259FAC511C765F4B0013B4F7 /* AccountUpdateDelegate.swift */,
+				259FAC531C765FEB0013B4F7 /* AlgorithmSelectionDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		259FAC561C7665710013B4F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				25A81D441C53923D008E51B9 /* NSData.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		25A81D011C500E9B008E51B9 = {
 			isa = PBXGroup;
 			children = (
@@ -136,13 +148,13 @@
 		25A81D0C1C500E9C008E51B9 /* Tofu */ = {
 			isa = PBXGroup;
 			children = (
+				259FAC561C7665710013B4F7 /* Extensions */,
+				259FAC551C7665620013B4F7 /* Protocols */,
 				25A81D5E1C5F6E4D008E51B9 /* Models */,
 				25A81D5C1C5F6E1F008E51B9 /* Views */,
 				25A81D5D1C5F6E36008E51B9 /* Controllers */,
 				25A81D0D1C500E9C008E51B9 /* AppDelegate.swift */,
-				25A81D441C53923D008E51B9 /* NSData.swift */,
 				2508F1151C526E3A00164467 /* Tofu-Bridging-Header.h */,
-				25A81D3F1C5176A6008E51B9 /* Model.xcdatamodeld */,
 				25A81D111C500E9C008E51B9 /* Main.storyboard */,
 				25A81D161C500E9C008E51B9 /* LaunchScreen.storyboard */,
 				25A81D141C500E9C008E51B9 /* Assets.xcassets */,
@@ -154,10 +166,8 @@
 		25A81D211C500E9C008E51B9 /* TofuTests */ = {
 			isa = PBXGroup;
 			children = (
-				25A81D221C500E9C008E51B9 /* TofuTests.swift */,
 				25A81D461C539253008E51B9 /* NSDataTests.swift */,
-				25A81D4A1C540058008E51B9 /* HOTPTests.swift */,
-				25A81D4E1C540642008E51B9 /* TOTPTests.swift */,
+				25A81D4A1C540058008E51B9 /* PasswordTests.swift */,
 				25A81D521C5558A2008E51B9 /* AccountTests.swift */,
 				25A81D241C500E9C008E51B9 /* Info.plist */,
 			);
@@ -185,13 +195,11 @@
 		25A81D5D1C5F6E36008E51B9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				25A81D0F1C500E9C008E51B9 /* AccountsController.swift */,
-				25A81D3D1C51758C008E51B9 /* AddAccountController.swift */,
-				25CF8B6B1C57946B00665FFE /* AlgorithmsController.swift */,
-				25CF8B6D1C57A59100665FFE /* AlgorithmsControllerDelegate.swift */,
-				25A81D541C5BC31B008E51B9 /* EditAccountController.swift */,
-				25A81D581C5E9320008E51B9 /* ManagedObjectContextSettable.swift */,
-				25A81D561C5DFC5C008E51B9 /* ScanController.swift */,
+				25A81D0F1C500E9C008E51B9 /* AccountsViewController.swift */,
+				25A81D3D1C51758C008E51B9 /* AccountCreationViewController.swift */,
+				25CF8B6B1C57946B00665FFE /* AlgorithmsViewController.swift */,
+				25A81D541C5BC31B008E51B9 /* AccountUpdateViewController.swift */,
+				25A81D561C5DFC5C008E51B9 /* ScanningAccountCreationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -200,10 +208,9 @@
 			isa = PBXGroup;
 			children = (
 				25A81D421C5176F0008E51B9 /* Account.swift */,
-				25A81D481C540044008E51B9 /* HOTP.swift */,
-				25CF8B691C5784D500665FFE /* HOTPAlgorithm.swift */,
 				25A81D3B1C502755008E51B9 /* Keychain.swift */,
-				25A81D4C1C540369008E51B9 /* TOTP.swift */,
+				2506E6E21C6F83AE00E694D3 /* Password.swift */,
+				2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -340,22 +347,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25A81D101C500E9C008E51B9 /* AccountsController.swift in Sources */,
+				25A81D101C500E9C008E51B9 /* AccountsViewController.swift in Sources */,
+				259FAC521C765F4B0013B4F7 /* AccountUpdateDelegate.swift in Sources */,
 				25A81D511C551F17008E51B9 /* AccountCell.swift in Sources */,
-				25A81D591C5E9320008E51B9 /* ManagedObjectContextSettable.swift in Sources */,
 				25A81D0E1C500E9C008E51B9 /* AppDelegate.swift in Sources */,
 				25A81D451C53923D008E51B9 /* NSData.swift in Sources */,
-				25A81D4D1C540369008E51B9 /* TOTP.swift in Sources */,
-				25A81D411C5176A6008E51B9 /* Model.xcdatamodeld in Sources */,
+				2506E6E51C6F9A5A00E694D3 /* Algorithm.swift in Sources */,
+				259FAC541C765FEB0013B4F7 /* AlgorithmSelectionDelegate.swift in Sources */,
 				25A81D5B1C5F656A008E51B9 /* CircularProgressView.swift in Sources */,
-				25CF8B6A1C5784D500665FFE /* HOTPAlgorithm.swift in Sources */,
-				25A81D571C5DFC5C008E51B9 /* ScanController.swift in Sources */,
-				25CF8B6C1C57946B00665FFE /* AlgorithmsController.swift in Sources */,
+				2506E6E31C6F83AE00E694D3 /* Password.swift in Sources */,
+				25A81D571C5DFC5C008E51B9 /* ScanningAccountCreationViewController.swift in Sources */,
+				25CF8B6C1C57946B00665FFE /* AlgorithmsViewController.swift in Sources */,
 				25A81D3C1C502755008E51B9 /* Keychain.swift in Sources */,
-				25A81D551C5BC31B008E51B9 /* EditAccountController.swift in Sources */,
-				25A81D3E1C51758C008E51B9 /* AddAccountController.swift in Sources */,
-				25CF8B6E1C57A59100665FFE /* AlgorithmsControllerDelegate.swift in Sources */,
-				25A81D491C540044008E51B9 /* HOTP.swift in Sources */,
+				259FAC501C765BB00013B4F7 /* AccountCreationDelegate.swift in Sources */,
+				25A81D551C5BC31B008E51B9 /* AccountUpdateViewController.swift in Sources */,
+				25A81D3E1C51758C008E51B9 /* AccountCreationViewController.swift in Sources */,
 				25A81D431C5176F0008E51B9 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,9 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25A81D4F1C540642008E51B9 /* TOTPTests.swift in Sources */,
-				25A81D4B1C540058008E51B9 /* HOTPTests.swift in Sources */,
-				25A81D231C500E9C008E51B9 /* TofuTests.swift in Sources */,
+				25A81D4B1C540058008E51B9 /* PasswordTests.swift in Sources */,
 				25A81D471C539253008E51B9 /* NSDataTests.swift in Sources */,
 				25A81D531C5558A2008E51B9 /* AccountTests.swift in Sources */,
 			);
@@ -617,19 +621,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		25A81D3F1C5176A6008E51B9 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				25A81D401C5176A6008E51B9 /* Model.xcdatamodel */,
-			);
-			currentVersion = 25A81D401C5176A6008E51B9 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 25A81D021C500E9B008E51B9 /* Project object */;
 }

@@ -1,11 +1,10 @@
 import UIKit
 import AVFoundation
-import CoreData
 
-final class ScanController: UIViewController, ManagedObjectContextSettable,
+final class ScanningAccountCreationViewController: UIViewController,
 AVCaptureMetadataOutputObjectsDelegate {
   @IBOutlet weak var allowCameraAccessLabel: UILabel!
-  var managedObjectContext: NSManagedObjectContext!
+  var delegate: AccountCreationDelegate?
   private var session = AVCaptureSession()
   private var layer: AVCaptureVideoPreviewLayer?
   private var didCapture = false
@@ -54,10 +53,11 @@ AVCaptureMetadataOutputObjectsDelegate {
       guard !didCapture && metadataObjects.count > 0,
         let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject
         where metadataObject.type == AVMetadataObjectTypeQRCode,
-        let url = NSURL(string: metadataObject.stringValue) else { return }
+        let url = NSURL(string: metadataObject.stringValue),
+        let account = Account(url: url) else { return }
       didCapture = true
-      _ = Account(url: url, insertIntoManagedObjectContext: managedObjectContext)
-      try! managedObjectContext.save()
-      presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+      presentingViewController?.dismissViewControllerAnimated(true) {
+        self.delegate?.createAccount(account)
+      }
   }
 }

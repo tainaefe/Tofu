@@ -9,7 +9,7 @@
         <!--Add Account-->
         <scene sceneID="Cvd-WL-bZB">
             <objects>
-                <viewController id="I3F-x1-Uca" customClass="ScanController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I3F-x1-Uca" customClass="ScanningAccountCreationViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZUh-E7-1wK"/>
                         <viewControllerLayoutGuide type="bottom" id="SqE-V3-zwh"/>
@@ -56,7 +56,7 @@
         <!--Accounts-->
         <scene sceneID="eJy-We-MJo">
             <objects>
-                <tableViewController id="bOu-aX-zXX" customClass="AccountsController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bOu-aX-zXX" customClass="AccountsViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="CH7-nX-hsd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +128,7 @@
         <!--Edit Account-->
         <scene sceneID="shn-2G-AZX">
             <objects>
-                <tableViewController id="ERk-zj-Q6A" customClass="EditAccountController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ERk-zj-Q6A" customClass="AccountUpdateViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Flh-7t-GjH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,7 +205,7 @@
         <!--Add Account-->
         <scene sceneID="EfE-dR-QMF">
             <objects>
-                <tableViewController id="paP-7e-SE0" customClass="AddAccountController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="paP-7e-SE0" customClass="ManualAccountCreationViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tne-qv-Me8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -447,7 +447,7 @@
         <!--Algorithm-->
         <scene sceneID="Z6Y-tk-aSh">
             <objects>
-                <tableViewController id="EPo-Jj-mKT" customClass="AlgorithmsController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="EPo-Jj-mKT" customClass="AlgorithmsViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PMa-2f-5kk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

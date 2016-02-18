@@ -12,14 +12,15 @@ private func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
 final class AccountCell: UITableViewCell {
   @IBOutlet weak var valueLabel: UILabel!
   @IBOutlet weak var identifierLabel: UILabel!
+  var delegate: AccountUpdateDelegate?
   private var value: String?
   private let button = UIButton(type: .Custom)
   private let progressView = CircularProgressView()
 
   var account: Account! {
     didSet {
-      accessoryView = account.timeBased ? progressView : button
-      identifierLabel.text = account.identifier
+      accessoryView = account.password.timeBased ? progressView : button
+      identifierLabel.text = account.description
       updateWithDate(NSDate())
     }
   }
@@ -43,8 +44,8 @@ final class AccountCell: UITableViewCell {
   }
 
   func updateWithDate(date: NSDate) {
-    progressView.progress = account.progressForDate(date)
-    let newValue = account.valueForDate(date)
+    progressView.progress = account.password.progressForDate(date)
+    let newValue = account.password.valueForDate(date)
     if value != newValue {
       value = newValue
       let length = newValue.characters.count
@@ -56,8 +57,7 @@ final class AccountCell: UITableViewCell {
   }
 
   func didPressButton(sender: UIButton) {
-    account.incrementCounter()
-    try! account.managedObjectContext?.save()
-    updateWithDate(NSDate())
+    account.password.counter++
+    delegate?.updateAccount(account)
   }
 }

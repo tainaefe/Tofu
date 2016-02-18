@@ -1,11 +1,9 @@
 import UIKit
 
-class CircularProgressView: UIView {
+final class CircularProgressView: UIView {
   let maskLayer = CAShapeLayer()
 
-  var progress: Float = 1 {
-    didSet { updateMaskLayerPath() }
-  }
+  var progress: Float = 1 { didSet { updateMaskLayerPath() } }
 
   init() {
     let backgroundImage = UIImage(named: "CircularProgressViewBorderThin")!
