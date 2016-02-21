@@ -56,7 +56,7 @@
         <!--Accounts-->
         <scene sceneID="eJy-We-MJo">
             <objects>
-                <tableViewController id="bOu-aX-zXX" customClass="AccountsViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController definesPresentationContext="YES" id="bOu-aX-zXX" customClass="AccountsViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="CH7-nX-hsd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -532,6 +532,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3W-ZH-MHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="451" y="790"/>
+        </scene>
+        <!--Account Search Results View Controller-->
+        <scene sceneID="aqF-ES-gLR">
+            <objects>
+                <tableViewController storyboardIdentifier="AccountSearchResultsViewController" id="sSp-X7-dXp" customClass="AccountSearchResultsViewController" customModule="Tofu" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="rcD-1Q-m4Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="AccountCell" editingAccessoryType="disclosureIndicator" id="vUX-eq-yhI" customClass="AccountCell" customModule="Tofu" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="84"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vUX-eq-yhI" id="zV8-t9-Xea">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="83"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OqZ-2E-QdG">
+                                            <rect key="frame" x="16" y="10" width="64" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="7ee-yQ-kfJ"/>
+                                                <constraint firstAttribute="width" constant="64" id="Epl-9c-aST"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Nf-UQ-uOc">
+                                            <rect key="frame" x="90" y="10" width="502" height="63"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="012 345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vJ5-cX-O3i">
+                                                    <rect key="frame" x="0.0" y="-4" width="502" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="44"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example (test@example.com)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVG-tW-0HS">
+                                                    <rect key="frame" x="1" y="45" width="501" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="QVG-tW-0HS" secondAttribute="bottom" id="6vk-3j-QoM"/>
+                                                <constraint firstItem="QVG-tW-0HS" firstAttribute="top" secondItem="vJ5-cX-O3i" secondAttribute="bottom" constant="-4" id="L8O-Dm-nTy"/>
+                                                <constraint firstItem="vJ5-cX-O3i" firstAttribute="top" secondItem="QVG-tW-0HS" secondAttribute="bottom" id="LlH-fJ-iBa"/>
+                                                <constraint firstItem="vJ5-cX-O3i" firstAttribute="top" secondItem="QVG-tW-0HS" secondAttribute="bottom" id="W4D-nn-rDb"/>
+                                                <constraint firstItem="vJ5-cX-O3i" firstAttribute="top" secondItem="7Nf-UQ-uOc" secondAttribute="top" constant="-4" id="a3O-jc-W86"/>
+                                                <constraint firstItem="QVG-tW-0HS" firstAttribute="top" secondItem="vJ5-cX-O3i" secondAttribute="top" id="fAb-Bd-2uO"/>
+                                                <constraint firstItem="vJ5-cX-O3i" firstAttribute="leading" secondItem="7Nf-UQ-uOc" secondAttribute="leading" id="fpc-Mz-axz"/>
+                                                <constraint firstItem="QVG-tW-0HS" firstAttribute="leading" secondItem="7Nf-UQ-uOc" secondAttribute="leading" constant="1" id="gam-gy-x7I"/>
+                                                <constraint firstAttribute="trailing" secondItem="vJ5-cX-O3i" secondAttribute="trailing" id="ozS-KQ-4fr"/>
+                                                <constraint firstAttribute="trailing" secondItem="QVG-tW-0HS" secondAttribute="trailing" id="zcX-DM-zy2"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="LlH-fJ-iBa"/>
+                                                    <exclude reference="W4D-nn-rDb"/>
+                                                    <exclude reference="fAb-Bd-2uO"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OqZ-2E-QdG" firstAttribute="top" secondItem="zV8-t9-Xea" secondAttribute="topMargin" constant="2" id="DsL-pq-lEs"/>
+                                        <constraint firstItem="7Nf-UQ-uOc" firstAttribute="leading" secondItem="OqZ-2E-QdG" secondAttribute="trailing" constant="10" id="MKt-9F-EmG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="7Nf-UQ-uOc" secondAttribute="trailing" id="aPk-pg-hba"/>
+                                        <constraint firstItem="OqZ-2E-QdG" firstAttribute="leading" secondItem="zV8-t9-Xea" secondAttribute="leadingMargin" constant="8" id="gpb-CK-ETn"/>
+                                        <constraint firstItem="7Nf-UQ-uOc" firstAttribute="centerY" secondItem="zV8-t9-Xea" secondAttribute="centerY" id="qvC-HZ-VCH"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accountImageView" destination="OqZ-2E-QdG" id="8DV-Pj-IyK"/>
+                                    <outlet property="identifierLabel" destination="QVG-tW-0HS" id="dSH-pR-lh7"/>
+                                    <outlet property="valueLabel" destination="vJ5-cX-O3i" id="9Uq-sE-j5u"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sSp-X7-dXp" id="Iwj-Qa-rpu"/>
+                            <outlet property="delegate" destination="sSp-X7-dXp" id="voW-av-d5P"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="emptyLabel" destination="0gc-c8-NCX" id="EfO-am-P6J"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PN9-uO-Ydg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No accounts found." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0gc-c8-NCX">
+                    <rect key="frame" x="0.0" y="0.0" width="584" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </objects>
+            <point key="canvasLocation" x="451" y="1525"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F4a-Ti-NYA">

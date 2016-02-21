@@ -1,13 +1,15 @@
 import UIKit
 
 private let persistentRefsKey = "persistentRefs"
+private let accountSearchResultsViewControllerIdentifier = "AccountSearchResultsViewController"
 
-final class AccountsViewController: UITableViewController, AccountCreationDelegate,
-AccountUpdateDelegate {
+final class AccountsViewController: UITableViewController, UISearchResultsUpdating,
+AccountCreationDelegate, AccountUpdateDelegate {
   @IBOutlet var emptyLabel: UILabel!
   private let keychain = Keychain()
   private let userDefaults = NSUserDefaults.standardUserDefaults()
   private var accounts: [Account]!
+  private var searchController: UISearchController!
 
   @IBAction func didPressAdd(sender: UIBarButtonItem) {
     let alertController = UIAlertController(
@@ -43,6 +45,12 @@ AccountUpdateDelegate {
     persistAccountOrder()
 
     updateEditing()
+
+    let searchResultsController = storyboard?.instantiateViewControllerWithIdentifier(
+      accountSearchResultsViewControllerIdentifier) as! AccountSearchResultsViewController
+    searchController = UISearchController(searchResultsController: searchResultsController)
+    searchController.searchResultsUpdater = self
+    tableView.tableHeaderView = searchController.searchBar
 
     let timer = NSTimer(timeInterval: 1, target: self, selector: "updateVisibleCells",
       userInfo: nil, repeats: true)
@@ -190,6 +198,18 @@ AccountUpdateDelegate {
         UIPasteboard.generalPasteboard().string = cell.valueLabel.text?
           .stringByReplacingOccurrencesOfString(" ", withString: "")
       }
+  }
+
+  // MARK: UISearchResultsUpdating
+
+  func updateSearchResultsForSearchController(searchController: UISearchController) {
+    let accountSearchResultsViewController = searchController.searchResultsController
+      as! AccountSearchResultsViewController
+    accountSearchResultsViewController.accounts = accounts.filter {
+      guard let string = searchController.searchBar.text else { return false }
+      return $0.description.rangeOfString(string, options: .CaseInsensitiveSearch, range: nil,
+        locale: nil) != nil
+    }
   }
 
   // MARK: AccountCreationDelegate
