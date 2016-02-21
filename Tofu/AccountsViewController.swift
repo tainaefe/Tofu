@@ -1,5 +1,4 @@
 import UIKit
-import CoreData
 
 private let persistentRefsKey = "persistentRefs"
 

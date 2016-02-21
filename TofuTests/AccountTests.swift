@@ -1,5 +1,4 @@
 import XCTest
-import CoreData
 @testable import Tofu
 
 class AccountTests: XCTestCase {
