@@ -1,5 +1,40 @@
 import UIKit
 
+private func placeholderImageWithText(text: String) -> UIImage {
+  let image = UIImage(named: "Placeholder")!
+  UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+  image.drawAtPoint(CGPoint.zero)
+  defer { UIGraphicsEndImageContext() }
+  let paragraphStyle = NSMutableParagraphStyle()
+  paragraphStyle.alignment = .Center
+  let fontSize: CGFloat = 36
+  let attributes = [
+    NSFontAttributeName: UIFont.systemFontOfSize(fontSize, weight: UIFontWeightUltraLight),
+    NSForegroundColorAttributeName: UIColor.lightGrayColor(),
+    NSParagraphStyleAttributeName: paragraphStyle,
+  ]
+  let origin = CGPoint(x: 0, y: (image.size.height - fontSize) / 2 - 0.1 * fontSize)
+  text.drawWithRect(CGRect(origin: origin, size: image.size), options: .UsesLineFragmentOrigin,
+    attributes: attributes, context: nil)
+  return UIGraphicsGetImageFromCurrentImageContext()
+}
+
+private func imageForAccount(account: Account) -> UIImage {
+  switch account.issuer {
+  case .Some("Bitbucket"): return UIImage(named: "Bitbucket")!
+  case .Some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
+  case .Some("Dropbox"): return UIImage(named: "Dropbox")!
+  case .Some("GitHub"): return UIImage(named: "GitHub")!
+  case .Some("Google"): return UIImage(named: "Google")!
+  case .Some("Heroku"): return UIImage(named: "Heroku")!
+  case .Some("IFTTT"): return UIImage(named: "IFTTT")!
+  case .Some("Stripe"): return UIImage(named: "Stripe")!
+  default:
+    let text = String(account.description.characters.first ?? "?").uppercaseString
+    return placeholderImageWithText(text)
+  }
+}
+
 private func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
   UIGraphicsBeginImageContext(size)
   color.setFill()
@@ -10,6 +45,7 @@ private func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
 }
 
 final class AccountCell: UITableViewCell {
+  @IBOutlet weak var accountImageView: UIImageView!
   @IBOutlet weak var valueLabel: UILabel!
   @IBOutlet weak var identifierLabel: UILabel!
   var delegate: AccountUpdateDelegate?
@@ -19,6 +55,7 @@ final class AccountCell: UITableViewCell {
 
   var account: Account! {
     didSet {
+      accountImageView.image = imageForAccount(account)
       accessoryView = account.password.timeBased ? progressView : button
       identifierLabel.text = account.description
       updateWithDate(NSDate())
