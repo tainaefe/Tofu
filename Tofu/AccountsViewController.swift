@@ -51,10 +51,6 @@ AccountCreationDelegate, AccountUpdateDelegate {
     searchController = UISearchController(searchResultsController: searchResultsController)
     searchController.searchResultsUpdater = self
     tableView.tableHeaderView = searchController.searchBar
-
-    let timer = NSTimer(timeInterval: 1, target: self, selector: "updateVisibleCells",
-      userInfo: nil, repeats: true)
-    NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -73,13 +69,6 @@ AccountCreationDelegate, AccountUpdateDelegate {
       let cell = sender as! AccountCell
       accountUpdateViewController.delegate = self
       accountUpdateViewController.account = cell.account
-    }
-  }
-
-  func updateVisibleCells() {
-    let now = NSDate()
-    for cell in tableView.visibleCells as! [AccountCell] {
-      cell.updateWithDate(now)
     }
   }
 
@@ -245,7 +234,7 @@ AccountCreationDelegate, AccountUpdateDelegate {
     let row = accounts.indexOf { $0 === account }!
     let indexPath = NSIndexPath(forRow: row, inSection: 0)
     guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? AccountCell else { return }
-    cell.account = account
+    cell.updateDescription()
   }
 
   private func presentTryAgainAlertWithTitle(title: String, message: String, handler: () -> Void) {

@@ -10,21 +10,6 @@ final class AccountSearchResultsViewController: UITableViewController {
     }
   }
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    let timer = NSTimer(timeInterval: 1, target: self, selector: "updateVisibleCells",
-      userInfo: nil, repeats: true)
-    NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
-  }
-
-  func updateVisibleCells() {
-    let now = NSDate()
-    for cell in tableView.visibleCells as! [AccountCell] {
-      cell.updateWithDate(now)
-    }
-  }
-
   // MARK: UITableViewDataSource
 
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

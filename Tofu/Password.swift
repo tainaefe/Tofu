@@ -20,8 +20,12 @@ final class Password {
     return String(format: "%0\(digits)d", number % UInt32(pow(10, Float(digits))))
   }
 
-  func progressForDate(date: NSDate) -> Float {
-    let remainder = date.timeIntervalSince1970 % Double(period)
-    return 1 - Float(remainder) / Float(period)
+  func progressForDate(date: NSDate) -> Double {
+    return timeIntervalRemainingForDate(date) / Double(period)
+  }
+
+  func timeIntervalRemainingForDate(date: NSDate) -> Double {
+    let period = Double(self.period)
+    return period - (date.timeIntervalSince1970 % period)
   }
 }

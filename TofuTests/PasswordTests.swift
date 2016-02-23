@@ -63,6 +63,16 @@ class PasswordTests: XCTestCase {
     XCTAssertEqual(password.progressForDate(NSDate(timeIntervalSince1970: 30)), 1)
   }
 
+  func timeIntervalRemainingForDate() {
+    let password = Password()
+    password.period = 30
+
+    XCTAssertEqual(password.timeIntervalRemainingForDate(NSDate(timeIntervalSince1970: 0)), 30)
+    XCTAssertEqual(password.timeIntervalRemainingForDate(NSDate(timeIntervalSince1970: 15)), 15)
+    XCTAssertEqual(password.timeIntervalRemainingForDate(NSDate(timeIntervalSince1970: 22.5)), 7.5)
+    XCTAssertEqual(password.timeIntervalRemainingForDate(NSDate(timeIntervalSince1970: 30)), 0)
+  }
+
   private func passwordWithSecret(secret: NSData, algorithm: Algorithm, digits: Int,
     timeBased: Bool) -> Password {
       let password = Password()
