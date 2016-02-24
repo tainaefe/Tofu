@@ -93,6 +93,17 @@ final class AccountCell: UITableViewCell {
     button.addTarget(self, action: "didPressButton:", forControlEvents: .TouchUpInside)
   }
 
+  override func setEditing(editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+    if editing || account == nil { return }
+    timer?.invalidate()
+    let now = NSDate()
+    let progress = CGFloat(account.password.progressForDate(now))
+    let timeInterval = account.password.timeIntervalRemainingForDate(now)
+    progressView.animateProgressToZeroFrom(progress, duration: timeInterval)
+    scheduleValueAndProgressUpdateInTimeInterval(timeInterval)
+  }
+
   func update() {
     updateDescription()
     updateValueWithTransitionAndDate(NSDate())
