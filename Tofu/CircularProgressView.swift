@@ -7,10 +7,8 @@ final class CircularProgressView: UIView {
 
   init() {
     let backgroundImage = UIImage(named: "CircularProgressViewBorderThin")!
-      .imageWithRenderingMode(.AlwaysTemplate)
     let backgroundImageView = UIImageView(image: backgroundImage)
     let image = UIImage(named: "CircularProgressViewBorderThick")!
-      .imageWithRenderingMode(.AlwaysTemplate)
     let imageView = UIImageView(image: image)
     super.init(frame: backgroundImageView.frame)
     addSubview(backgroundImageView)
