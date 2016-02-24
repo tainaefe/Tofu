@@ -93,6 +93,11 @@ final class AccountCell: UITableViewCell {
     button.addTarget(self, action: "didPressButton:", forControlEvents: .TouchUpInside)
   }
 
+  func update() {
+    updateDescription()
+    updateValueWithTransitionAndDate(NSDate())
+  }
+
   func updateDescription() {
     identifierLabel.text = account.description
   }
@@ -115,7 +120,6 @@ final class AccountCell: UITableViewCell {
 
   func didPressButton(sender: UIButton) {
     account.password.counter++
-    updateValueWithTransitionAndDate(NSDate())
     delegate?.updateAccount(account)
   }
 

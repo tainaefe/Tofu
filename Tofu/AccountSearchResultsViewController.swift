@@ -1,6 +1,6 @@
 import UIKit
 
-final class AccountSearchResultsViewController: UITableViewController {
+final class AccountSearchResultsViewController: UITableViewController, AccountUpdateDelegate {
   @IBOutlet var emptyLabel: UILabel!
   var accounts: [Account]! {
     didSet {
@@ -25,6 +25,7 @@ final class AccountSearchResultsViewController: UITableViewController {
       let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell",
         forIndexPath: indexPath) as! AccountCell
       cell.account = accounts[indexPath.row]
+      cell.delegate = self
       return cell
   }
 
@@ -47,5 +48,15 @@ final class AccountSearchResultsViewController: UITableViewController {
         UIPasteboard.generalPasteboard().string = cell.valueLabel.text?
           .stringByReplacingOccurrencesOfString(" ", withString: "")
       }
+  }
+
+  // MARK: AccountUpdateDelegate
+
+  func updateAccount(account: Account) {
+    (presentingViewController as! AccountUpdateDelegate).updateAccount(account)
+    let row = accounts.indexOf { $0 === account }!
+    let indexPath = NSIndexPath(forRow: row, inSection: 0)
+    guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? AccountCell else { return }
+    cell.update()
   }
 }
