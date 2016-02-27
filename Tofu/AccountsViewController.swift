@@ -51,6 +51,9 @@ AccountCreationDelegate, AccountUpdateDelegate {
     searchController = UISearchController(searchResultsController: searchResultsController)
     searchController.searchResultsUpdater = self
     tableView.tableHeaderView = searchController.searchBar
+
+    let updater = AccountsTableViewUpdater(tableView: tableView)
+    updater.startUpdating()
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -234,7 +237,7 @@ AccountCreationDelegate, AccountUpdateDelegate {
     let row = accounts.indexOf { $0 === account }!
     let indexPath = NSIndexPath(forRow: row, inSection: 0)
     guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? AccountCell else { return }
-    cell.update()
+    cell.updateWithDate(NSDate())
   }
 
   private func presentTryAgainAlertWithTitle(title: String, message: String, handler: () -> Void) {

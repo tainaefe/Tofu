@@ -58,20 +58,15 @@ final class AccountCell: UITableViewCell {
   var delegate: AccountUpdateDelegate?
   private let button = UIButton(type: .Custom)
   private let progressView = CircularProgressView()
-  private var timer: NSTimer?
 
   var account: Account! {
     didSet {
-      timer?.invalidate()
       accountImageView.image = imageForAccount(account)
       accessoryView = account.password.timeBased ? progressView : button
-      updateDescription()
+      identifierLabel.text = account.description
       let now = NSDate()
       valueLabel.text = formattedValue(account.password.valueForDate(now))
-      let progress = CGFloat(account.password.progressForDate(now))
-      let timeInterval = account.password.timeIntervalRemainingForDate(now)
-      progressView.animateProgressToZeroFrom(progress, duration: timeInterval)
-      scheduleValueAndProgressUpdateInTimeInterval(timeInterval)
+      progressView.progress = account.password.progressForDate(now)
     }
   }
 
@@ -93,54 +88,13 @@ final class AccountCell: UITableViewCell {
     button.addTarget(self, action: "didPressButton:", forControlEvents: .TouchUpInside)
   }
 
-  override func setEditing(editing: Bool, animated: Bool) {
-    super.setEditing(editing, animated: animated)
-    if editing || account == nil { return }
-    timer?.invalidate()
-    let now = NSDate()
-    let progress = CGFloat(account.password.progressForDate(now))
-    let timeInterval = account.password.timeIntervalRemainingForDate(now)
-    progressView.animateProgressToZeroFrom(progress, duration: timeInterval)
-    scheduleValueAndProgressUpdateInTimeInterval(timeInterval)
-  }
-
-  func update() {
-    updateDescription()
-    updateValueWithTransitionAndDate(NSDate())
-  }
-
-  func updateDescription() {
-    identifierLabel.text = account.description
-  }
-
-  func updateValueAndProgress() {
-    let now = NSDate()
-    let period = Double(account.password.period)
-    let timeInterval = account.password.timeIntervalRemainingForDate(now)
-
-    scheduleValueAndProgressUpdateInTimeInterval(timeInterval)
-
-    let timerDidFireEarly = timeInterval < period / 2
-    if timerDidFireEarly { return }
-
-    updateValueWithTransitionAndDate(now)
-
-    let progress = CGFloat(account.password.progressForDate(now))
-    progressView.animateProgressToZeroFrom(progress, duration: timeInterval)
-  }
-
   func didPressButton(sender: UIButton) {
     account.password.counter++
     delegate?.updateAccount(account)
   }
 
-  private func scheduleValueAndProgressUpdateInTimeInterval(timeInterval: NSTimeInterval) {
-    timer = NSTimer(timeInterval: timeInterval, target: self, selector: "updateValueAndProgress",
-      userInfo: nil, repeats: false)
-    NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
-  }
-
-  private func updateValueWithTransitionAndDate(date: NSDate) {
+  func updateWithDate(date: NSDate) {
+    progressView.progress = account.password.progressForDate(date)
     UIView.transitionWithView(
       valueLabel,
       duration: 0.2,

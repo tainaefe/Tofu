@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2506E6E31C6F83AE00E694D3 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506E6E21C6F83AE00E694D3 /* Password.swift */; };
 		2506E6E51C6F9A5A00E694D3 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */; };
+		250CB0111C81BF0B00D48AC9 /* AccountsTableViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250CB0101C81BF0B00D48AC9 /* AccountsTableViewUpdater.swift */; };
 		251A79871C7A68BC00E2747E /* AccountSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251A79861C7A68BC00E2747E /* AccountSearchResultsViewController.swift */; };
 		259FAC501C765BB00013B4F7 /* AccountCreationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */; };
 		259FAC521C765F4B0013B4F7 /* AccountUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259FAC511C765F4B0013B4F7 /* AccountUpdateDelegate.swift */; };
@@ -54,6 +55,7 @@
 		2506E6E21C6F83AE00E694D3 /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		2508F1151C526E3A00164467 /* Tofu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tofu-Bridging-Header.h"; sourceTree = "<group>"; };
+		250CB0101C81BF0B00D48AC9 /* AccountsTableViewUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewUpdater.swift; sourceTree = "<group>"; };
 		251A79861C7A68BC00E2747E /* AccountSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSearchResultsViewController.swift; sourceTree = "<group>"; };
 		259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationDelegate.swift; sourceTree = "<group>"; };
 		259FAC511C765F4B0013B4F7 /* AccountUpdateDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountUpdateDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				25A81D541C5BC31B008E51B9 /* AccountUpdateViewController.swift */,
 				25A81D561C5DFC5C008E51B9 /* ScanningAccountCreationViewController.swift */,
 				251A79861C7A68BC00E2747E /* AccountSearchResultsViewController.swift */,
+				250CB0101C81BF0B00D48AC9 /* AccountsTableViewUpdater.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				25A81D571C5DFC5C008E51B9 /* ScanningAccountCreationViewController.swift in Sources */,
 				25CF8B6C1C57946B00665FFE /* AlgorithmsViewController.swift in Sources */,
 				25A81D3C1C502755008E51B9 /* Keychain.swift in Sources */,
+				250CB0111C81BF0B00D48AC9 /* AccountsTableViewUpdater.swift in Sources */,
 				259FAC501C765BB00013B4F7 /* AccountCreationDelegate.swift in Sources */,
 				25A81D551C5BC31B008E51B9 /* AccountUpdateViewController.swift in Sources */,
 				25A81D3E1C51758C008E51B9 /* AccountCreationViewController.swift in Sources */,

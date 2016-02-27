@@ -1,7 +1,10 @@
 import UIKit
 
 final class CircularProgressView: UIView {
-  let maskLayer = CAShapeLayer()
+  var progress: Double = 0 {
+    didSet { maskLayer.strokeEnd = min(max(CGFloat(progress), 0), 1) }
+  }
+  private let maskLayer = CAShapeLayer()
 
   init() {
     let backgroundImage = UIImage(named: "CircularProgressViewBorderThin")!
@@ -19,7 +22,7 @@ final class CircularProgressView: UIView {
     maskLayer.strokeColor = UIColor.blackColor().CGColor
     maskLayer.lineWidth = radius
     maskLayer.path = path
-    maskLayer.strokeEnd = 1
+    maskLayer.strokeEnd = CGFloat(progress)
     imageView.layer.mask = maskLayer
     addSubview(backgroundImageView)
     addSubview(imageView)
@@ -27,16 +30,5 @@ final class CircularProgressView: UIView {
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  func animateProgressToZeroFrom(from: CGFloat, duration: Double) {
-    let animation = CABasicAnimation()
-    animation.keyPath = "strokeEnd"
-    animation.fromValue = min(max(from, 0), 1)
-    animation.toValue = 0
-    animation.duration = duration
-    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-    maskLayer.addAnimation(animation, forKey: "progress")
-    maskLayer.strokeEnd = 0
   }
 }

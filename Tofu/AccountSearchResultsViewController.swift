@@ -10,6 +10,12 @@ final class AccountSearchResultsViewController: UITableViewController, AccountUp
     }
   }
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    let updater = AccountsTableViewUpdater(tableView: tableView)
+    updater.startUpdating()
+  }
+
   // MARK: UITableViewDataSource
 
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -57,6 +63,6 @@ final class AccountSearchResultsViewController: UITableViewController, AccountUp
     let row = accounts.indexOf { $0 === account }!
     let indexPath = NSIndexPath(forRow: row, inSection: 0)
     guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? AccountCell else { return }
-    cell.update()
+    cell.updateWithDate(NSDate())
   }
 }
