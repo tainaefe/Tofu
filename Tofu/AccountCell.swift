@@ -65,8 +65,7 @@ final class AccountCell: UITableViewCell {
       accessoryView = account.password.timeBased ? progressView : button
       identifierLabel.text = account.description
       let now = NSDate()
-      valueLabel.text = formattedValue(account.password.valueForDate(now))
-      progressView.progress = account.password.progressForDate(now)
+      updateWithDate(now)
     }
   }
 
@@ -95,13 +94,6 @@ final class AccountCell: UITableViewCell {
 
   func updateWithDate(date: NSDate) {
     progressView.progress = account.password.progressForDate(date)
-    UIView.transitionWithView(
-      valueLabel,
-      duration: 0.2,
-      options: .TransitionCrossDissolve,
-      animations: {
-        self.valueLabel.text = formattedValue(self.account.password.valueForDate(date))
-      },
-      completion: nil)
+    valueLabel.text = formattedValue(account.password.valueForDate(date))
   }
 }
