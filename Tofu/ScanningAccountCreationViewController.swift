@@ -3,7 +3,7 @@ import AVFoundation
 
 final class ScanningAccountCreationViewController: UIViewController,
 AVCaptureMetadataOutputObjectsDelegate {
-  @IBOutlet weak var allowCameraAccessLabel: UILabel!
+  @IBOutlet weak var allowCameraAccessView: UIView!
   var delegate: AccountCreationDelegate?
   private var session = AVCaptureSession()
   private let output = AVCaptureMetadataOutput()
@@ -16,8 +16,29 @@ AVCaptureMetadataOutputObjectsDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
+      startScanning()
+    } else {
+      AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { granted in
+        guard granted else { return }
+        dispatch_async(dispatch_get_main_queue()) {
+          self.startScanning()
+        }
+      }
+    }
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    updateLayerFrameAndOrientation()
+  }
+
+  private func startScanning() {
     let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
     if let input = try? AVCaptureDeviceInput(device: device) {
+      allowCameraAccessView.hidden = true
+      navigationItem.prompt = "Point your camera at a QR code to scan it."
       session.addInput(input)
       session.addOutput(output)
       output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
@@ -25,14 +46,12 @@ AVCaptureMetadataOutputObjectsDelegate {
       layer = AVCaptureVideoPreviewLayer(session: session)
       layer!.videoGravity = AVLayerVideoGravityResizeAspectFill
       view.layer.addSublayer(layer!)
+      updateLayerFrameAndOrientation()
       session.startRunning()
-    } else {
-      allowCameraAccessLabel.hidden = false
     }
   }
 
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
+  private func updateLayerFrameAndOrientation() {
     layer?.frame = view.layer.bounds
     switch UIDevice.currentDevice().orientation {
     case .LandscapeLeft:

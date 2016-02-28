@@ -18,27 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add an account by scanning a QR code, please allow Tofu to access your camera in the Settings application." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1K-TV-6EK">
-                                <rect key="frame" x="20" y="283" width="560" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="964-37-yur">
+                                <rect key="frame" x="20" y="257" width="560" height="87"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add an account by scanning a QR code, please allow Tofu to access your camera in the Settings application." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSo-RK-FII">
+                                        <rect key="frame" x="0.0" y="45" width="560" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Camera Access" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOq-gD-H4m">
+                                        <rect key="frame" x="8" y="8" width="544" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="VOq-gD-H4m" secondAttribute="trailing" id="2ak-bF-ZNV"/>
+                                    <constraint firstItem="VOq-gD-H4m" firstAttribute="top" secondItem="964-37-yur" secondAttribute="topMargin" id="LxM-yn-CnD"/>
+                                    <constraint firstItem="VOq-gD-H4m" firstAttribute="leading" secondItem="964-37-yur" secondAttribute="leadingMargin" id="Np2-bg-05n"/>
+                                    <constraint firstItem="QSo-RK-FII" firstAttribute="top" secondItem="VOq-gD-H4m" secondAttribute="bottom" constant="8" id="PGI-i7-H6e"/>
+                                    <constraint firstItem="QSo-RK-FII" firstAttribute="leading" secondItem="964-37-yur" secondAttribute="leading" id="fc6-je-Fng"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="QSo-RK-FII" secondAttribute="bottom" id="iCy-wQ-HvK"/>
+                                    <constraint firstAttribute="trailing" secondItem="QSo-RK-FII" secondAttribute="trailing" id="xmj-ui-9Hl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="r1K-TV-6EK" secondAttribute="trailing" id="MK8-xR-5Jr"/>
-                            <constraint firstItem="r1K-TV-6EK" firstAttribute="centerX" secondItem="Y7o-gx-74K" secondAttribute="centerX" id="PQR-OD-WJh"/>
-                            <constraint firstItem="r1K-TV-6EK" firstAttribute="centerY" secondItem="Y7o-gx-74K" secondAttribute="centerY" id="XYo-5Q-5iv"/>
-                            <constraint firstItem="r1K-TV-6EK" firstAttribute="leading" secondItem="Y7o-gx-74K" secondAttribute="leadingMargin" id="eDa-cP-rmn"/>
+                            <constraint firstItem="964-37-yur" firstAttribute="centerY" secondItem="Y7o-gx-74K" secondAttribute="centerY" id="YQ2-Bn-vd1"/>
+                            <constraint firstItem="964-37-yur" firstAttribute="leading" secondItem="Y7o-gx-74K" secondAttribute="leadingMargin" id="eHq-nS-la4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="964-37-yur" secondAttribute="trailing" id="onr-1Y-n1r"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="PQR-OD-WJh"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Account" prompt="Point your camera at a QR code to scan it." id="G5L-6K-n5t">
+                    <navigationItem key="navigationItem" title="Add Account" id="G5L-6K-n5t">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="t02-9l-NcV">
                             <connections>
                                 <action selector="didPressCancel:" destination="I3F-x1-Uca" id="9f4-zp-3H8"/>
@@ -46,7 +61,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="allowCameraAccessLabel" destination="r1K-TV-6EK" id="5Np-ms-c75"/>
+                        <outlet property="allowCameraAccessView" destination="964-37-yur" id="vKo-Wj-meQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TSJ-k5-Por" userLabel="First Responder" sceneMemberID="firstResponder"/>
