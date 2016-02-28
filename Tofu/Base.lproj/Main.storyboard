@@ -141,20 +141,52 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="emptyLabel" destination="iub-lm-UUY" id="lZ5-88-i6k"/>
+                        <outlet property="emptyView" destination="hT8-ZY-D3A" id="eqL-UC-LWT"/>
                         <segue destination="ERk-zj-Q6A" kind="show" identifier="EditAccountSegue" id="rWD-gI-uHe"/>
                         <segue destination="fMR-de-62D" kind="presentation" identifier="ScanSegue" id="Eo2-wA-mmS"/>
                         <segue destination="yTV-zU-3QS" kind="presentation" identifier="ManualSegue" id="sz3-ZJ-SNl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZK-WF-dPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't currently have any accounts. Add one by tapping the add button in the upper right corner." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iub-lm-UUY">
-                    <rect key="frame" x="0.0" y="0.0" width="584" height="17"/>
+                <view contentMode="scaleToFill" id="hT8-ZY-D3A">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHh-Ks-F0R">
+                            <rect key="frame" x="8" y="21" width="224" height="87"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add one by tapping the add button in the upper right corner." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iub-lm-UUY">
+                                    <rect key="frame" x="0.0" y="45" width="224" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Accounts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-NF-3aU">
+                                    <rect key="frame" x="8" y="8" width="208" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="iub-lm-UUY" firstAttribute="leading" secondItem="NHh-Ks-F0R" secondAttribute="leading" id="2BF-CA-u6f"/>
+                                <constraint firstItem="iub-lm-UUY" firstAttribute="top" secondItem="RGz-NF-3aU" secondAttribute="bottom" constant="8" id="4ub-V1-vTw"/>
+                                <constraint firstAttribute="trailing" secondItem="iub-lm-UUY" secondAttribute="trailing" id="Bb5-ss-CAr"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="iub-lm-UUY" secondAttribute="bottom" id="EAB-pt-d9C"/>
+                                <constraint firstItem="RGz-NF-3aU" firstAttribute="top" secondItem="NHh-Ks-F0R" secondAttribute="topMargin" id="ilP-Rf-Ydi"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="RGz-NF-3aU" secondAttribute="trailing" id="tvl-mg-btC"/>
+                                <constraint firstItem="RGz-NF-3aU" firstAttribute="leading" secondItem="NHh-Ks-F0R" secondAttribute="leadingMargin" id="zIc-ha-jWl"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="NHh-Ks-F0R" firstAttribute="leading" secondItem="hT8-ZY-D3A" secondAttribute="leadingMargin" id="0NQ-Lv-ccR"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="NHh-Ks-F0R" secondAttribute="trailing" id="2FO-d5-1lx"/>
+                        <constraint firstItem="NHh-Ks-F0R" firstAttribute="centerY" secondItem="hT8-ZY-D3A" secondAttribute="centerY" id="Vdh-wl-iNf"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1263" y="790"/>
         </scene>
@@ -165,7 +197,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Flh-7t-GjH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Display" id="OPD-Ia-5ZL">
                                 <cells>
@@ -614,17 +646,49 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="emptyLabel" destination="0gc-c8-NCX" id="EfO-am-P6J"/>
+                        <outlet property="emptyView" destination="jac-9u-ovS" id="PNR-uC-9UD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PN9-uO-Ydg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No accounts found." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0gc-c8-NCX">
-                    <rect key="frame" x="0.0" y="0.0" width="584" height="17"/>
+                <view contentMode="scaleToFill" id="jac-9u-ovS">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJv-Gt-yp3">
+                            <rect key="frame" x="8" y="21" width="224" height="87"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No accounts matching your search query could be found." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-U5-djV">
+                                    <rect key="frame" x="0.0" y="45" width="224" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBP-eM-zUM">
+                                    <rect key="frame" x="8" y="8" width="208" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="aA9-U5-djV" firstAttribute="top" secondItem="kBP-eM-zUM" secondAttribute="bottom" constant="8" id="0A5-lT-i9L"/>
+                                <constraint firstAttribute="trailing" secondItem="aA9-U5-djV" secondAttribute="trailing" id="Ee1-9L-bzp"/>
+                                <constraint firstItem="kBP-eM-zUM" firstAttribute="top" secondItem="KJv-Gt-yp3" secondAttribute="topMargin" id="IhW-lQ-lX2"/>
+                                <constraint firstItem="aA9-U5-djV" firstAttribute="leading" secondItem="KJv-Gt-yp3" secondAttribute="leading" id="KFE-aQ-lgh"/>
+                                <constraint firstItem="kBP-eM-zUM" firstAttribute="leading" secondItem="KJv-Gt-yp3" secondAttribute="leadingMargin" id="QIc-fB-EUQ"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="kBP-eM-zUM" secondAttribute="trailing" id="fEV-aX-CRx"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="aA9-U5-djV" secondAttribute="bottom" id="ghZ-sg-67c"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="KJv-Gt-yp3" firstAttribute="centerY" secondItem="jac-9u-ovS" secondAttribute="centerY" id="9ec-Vm-pkR"/>
+                        <constraint firstItem="KJv-Gt-yp3" firstAttribute="leading" secondItem="jac-9u-ovS" secondAttribute="leadingMargin" id="V8f-4A-uyZ"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="KJv-Gt-yp3" secondAttribute="trailing" id="odp-2T-mw3"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="451" y="1525"/>
         </scene>

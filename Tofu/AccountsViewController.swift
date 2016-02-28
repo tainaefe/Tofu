@@ -5,7 +5,7 @@ private let accountSearchResultsViewControllerIdentifier = "AccountSearchResults
 
 final class AccountsViewController: UITableViewController, UISearchResultsUpdating,
 AccountCreationDelegate, AccountUpdateDelegate {
-  @IBOutlet var emptyLabel: UILabel!
+  @IBOutlet weak var emptyView: UIView!
   private let keychain = Keychain()
   private let userDefaults = NSUserDefaults.standardUserDefaults()
   private var accounts: [Account]!
@@ -44,8 +44,6 @@ AccountCreationDelegate, AccountUpdateDelegate {
     }
     persistAccountOrder()
 
-    updateEditing()
-
     let searchResultsController = storyboard?.instantiateViewControllerWithIdentifier(
       accountSearchResultsViewControllerIdentifier) as! AccountSearchResultsViewController
     searchController = UISearchController(searchResultsController: searchResultsController)
@@ -54,6 +52,8 @@ AccountCreationDelegate, AccountUpdateDelegate {
 
     let updater = AccountsTableViewUpdater(tableView: tableView)
     updater.startUpdating()
+
+    updateEditing()
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -82,11 +82,13 @@ AccountCreationDelegate, AccountUpdateDelegate {
 
   private func updateEditing() {
     if accounts.count == 0 {
-      setEditing(false, animated: true)
-      tableView.backgroundView = emptyLabel
+      tableView.tableHeaderView = nil
+      tableView.backgroundView = emptyView
       tableView.separatorStyle = .None
       navigationItem.leftBarButtonItem = nil
+      setEditing(false, animated: true)
     } else {
+      tableView.tableHeaderView = searchController.searchBar
       tableView.backgroundView = nil
       tableView.separatorStyle = .SingleLine
       navigationItem.leftBarButtonItem = editButtonItem()

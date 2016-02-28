@@ -1,11 +1,11 @@
 import UIKit
 
 final class AccountSearchResultsViewController: UITableViewController, AccountUpdateDelegate {
-  @IBOutlet var emptyLabel: UILabel!
+  @IBOutlet var emptyView: UIView!
   var accounts: [Account]! {
     didSet {
       tableView.reloadData()
-      tableView.backgroundView = accounts.count == 0 ? emptyLabel : nil
+      tableView.backgroundView = accounts.count == 0 ? emptyView : nil
       tableView.separatorStyle = accounts.count == 0 ? .None : .SingleLine
     }
   }
