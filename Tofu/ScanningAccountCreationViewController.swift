@@ -56,8 +56,7 @@ AVCaptureMetadataOutputObjectsDelegate {
         let url = NSURL(string: metadataObject.stringValue),
         let account = Account(url: url) else { return }
       output.setMetadataObjectsDelegate(nil, queue: nil)
-      presentingViewController?.dismissViewControllerAnimated(true) {
-        self.delegate?.createAccount(account)
-      }
+      delegate?.createAccount(account)
+      presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
   }
 }
