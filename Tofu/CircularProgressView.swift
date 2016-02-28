@@ -2,15 +2,21 @@ import UIKit
 
 final class CircularProgressView: UIView {
   var progress: Double = 0 {
-    didSet { maskLayer.strokeEnd = min(max(CGFloat(progress), 0), 1) }
+    didSet {
+      maskLayer.strokeEnd = min(max(CGFloat(progress), 0), 1)
+      imageView.tintColor = maskLayer.strokeEnd < 0.2 ? .redColor() : tintColor
+      backgroundImageView.tintColor = imageView.tintColor
+    }
   }
   private let maskLayer = CAShapeLayer()
+  private let imageView: UIImageView
+  private let backgroundImageView: UIImageView
 
   init() {
     let backgroundImage = UIImage(named: "CircularProgressViewBorderThin")!
-    let backgroundImageView = UIImageView(image: backgroundImage)
+    backgroundImageView = UIImageView(image: backgroundImage)
     let image = UIImage(named: "CircularProgressViewBorderThick")!
-    let imageView = UIImageView(image: image)
+    imageView = UIImageView(image: image)
     super.init(frame: backgroundImageView.frame)
     let x = frame.size.width / 2
     let y = frame.size.height / 2
