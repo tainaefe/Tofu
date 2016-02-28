@@ -9,11 +9,12 @@ final class Password {
   var timeBased = false
 
   func valueForDate(date: NSDate) -> String {
-    let counter = timeBased ? Int(date.timeIntervalSince1970) / period : self.counter
+    let counter = timeBased ?
+      Int64(date.timeIntervalSince1970) / Int64(period) : Int64(self.counter)
     var input = counter.bigEndian
     let digest = UnsafeMutablePointer<UInt8>.alloc(algorithm.digestLength)
     defer { digest.destroy() }
-    CCHmac(algorithm.hmacAlgorithm, secret.bytes, secret.length, &input, sizeof(UInt64), digest)
+    CCHmac(algorithm.hmacAlgorithm, secret.bytes, secret.length, &input, sizeofValue(input), digest)
     let bytes = UnsafePointer<UInt8>(digest)
     let offset = bytes[algorithm.digestLength - 1] & 0x0f
     let number = UInt32(bigEndian: UnsafePointer<UInt32>(bytes + Int(offset)).memory) & 0x7fffffff
