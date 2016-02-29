@@ -61,9 +61,7 @@ final class AccountCell: UITableViewCell {
 
   var account: Account! {
     didSet {
-      accountImageView.image = imageForAccount(account)
       accessoryView = account.password.timeBased ? progressView : button
-      identifierLabel.text = account.description
       let now = NSDate()
       updateWithDate(now)
     }
@@ -93,7 +91,9 @@ final class AccountCell: UITableViewCell {
   }
 
   func updateWithDate(date: NSDate) {
-    progressView.progress = account.password.progressForDate(date)
+    accountImageView.image = imageForAccount(account)
     valueLabel.text = formattedValue(account.password.valueForDate(date))
+    identifierLabel.text = account.description
+    progressView.progress = account.password.progressForDate(date)
   }
 }
