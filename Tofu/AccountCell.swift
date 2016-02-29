@@ -95,5 +95,7 @@ final class AccountCell: UITableViewCell {
     valueLabel.text = formattedValue(account.password.valueForDate(date))
     identifierLabel.text = account.description
     progressView.progress = account.password.progressForDate(date)
+    progressView.tintColor = account.password.timeIntervalRemainingForDate(date) < 5 ?
+      .redColor() : tintColor
   }
 }

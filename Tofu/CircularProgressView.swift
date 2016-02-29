@@ -4,8 +4,12 @@ final class CircularProgressView: UIView {
   var progress: Double = 0 {
     didSet {
       maskLayer.strokeEnd = min(max(CGFloat(progress), 0), 1)
-      imageView.tintColor = maskLayer.strokeEnd < 0.2 ? .redColor() : tintColor
-      backgroundImageView.tintColor = imageView.tintColor
+    }
+  }
+  override var tintColor: UIColor! {
+    didSet {
+      imageView.tintColor = tintColor
+      backgroundImageView.tintColor = tintColor
     }
   }
   private let maskLayer = CAShapeLayer()
