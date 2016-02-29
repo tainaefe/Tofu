@@ -21,13 +21,19 @@ private func placeholderImageWithText(text: String) -> UIImage {
 
 private func imageForAccount(account: Account) -> UIImage {
   switch account.issuer {
+  case .Some("Amazon"): return UIImage(named: "Amazon")!
+  case .Some("AWS"): return UIImage(named: "AWS")!
   case .Some("Bitbucket"): return UIImage(named: "Bitbucket")!
   case .Some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
+  case .Some("DNSimple"): return UIImage(named: "DNSimple")!
   case .Some("Dropbox"): return UIImage(named: "Dropbox")!
+  case .Some("Evernote"): return UIImage(named: "Evernote")!
+  case .Some("Facebook"): return UIImage(named: "Facebook")!
   case .Some("GitHub"): return UIImage(named: "GitHub")!
   case .Some("Google"): return UIImage(named: "Google")!
   case .Some("Heroku"): return UIImage(named: "Heroku")!
   case .Some("IFTTT"): return UIImage(named: "IFTTT")!
+  case .Some("Slack"): return UIImage(named: "Slack")!
   case .Some("Stripe"): return UIImage(named: "Stripe")!
   default:
     let text = String(account.description.characters.first ?? "?").uppercaseString
