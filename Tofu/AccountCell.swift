@@ -35,6 +35,9 @@ private func imageForAccount(account: Account) -> UIImage {
   case .Some("IFTTT"): return UIImage(named: "IFTTT")!
   case .Some("Slack"): return UIImage(named: "Slack")!
   case .Some("Stripe"): return UIImage(named: "Stripe")!
+  case .Some("Hover"): return UIImage(named: "Hover")!
+  case .Some("Microsoft"): return UIImage(named: "Microsoft")!
+  case .Some("LinodeManager"): return UIImage(named: "Linode")!
   default:
     let text = String(account.description.characters.first ?? "?").uppercaseString
     return placeholderImageWithText(text)
