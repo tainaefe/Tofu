@@ -29,15 +29,20 @@ private func imageForAccount(account: Account) -> UIImage {
   case .Some("Dropbox"): return UIImage(named: "Dropbox")!
   case .Some("Evernote"): return UIImage(named: "Evernote")!
   case .Some("Facebook"): return UIImage(named: "Facebook")!
+  case .Some("FastMail"): return UIImage(named: "FastMail")!
   case .Some("GitHub"): return UIImage(named: "GitHub")!
   case .Some("Google"): return UIImage(named: "Google")!
   case .Some("Heroku"): return UIImage(named: "Heroku")!
   case .Some("Hover"): return UIImage(named: "Hover")!
   case .Some("IFTTT"): return UIImage(named: "IFTTT")!
+  case .Some("Intercom"): return UIImage(named: "Intercom")!
   case .Some("LinodeManager"): return UIImage(named: "Linode")!
+  case .Some("LocalBitcoins"): return UIImage(named: "LocalBitcoins")!
   case .Some("Microsoft"): return UIImage(named: "Microsoft")!
   case .Some("Slack"): return UIImage(named: "Slack")!
   case .Some("Stripe"): return UIImage(named: "Stripe")!
+  case .Some("Tumblr"): return UIImage(named: "Tumblr")!
+  case .Some("www.fastmail.com"): return UIImage(named: "FastMail")!
   default:
     let text = String(account.description.characters.first ?? "?").uppercaseString
     return placeholderImageWithText(text)
