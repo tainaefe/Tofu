@@ -82,6 +82,13 @@ final class AccountCell: UITableViewCell {
   }
 
   override func awakeFromNib() {
+    let featureSettings = [[
+      UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
+      UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector]]
+    let attributes = [UIFontDescriptorFeatureSettingsAttribute: featureSettings]
+    let fontDescriptor = valueLabel.font.fontDescriptor()
+      .fontDescriptorByAddingAttributes(attributes)
+    valueLabel.font = UIFont(descriptor: fontDescriptor, size: 0)
     button.titleLabel?.font = UIFont.boldSystemFontOfSize(13)
     button.setTitle("NEXT", forState: .Normal)
     button.setTitleColor(tintColor, forState: .Normal)
