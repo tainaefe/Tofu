@@ -8,8 +8,8 @@ final class AccountsTableViewUpdater: NSObject {
   }
 
   func startUpdating() {
-    let timer = NSTimer(timeInterval: 1, target: self, selector: "updateCells",
-      userInfo: nil, repeats: true)
+    let timer = NSTimer(timeInterval: 1, target: self, selector: #selector(updateCells),
+                        userInfo: nil, repeats: true)
     NSRunLoop.mainRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
   }
 

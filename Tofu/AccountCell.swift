@@ -96,7 +96,7 @@ final class AccountCell: UITableViewCell {
     button.setBackgroundImage(image, forState: .Highlighted)
     button.setBackgroundImage(image, forState: .Selected)
     button.clipsToBounds = true
-    button.addTarget(self, action: "didPressButton:", forControlEvents: .TouchUpInside)
+    button.addTarget(self, action: #selector(didPressButton(_:)), forControlEvents: .TouchUpInside)
   }
 
   func didPressButton(sender: UIButton) {

@@ -44,12 +44,12 @@ final class AccountSearchResultsViewController: UITableViewController, AccountUp
 
   override func tableView(tableView: UITableView, canPerformAction action: Selector,
     forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-      return action == Selector("copy:")
+      return action == #selector(copy(_:))
   }
 
   override func tableView(tableView: UITableView, performAction action: Selector,
     forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-      if action == Selector("copy:") {
+      if action == #selector(copy(_:)) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! AccountCell
         UIPasteboard.generalPasteboard().string = cell.valueLabel.text?
           .stringByReplacingOccurrencesOfString(" ", withString: "")
