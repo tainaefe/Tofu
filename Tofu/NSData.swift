@@ -95,7 +95,10 @@ private func decodedBytes(bytes: [UInt8]) -> [UInt8]? {
 extension NSData {
   convenience init?(base32EncodedString string: String) {
     let encodedBytes = Array(string.uppercaseString.utf8)
-    guard let decodedBytes = decodedBytes(encodedBytes) else { return nil }
+    guard let decodedBytes = decodedBytes(encodedBytes) else {
+      self.init() // https://bugs.swift.org/browse/SR-704
+      return nil
+    }
     self.init(bytes: decodedBytes, length: decodedBytes.count)
   }
 }
