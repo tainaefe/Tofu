@@ -82,7 +82,7 @@ private func decodedBytes(bytes: [UInt8]) -> [UInt8]? {
       fatalError()
     }
 
-    index++
+    index += 1
   }
 
   let characterCountIsValid = [0, 2, 4, 5, 7].contains(characterCount % 8)

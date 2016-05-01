@@ -100,7 +100,7 @@ final class AccountCell: UITableViewCell {
   }
 
   func didPressButton(sender: UIButton) {
-    account.password.counter++
+    account.password.counter += 1
     delegate?.updateAccount(account)
   }
 
