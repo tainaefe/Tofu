@@ -10,27 +10,9 @@ AccountCreationDelegate, AccountUpdateDelegate {
   private let userDefaults = NSUserDefaults.standardUserDefaults()
   private var accounts: [Account]!
   private var searchController: UISearchController!
+  private var alertController: UIAlertController!
 
   @IBAction func didPressAdd(sender: UIBarButtonItem) {
-    let alertController = UIAlertController(
-      title: "Add Account",
-      message: "Add an account by scanning a QR code or enter a secret manually.",
-      preferredStyle: .ActionSheet)
-
-    let scanQRCodeAction = UIAlertAction(title: "Scan QR Code", style: .Default) { _ in
-      self.performSegueWithIdentifier("ScanSegue", sender: self)
-    }
-
-    let enterManuallyAction = UIAlertAction(title: "Enter Manually", style: .Default) { _ in
-      self.performSegueWithIdentifier("ManualSegue", sender: self)
-    }
-
-    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-
-    alertController.addAction(scanQRCodeAction)
-    alertController.addAction(enterManuallyAction)
-    alertController.addAction(cancelAction)
-
     presentViewController(alertController, animated: true, completion: nil)
   }
 
@@ -49,6 +31,27 @@ AccountCreationDelegate, AccountUpdateDelegate {
     searchController = UISearchController(searchResultsController: searchResultsController)
     searchController.searchResultsUpdater = self
     tableView.tableHeaderView = searchController.searchBar
+
+    alertController = UIAlertController(
+      title: "Add Account",
+      message: "Add an account by scanning a QR code or enter a secret manually.",
+      preferredStyle: .ActionSheet)
+
+    let scanQRCodeAction = UIAlertAction(title: "Scan QR Code", style: .Default) {
+      [unowned self] _ in
+      self.performSegueWithIdentifier("ScanSegue", sender: self)
+    }
+
+    let enterManuallyAction = UIAlertAction(title: "Enter Manually", style: .Default) {
+      [unowned self] _ in
+      self.performSegueWithIdentifier("ManualSegue", sender: self)
+    }
+
+    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+
+    alertController.addAction(scanQRCodeAction)
+    alertController.addAction(enterManuallyAction)
+    alertController.addAction(cancelAction)
 
     let updater = AccountsTableViewUpdater(tableView: tableView)
     updater.startUpdating()
