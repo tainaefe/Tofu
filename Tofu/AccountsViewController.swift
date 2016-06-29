@@ -58,13 +58,13 @@ AccountCreationDelegate, AccountUpdateDelegate {
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let navigationController = segue.destinationViewController as? UINavigationController {
-      if let manualAccountCreationViewController = navigationController.topViewController
-        as? ManualAccountCreationViewController {
-          manualAccountCreationViewController.delegate = self
+      if let accountCreationViewController = navigationController.topViewController
+        as? AccountCreationViewController {
+          accountCreationViewController.delegate = self
       } else {
-        let scanningAccountCreationViewController = navigationController.topViewController
-          as! ScanningAccountCreationViewController
-        scanningAccountCreationViewController.delegate = self
+        let scanningViewController = navigationController.topViewController
+          as! ScanningViewController
+        scanningViewController.delegate = self
       }
     } else {
       let accountUpdateViewController = segue.destinationViewController
