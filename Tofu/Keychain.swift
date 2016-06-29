@@ -62,10 +62,10 @@ private func unarchiveAccountWithData(data: NSData) -> Account? {
 }
 
 private func accountWithPersistentRef(persistentRef: NSData) -> Account? {
-  let query = [
-    kSecClass as String: kSecClassGenericPassword,
-    kSecValuePersistentRef as String: persistentRef,
-    kSecReturnData as String: kCFBooleanTrue,
+  let query: [NSString: AnyObject] = [
+    kSecClass: kSecClassGenericPassword,
+    kSecValuePersistentRef: persistentRef,
+    kSecReturnData: kCFBooleanTrue,
   ]
   var result: AnyObject?
   let code = SecItemCopyMatching(query, &result)
@@ -78,10 +78,10 @@ private func accountWithPersistentRef(persistentRef: NSData) -> Account? {
 
 final class Keychain {
   var accounts: [Account] {
-    let query = [
-      kSecClass as String: kSecClassGenericPassword,
-      kSecReturnPersistentRef as String: kCFBooleanTrue,
-      kSecMatchLimit as String: kSecMatchLimitAll,
+    let query: [NSString: AnyObject] = [
+      kSecClass: kSecClassGenericPassword,
+      kSecReturnPersistentRef: kCFBooleanTrue,
+      kSecMatchLimit: kSecMatchLimitAll,
     ]
     var result: AnyObject?
     let code = SecItemCopyMatching(query, &result)
@@ -90,13 +90,13 @@ final class Keychain {
   }
 
   func insertAccount(account: Account) -> Bool {
-    let query = [
-      kSecClass as String: kSecClassGenericPassword,
-      kSecAttrAccount as String: NSProcessInfo().globallyUniqueString,
-      kSecAttrDescription as String: account.description,
-      kSecValueData as String: archivedDataWithAccount(account),
-      kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
-      kSecReturnPersistentRef as String: true,
+    let query: [NSString: AnyObject] = [
+      kSecClass: kSecClassGenericPassword,
+      kSecAttrAccount: NSProcessInfo().globallyUniqueString,
+      kSecAttrDescription: account.description,
+      kSecValueData: archivedDataWithAccount(account),
+      kSecAttrAccessible: kSecAttrAccessibleWhenUnlocked,
+      kSecReturnPersistentRef: true,
     ]
     var result: AnyObject?
     guard SecItemAdd(query, &result) == errSecSuccess else { return false }
@@ -105,22 +105,22 @@ final class Keychain {
   }
 
   func updateAccount(account: Account) -> Bool {
-    let query = [
-      kSecClass as String: kSecClassGenericPassword,
-      kSecValuePersistentRef as String: account.persistentRef!
+    let query: [NSString: AnyObject] = [
+      kSecClass: kSecClassGenericPassword,
+      kSecValuePersistentRef: account.persistentRef!
     ]
-    let attributes = [
-      kSecAttrDescription as String: account.description,
-      kSecValueData as String: archivedDataWithAccount(account),
-      kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
+    let attributes: [NSString: AnyObject] = [
+      kSecAttrDescription: account.description,
+      kSecValueData: archivedDataWithAccount(account),
+      kSecAttrAccessible: kSecAttrAccessibleWhenUnlocked,
     ]
     return SecItemUpdate(query, attributes) == errSecSuccess
   }
 
   func deleteAccount(account: Account) -> Bool {
-    let query = [
-      kSecClass as String: kSecClassGenericPassword,
-      kSecValuePersistentRef as String: account.persistentRef!
+    let query: [NSString: AnyObject] = [
+      kSecClass: kSecClassGenericPassword,
+      kSecValuePersistentRef: account.persistentRef!
     ]
     return SecItemDelete(query) == errSecSuccess
   }
