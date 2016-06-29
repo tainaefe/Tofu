@@ -1,5 +1,7 @@
 import UIKit
 
+private let accountCellIdentifier = "AccountCell"
+
 final class AccountSearchResultsViewController: UITableViewController, AccountUpdateDelegate {
   @IBOutlet var emptyView: UIView!
   var accounts: [Account]! {
@@ -28,7 +30,7 @@ final class AccountSearchResultsViewController: UITableViewController, AccountUp
 
   override func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell",
+      let cell = tableView.dequeueReusableCellWithIdentifier(accountCellIdentifier,
         forIndexPath: indexPath) as! AccountCell
       cell.account = accounts[indexPath.row]
       cell.delegate = self

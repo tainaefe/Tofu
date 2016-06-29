@@ -2,6 +2,10 @@ import UIKit
 
 private let persistentRefsKey = "persistentRefs"
 private let accountSearchResultsViewControllerIdentifier = "AccountSearchResultsViewController"
+private let accountCellIdentifier = "AccountCell"
+private let scanSegueIdentifier = "ScanSegue"
+private let manualSegueIdentifier = "ManualSegue"
+private let editAccountSegueIdentifier = "EditAccountSegue"
 
 final class AccountsViewController: UITableViewController, UISearchResultsUpdating,
 AccountCreationDelegate, AccountUpdateDelegate {
@@ -39,12 +43,12 @@ AccountCreationDelegate, AccountUpdateDelegate {
 
     let scanQRCodeAction = UIAlertAction(title: "Scan QR Code", style: .Default) {
       [unowned self] _ in
-      self.performSegueWithIdentifier("ScanSegue", sender: self)
+      self.performSegueWithIdentifier(scanSegueIdentifier, sender: self)
     }
 
     let enterManuallyAction = UIAlertAction(title: "Enter Manually", style: .Default) {
       [unowned self] _ in
-      self.performSegueWithIdentifier("ManualSegue", sender: self)
+      self.performSegueWithIdentifier(manualSegueIdentifier, sender: self)
     }
 
     let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -122,7 +126,7 @@ AccountCreationDelegate, AccountUpdateDelegate {
 
   override func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier("AccountCell",
+      let cell = tableView.dequeueReusableCellWithIdentifier(accountCellIdentifier,
         forIndexPath: indexPath) as! AccountCell
       cell.account = accounts[indexPath.row]
       cell.delegate = self
@@ -174,7 +178,7 @@ AccountCreationDelegate, AccountUpdateDelegate {
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     if let cell = tableView.cellForRowAtIndexPath(indexPath) as? AccountCell {
-      performSegueWithIdentifier("EditAccountSegue", sender: cell)
+      performSegueWithIdentifier(editAccountSegueIdentifier, sender: cell)
     }
   }
 

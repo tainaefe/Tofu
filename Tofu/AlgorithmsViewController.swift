@@ -1,5 +1,7 @@
 import UIKit
 
+private let algorithmCellIdentifier = "AlgorithmCell"
+
 final class AlgorithmsViewController: UITableViewController {
   var algorithms = [Algorithm]()
   var selected: Algorithm!
@@ -17,7 +19,7 @@ final class AlgorithmsViewController: UITableViewController {
 
   override func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier("AlgorithmCell",
+      let cell = tableView.dequeueReusableCellWithIdentifier(algorithmCellIdentifier,
         forIndexPath: indexPath)
       let algorithm = algorithms[indexPath.row]
       cell.textLabel?.text = algorithm.name
