@@ -1,32 +1,30 @@
 import Foundation
 
 final class Password {
-  var algorithm: Algorithm = .SHA1
+  var algorithm: Algorithm = .sha1
   var counter = 0
   var digits = 6
   var period = 30
-  var secret = NSData()
+  var secret = Data()
   var timeBased = false
 
-  func valueForDate(date: NSDate) -> String {
-    let counter = timeBased ?
-      Int64(date.timeIntervalSince1970) / Int64(period) : Int64(self.counter)
+  func valueForDate(_ date: Date) -> String {
+    let counter = timeBased ? UInt64(date.timeIntervalSince1970) / UInt64(period) : UInt64(self.counter)
     var input = counter.bigEndian
-    let digest = UnsafeMutablePointer<UInt8>.alloc(algorithm.digestLength)
-    defer { digest.destroy() }
-    CCHmac(algorithm.hmacAlgorithm, secret.bytes, secret.length, &input, sizeofValue(input), digest)
-    let bytes = UnsafePointer<UInt8>(digest)
-    let offset = bytes[algorithm.digestLength - 1] & 0x0f
-    let number = UInt32(bigEndian: UnsafePointer<UInt32>(bytes + Int(offset)).memory) & 0x7fffffff
+    let digest = UnsafeMutablePointer<UInt8>.allocate(capacity: algorithm.digestLength)
+    defer { digest.deallocate(capacity: algorithm.digestLength) }
+    secret.withUnsafeBytes { secretBytes in CCHmac(algorithm.hmacAlgorithm, secretBytes, secret.count, &input, MemoryLayout.size(ofValue: input), digest) }
+    let offset = digest[algorithm.digestLength - 1] & 0x0f
+    let number = (digest + Int(offset)).withMemoryRebound(to: UInt32.self, capacity: 1) { UInt32(bigEndian: $0.pointee) } & 0x7fffffff
     return String(format: "%0\(digits)d", number % UInt32(pow(10, Float(digits))))
   }
 
-  func progressForDate(date: NSDate) -> Double {
+  func progressForDate(_ date: Date) -> Double {
     return timeIntervalRemainingForDate(date) / Double(period)
   }
 
-  func timeIntervalRemainingForDate(date: NSDate) -> Double {
+  func timeIntervalRemainingForDate(_ date: Date) -> Double {
     let period = Double(self.period)
-    return period - (date.timeIntervalSince1970 % period)
+    return period - (date.timeIntervalSince1970.truncatingRemainder(dividingBy: period))
   }
 }
