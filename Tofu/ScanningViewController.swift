@@ -66,7 +66,7 @@ AVCaptureMetadataOutputObjectsDelegate {
   // MARK: AVCaptureMetadataOutputObjectsDelegate
 
   func metadataOutput(
-    captureOutput: AVCaptureMetadataOutput,
+    _ output: AVCaptureMetadataOutput,
     didOutput metadataObjects: [AVMetadataObject],
     from connection: AVCaptureConnection) {
       guard metadataObjects.count > 0,
