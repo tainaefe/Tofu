@@ -8,10 +8,10 @@ private func placeholderImageWithText(_ text: String) -> UIImage {
   let paragraphStyle = NSMutableParagraphStyle()
   paragraphStyle.alignment = .center
   let fontSize: CGFloat = 36
-  let attributes = [
-    NSFontAttributeName: UIFont.systemFont(ofSize: fontSize, weight: UIFontWeightUltraLight),
-    NSForegroundColorAttributeName: UIColor.lightGray,
-    NSParagraphStyleAttributeName: paragraphStyle,
+  let attributes: [NSAttributedStringKey: Any] = [
+    .font: UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.ultraLight),
+    .foregroundColor: UIColor.lightGray,
+    .paragraphStyle: paragraphStyle,
   ]
   let origin = CGPoint(x: 0, y: (image.size.height - fontSize) / 2 - 0.1 * fontSize)
   text.draw(with: CGRect(origin: origin, size: image.size), options: .usesLineFragmentOrigin,
@@ -83,12 +83,9 @@ final class AccountCell: UITableViewCell {
   }
 
   override func awakeFromNib() {
-    let featureSettings = [[
-      UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
-      UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector]]
-    let attributes = [UIFontDescriptorFeatureSettingsAttribute: featureSettings]
-    let fontDescriptor = valueLabel.font.fontDescriptor
-      .addingAttributes(attributes)
+    let featureSettings: [[UIFontDescriptor.FeatureKey: Any]] =
+      [[.featureIdentifier: kNumberSpacingType, .typeIdentifier: kMonospacedNumbersSelector]]
+    let fontDescriptor = valueLabel.font.fontDescriptor.addingAttributes([.featureSettings: featureSettings])
     valueLabel.font = UIFont(descriptor: fontDescriptor, size: 0)
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
     button.setTitle("NEXT", for: UIControlState())
@@ -107,7 +104,7 @@ final class AccountCell: UITableViewCell {
     button.addTarget(self, action: #selector(didPressButton(_:)), for: .touchUpInside)
   }
 
-  func didPressButton(_ sender: UIButton) {
+  @objc func didPressButton(_ sender: UIButton) {
     account.password.counter += 1
     delegate?.updateAccount(account)
   }

@@ -13,7 +13,7 @@ final class AccountsTableViewUpdater: NSObject {
     RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
   }
 
-  func updateCells() {
+  @objc func updateCells() {
     let now = Date()
     for cell in tableView.visibleCells {
       let accountCell = cell as! AccountCell
