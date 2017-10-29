@@ -49,7 +49,7 @@ private func decoded(bytes encodedBytes: [UInt8]) -> [UInt8]? {
       continue
     }
 
-    // Padding found in the middle of the sequence is invalid
+    // Only allow padding at the end of the sequence
     if paddingCount > 0 { return nil }
 
     switch index % 8 {
