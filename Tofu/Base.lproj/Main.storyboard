@@ -408,7 +408,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eight digits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFw-JK-Cmq">
-                                                    <rect key="frame" x="16" y="11" width="86" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="286" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -419,6 +419,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xFw-JK-Cmq" firstAttribute="leading" secondItem="jsg-Cn-TRW" secondAttribute="leadingMargin" constant="8" id="7GS-hW-zbc"/>
+                                                <constraint firstItem="0gM-IY-7nI" firstAttribute="leading" secondItem="xFw-JK-Cmq" secondAttribute="trailing" constant="8" symbolic="YES" id="Be3-lU-3el"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0gM-IY-7nI" secondAttribute="trailing" constant="8" id="Hfj-XW-irw"/>
                                                 <constraint firstItem="xFw-JK-Cmq" firstAttribute="centerY" secondItem="jsg-Cn-TRW" secondAttribute="centerY" id="V3Y-1W-Oxj"/>
                                                 <constraint firstItem="0gM-IY-7nI" firstAttribute="centerY" secondItem="jsg-Cn-TRW" secondAttribute="centerY" id="tHn-uv-f1G"/>
@@ -433,7 +434,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time based" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDo-nS-Jmv">
-                                                    <rect key="frame" x="16" y="11" width="90" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="286" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -447,6 +448,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="veQ-Xe-FIX" secondAttribute="trailing" constant="8" id="1Ho-0l-8hV"/>
+                                                <constraint firstItem="veQ-Xe-FIX" firstAttribute="leading" secondItem="YDo-nS-Jmv" secondAttribute="trailing" constant="8" symbolic="YES" id="7LY-qa-wD6"/>
                                                 <constraint firstItem="YDo-nS-Jmv" firstAttribute="leading" secondItem="K8h-dm-pIT" secondAttribute="leadingMargin" constant="8" id="QSj-Mj-LF8"/>
                                                 <constraint firstItem="YDo-nS-Jmv" firstAttribute="centerY" secondItem="K8h-dm-pIT" secondAttribute="centerY" id="Vx7-mr-n8q"/>
                                                 <constraint firstItem="veQ-Xe-FIX" firstAttribute="centerY" secondItem="K8h-dm-pIT" secondAttribute="centerY" id="zGC-UR-w3j"/>
