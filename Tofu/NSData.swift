@@ -95,9 +95,7 @@ private func decodedBytes(_ bytes: [UInt8]) -> [UInt8]? {
 extension Data {
   init?(base32EncodedString string: String) {
     let encodedBytes = Array(string.uppercased().utf8)
-    guard let decodedBytes = decodedBytes(encodedBytes) else {
-      return nil
-    }
+    guard let decodedBytes = decodedBytes(encodedBytes) else { return nil }
     self.init(bytes: decodedBytes)
   }
 }
