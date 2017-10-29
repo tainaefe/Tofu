@@ -1,7 +1,7 @@
 import XCTest
 @testable import Tofu
 
-class NSDataTests: XCTestCase {
+class DataTests: XCTestCase {
   func testInitBase32EncodedString() {
     let tests = [
       ("", ""),
