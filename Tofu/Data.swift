@@ -14,7 +14,7 @@ private let byteMappings: [CountableRange<UInt8>] = [
 ]
 
 private func decode(byte encodedByte: UInt8) -> DecodedByte {
-  guard encodedByte != padding else { return .padding }
+  if encodedByte == padding { return .padding }
   var decodedStart: UInt8 = 0
   for range in byteMappings {
     if range.contains(encodedByte) {
