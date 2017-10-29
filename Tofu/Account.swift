@@ -25,7 +25,7 @@ final class Account {
       switch queryItem.name {
       case "secret":
         guard let secretString = queryItem.value,
-          let secret = Data(base32EncodedString: secretString)
+          let secret = Data(base32Encoded: secretString)
           else { break }
         password.secret = secret
       case "algorithm":

@@ -1,6 +1,6 @@
 import Foundation
 
-private enum Base32DecodedByte {
+private enum DecodedByte {
   case valid(UInt8)
   case invalid
   case padding
@@ -13,12 +13,12 @@ private let byteMappings: [CountableRange<UInt8>] = [
   50 ..< 56, // 2-7
 ]
 
-private func base32DecodeByte(_ byte: UInt8) -> Base32DecodedByte {
-  guard byte != padding else { return .padding }
+private func decode(byte encodedByte: UInt8) -> DecodedByte {
+  guard encodedByte != padding else { return .padding }
   var decodedStart: UInt8 = 0
   for range in byteMappings {
-    if range.contains(byte) {
-      let result = decodedStart + (byte - range.lowerBound)
+    if range.contains(encodedByte) {
+      let result = decodedStart + (encodedByte - range.lowerBound)
       return .valid(result)
     }
     decodedStart += range.upperBound - range.lowerBound
@@ -26,19 +26,19 @@ private func base32DecodeByte(_ byte: UInt8) -> Base32DecodedByte {
   return .invalid
 }
 
-private func decodedBytes(_ bytes: [UInt8]) -> [UInt8]? {
+private func decoded(bytes encodedBytes: [UInt8]) -> [UInt8]? {
   var decodedBytes = [UInt8]()
-  decodedBytes.reserveCapacity(bytes.count / 8 * 5)
+  decodedBytes.reserveCapacity(encodedBytes.count / 8 * 5)
 
   var decodedByte: UInt8 = 0
   var characterCount = 0
   var paddingCount = 0
   var index = 0
 
-  for byte in bytes {
+  for encodedByte in encodedBytes {
     let value: UInt8
 
-    switch base32DecodeByte(byte) {
+    switch decode(byte: encodedByte) {
     case .valid(let v):
       value = v
       characterCount += 1
@@ -93,9 +93,9 @@ private func decodedBytes(_ bytes: [UInt8]) -> [UInt8]? {
 }
 
 extension Data {
-  init?(base32EncodedString string: String) {
+  init?(base32Encoded string: String) {
     let encodedBytes = Array(string.uppercased().utf8)
-    guard let decodedBytes = decodedBytes(encodedBytes) else { return nil }
+    guard let decodedBytes = decoded(bytes: encodedBytes) else { return nil }
     self.init(bytes: decodedBytes)
   }
 }

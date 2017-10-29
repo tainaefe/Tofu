@@ -39,7 +39,7 @@ final class AccountCreationViewController: UITableViewController, AlgorithmSelec
     password.timeBased = timeBasedSwitch.isOn
     password.algorithm = algorithm
     password.digits = eightDigitsSwitch.isOn ? 8 : 6
-    password.secret = Data(base32EncodedString: secretField.text!)!
+    password.secret = Data(base32Encoded: secretField.text!)!
 
     if timeBasedSwitch.isOn {
       password.period = period!
@@ -101,7 +101,7 @@ final class AccountCreationViewController: UITableViewController, AlgorithmSelec
 
   fileprivate func validate() {
     doneItem.isEnabled = secretField.text?.characters.count ?? 0 > 0 &&
-      Data(base32EncodedString: secretField.text!) != nil &&
+      Data(base32Encoded: secretField.text!) != nil &&
       (timeBasedSwitch.isOn ? period != nil : counter != nil)
   }
 

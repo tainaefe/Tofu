@@ -2,7 +2,7 @@ import XCTest
 @testable import Tofu
 
 class DataTests: XCTestCase {
-  func testInitBase32EncodedString() {
+  func testInitBase32Encoded() {
     let tests = [
       ("", ""),
       ("MY======", "f"),
@@ -21,16 +21,16 @@ class DataTests: XCTestCase {
     ]
 
     for (actual, expected) in tests {
-      XCTAssertEqual(Data(base32EncodedString: actual),
+      XCTAssertEqual(Data(base32Encoded: actual),
         expected.data(using: String.Encoding.ascii))
     }
 
-    XCTAssertNil(Data(base32EncodedString: "1")) // Invalid character
-    XCTAssertNil(Data(base32EncodedString: "A")) // Invalid length
-    XCTAssertNil(Data(base32EncodedString: "AAA"))
-    XCTAssertNil(Data(base32EncodedString: "AAAAAA"))
-    XCTAssertNil(Data(base32EncodedString: "MY==")) // Invalid padding
-    XCTAssertNil(Data(base32EncodedString: "MY====="))
-    XCTAssertNil(Data(base32EncodedString: "MZXW6Y==="))
+    XCTAssertNil(Data(base32Encoded: "1")) // Invalid character
+    XCTAssertNil(Data(base32Encoded: "A")) // Invalid length
+    XCTAssertNil(Data(base32Encoded: "AAA"))
+    XCTAssertNil(Data(base32Encoded: "AAAAAA"))
+    XCTAssertNil(Data(base32Encoded: "MY==")) // Invalid padding
+    XCTAssertNil(Data(base32Encoded: "MY====="))
+    XCTAssertNil(Data(base32Encoded: "MZXW6Y==="))
   }
 }
