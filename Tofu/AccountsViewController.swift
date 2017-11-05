@@ -34,6 +34,9 @@ AccountCreationDelegate, AccountUpdateDelegate {
       withIdentifier: accountSearchResultsViewControllerIdentifier) as! AccountSearchResultsViewController
     searchController = UISearchController(searchResultsController: searchResultsController)
     searchController.searchResultsUpdater = self
+    if #available(iOS 11.0, *) {
+      navigationItem.searchController = searchController
+    }
 
     alertController = UIAlertController(
       title: "Add Account",
@@ -88,13 +91,21 @@ AccountCreationDelegate, AccountUpdateDelegate {
 
   fileprivate func updateEditing() {
     if accounts.count == 0 {
-      tableView.tableHeaderView = nil
+      if #available(iOS 11.0, *) {
+        // In this case the search bar is rendered in the navigation bar and there's no need to hide it when there are no accounts.
+      } else {
+        tableView.tableHeaderView = nil
+      }
       tableView.backgroundView = emptyView
       tableView.separatorStyle = .none
       navigationItem.leftBarButtonItem = nil
       setEditing(false, animated: true)
     } else {
-      tableView.tableHeaderView = searchController.searchBar
+      if #available(iOS 11.0, *) {
+        // Since the search bar is already rendered in the navigation bar we don't need to render it in the table header view.
+      } else {
+        tableView.tableHeaderView = searchController.searchBar
+      }
       tableView.backgroundView = nil
       tableView.separatorStyle = .singleLine
       navigationItem.leftBarButtonItem = editButtonItem
