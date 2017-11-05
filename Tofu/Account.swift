@@ -51,8 +51,8 @@ final class Account {
   }
 
   var description: String {
-    guard let issuer = issuer, issuer.characters.count > 0 else { return name ?? "" }
-    guard let name = name, name.characters.count > 0 else { return issuer }
+    guard let issuer = issuer, issuer.count > 0 else { return name ?? "" }
+    guard let name = name, name.count > 0 else { return issuer }
     return "\(issuer) (\(name))"
   }
 }
