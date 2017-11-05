@@ -34,7 +34,6 @@ AccountCreationDelegate, AccountUpdateDelegate {
       withIdentifier: accountSearchResultsViewControllerIdentifier) as! AccountSearchResultsViewController
     searchController = UISearchController(searchResultsController: searchResultsController)
     searchController.searchResultsUpdater = self
-    tableView.tableHeaderView = searchController.searchBar
 
     alertController = UIAlertController(
       title: "Add Account",
