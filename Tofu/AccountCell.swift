@@ -45,7 +45,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
   case .some("Tumblr"): return UIImage(named: "Tumblr")!
   case .some("www.fastmail.com"): return UIImage(named: "FastMail")!
   default:
-    let text = String(account.description.characters.first ?? "?").uppercased()
+    let text = String(account.description.first ?? "?").uppercased()
     return placeholderImageWithText(text)
   }
 }
@@ -60,9 +60,9 @@ private func imageWithColor(_ color: UIColor, size: CGSize) -> UIImage {
 }
 
 private func formattedValue(_ value: String) -> String {
-  let length = value.characters.count
-  let prefix = String(value.characters.prefix(length / 2))
-  let suffix = String(value.characters.suffix(length - length / 2))
+  let length = value.count
+  let prefix = String(value.prefix(length / 2))
+  let suffix = String(value.suffix(length - length / 2))
   return "\(prefix) \(suffix)"
 }
 

@@ -22,11 +22,11 @@ final class AccountCreationViewController: UITableViewController, AlgorithmSelec
   fileprivate var periodString: String?
   fileprivate var counterString: String?
   fileprivate var period: Int? {
-    guard periodCounterField.text?.characters.count ?? 0 > 0 else { return 30 }
+    guard periodCounterField.text?.count ?? 0 > 0 else { return 30 }
     return formatter.number(from: periodCounterField.text!)?.intValue
   }
   fileprivate var counter: Int? {
-    guard periodCounterField.text?.characters.count ?? 0 > 0 else { return 0 }
+    guard periodCounterField.text?.count ?? 0 > 0 else { return 0 }
     return formatter.number(from: periodCounterField.text!)?.intValue
   }
 
@@ -100,7 +100,7 @@ final class AccountCreationViewController: UITableViewController, AlgorithmSelec
   }
 
   fileprivate func validate() {
-    doneItem.isEnabled = secretField.text?.characters.count ?? 0 > 0 &&
+    doneItem.isEnabled = secretField.text?.count ?? 0 > 0 &&
       Data(base32Encoded: secretField.text!) != nil &&
       (timeBasedSwitch.isOn ? period != nil : counter != nil)
   }
