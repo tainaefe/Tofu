@@ -23,6 +23,10 @@ AccountCreationDelegate, AccountUpdateDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    if #available(iOS 11.0, *) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
     accounts = keychain.accounts
     let persistentRefs = userDefaults.array(forKey: persistentRefsKey) as? [Data] ?? []
     accounts.sort { a, b in
