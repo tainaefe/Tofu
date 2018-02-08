@@ -21,9 +21,12 @@ private func placeholderImageWithText(_ text: String) -> UIImage {
 
 private func imageForAccount(_ account: Account) -> UIImage {
   switch account.issuer {
+  case .some("Adobe ID"): return UIImage(named: "Adobe")!
   case .some("Amazon"): return UIImage(named: "Amazon")!
   case .some("AWS"): return UIImage(named: "AWS")!
+  case .some("Backblaze"): return UIImage(named: "Backblaze")!
   case .some("Bitbucket"): return UIImage(named: "Bitbucket")!
+  case .some("Coinbase"): return UIImage(named: "Coinbase")!
   case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
   case .some("DNSimple"): return UIImage(named: "DNSimple")!
   case .some("Dropbox"): return UIImage(named: "Dropbox")!
@@ -37,9 +40,12 @@ private func imageForAccount(_ account: Account) -> UIImage {
   case .some("Hover"): return UIImage(named: "Hover")!
   case .some("IFTTT"): return UIImage(named: "IFTTT")!
   case .some("Intercom"): return UIImage(named: "Intercom")!
+  case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
   case .some("LinodeManager"): return UIImage(named: "Linode")!
   case .some("LocalBitcoins"): return UIImage(named: "LocalBitcoins")!
   case .some("Microsoft"): return UIImage(named: "Microsoft")!
+  case .some("Name.com"): return UIImage(named: "Name.com")!
+  case .some("Privacy.com"): return UIImage(named: "Privacy")!
   case .some("Slack"): return UIImage(named: "Slack")!
   case .some("Stripe"): return UIImage(named: "Stripe")!
   case .some("Tumblr"): return UIImage(named: "Tumblr")!
