@@ -39,6 +39,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
   case .some("GreenAddress"): return UIImage(named: "GreenAddress")!
   case .some("Heroku"): return UIImage(named: "Heroku")!
   case .some("Hover"): return UIImage(named: "Hover")!
+  case .some("HumbleBundle"): return UIImage(named: "HumbleBundle")!
   case .some("IFTTT"): return UIImage(named: "IFTTT")!
   case .some("Intercom"): return UIImage(named: "Intercom")!
   case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
