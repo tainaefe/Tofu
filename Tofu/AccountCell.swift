@@ -49,6 +49,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
   case .some("Slack"): return UIImage(named: "Slack")!
   case .some("Stripe"): return UIImage(named: "Stripe")!
   case .some("Tumblr"): return UIImage(named: "Tumblr")!
+  case .some("WordPress"): return UIImage(named: "WordPress")!
   case .some("www.fastmail.com"): return UIImage(named: "FastMail")!
   default:
     let text = String(account.description.first ?? "?").uppercased()
