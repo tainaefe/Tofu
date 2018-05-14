@@ -30,6 +30,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
   case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
   case .some("DNSimple"): return UIImage(named: "DNSimple")!
   case .some("Dropbox"): return UIImage(named: "Dropbox")!
+  case .some("Electronic Arts"): return UIImage(named: "ElectronicArts")!
   case .some("Evernote"): return UIImage(named: "Evernote")!
   case .some("Facebook"): return UIImage(named: "Facebook")!
   case .some("FastMail"): return UIImage(named: "FastMail")!
@@ -38,6 +39,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
   case .some("GreenAddress"): return UIImage(named: "GreenAddress")!
   case .some("Heroku"): return UIImage(named: "Heroku")!
   case .some("Hover"): return UIImage(named: "Hover")!
+  case .some("HumbleBundle"): return UIImage(named: "HumbleBundle")!
   case .some("IFTTT"): return UIImage(named: "IFTTT")!
   case .some("Intercom"): return UIImage(named: "Intercom")!
   case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
@@ -45,10 +47,13 @@ private func imageForAccount(_ account: Account) -> UIImage {
   case .some("LocalBitcoins"): return UIImage(named: "LocalBitcoins")!
   case .some("Microsoft"): return UIImage(named: "Microsoft")!
   case .some("Name.com"): return UIImage(named: "Name.com")!
+  case .some("ownCloud"): return UIImage(named: "ownCloud")!
   case .some("Privacy.com"): return UIImage(named: "Privacy")!
   case .some("Slack"): return UIImage(named: "Slack")!
   case .some("Stripe"): return UIImage(named: "Stripe")!
   case .some("Tumblr"): return UIImage(named: "Tumblr")!
+  case .some("Ubisoft"): return UIImage(named: "Ubisoft")!
+  case .some("WordPress"): return UIImage(named: "WordPress")!
   case .some("www.fastmail.com"): return UIImage(named: "FastMail")!
   default:
     let text = String(account.description.first ?? "?").uppercased()
