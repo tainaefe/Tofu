@@ -82,7 +82,7 @@ final class Keychain {
     var result: AnyObject?
     let code = SecItemCopyMatching(query as CFDictionary, &result)
     guard code == errSecSuccess, let persistentRefs = result as? [Data] else { return [] }
-    return persistentRefs.flatMap { accountWithPersistentRef($0) }
+    return persistentRefs.compactMap { accountWithPersistentRef($0) }
   }
 
   func insertAccount(_ account: Account) -> Bool {

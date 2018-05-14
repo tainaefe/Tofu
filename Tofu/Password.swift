@@ -12,7 +12,7 @@ final class Password {
     let counter = timeBased ? UInt64(date.timeIntervalSince1970) / UInt64(period) : UInt64(self.counter)
     var input = counter.bigEndian
     let digest = UnsafeMutablePointer<UInt8>.allocate(capacity: algorithm.digestLength)
-    defer { digest.deallocate(capacity: algorithm.digestLength) }
+    defer { digest.deallocate() }
     secret.withUnsafeBytes { secretBytes in CCHmac(algorithm.hmacAlgorithm, secretBytes, secret.count, &input, MemoryLayout.size(ofValue: input), digest) }
     let offset = digest[algorithm.digestLength - 1] & 0x0f
     let number = (digest + Int(offset)).withMemoryRebound(to: UInt32.self, capacity: 1) { UInt32(bigEndian: $0.pointee) } & 0x7fffffff
