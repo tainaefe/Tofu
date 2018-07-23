@@ -30,7 +30,9 @@ AccountCreationDelegate, AccountUpdateDelegate {
     accounts = keychain.accounts
     let persistentRefs = userDefaults.array(forKey: persistentRefsKey) as? [Data] ?? []
     accounts.sort { a, b in
-      persistentRefs.index(of: a.persistentRef! as Data)! < persistentRefs.index(of: b.persistentRef! as Data)!
+        let aIndex = persistentRefs.index(of: a.persistentRef! as Data) ?? 0
+        let bIndex = persistentRefs.index(of: b.persistentRef! as Data) ?? 0
+        return aIndex < bIndex
     }
     persistAccountOrder()
 
