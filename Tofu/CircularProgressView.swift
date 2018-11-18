@@ -1,6 +1,6 @@
 import UIKit
 
-final class CircularProgressView: UIView {
+class CircularProgressView: UIView {
     var progress: Double = 0 {
         didSet {
             maskLayer.strokeEnd = min(max(CGFloat(progress), 0), 1)

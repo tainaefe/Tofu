@@ -6,7 +6,7 @@ private let formatter: NumberFormatter = {
     return formatter
 }()
 
-final class AccountCreationViewController: UITableViewController, AlgorithmSelectionDelegate {
+class AccountCreationViewController: UITableViewController, AlgorithmSelectionDelegate {
     @IBOutlet weak var doneItem: UIBarButtonItem!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var issuerField: UITextField!

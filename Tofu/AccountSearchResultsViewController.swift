@@ -2,7 +2,7 @@ import UIKit
 
 private let accountCellIdentifier = "AccountCell"
 
-final class AccountSearchResultsViewController: UITableViewController, AccountUpdateDelegate {
+class AccountSearchResultsViewController: UITableViewController, AccountUpdateDelegate {
     @IBOutlet var emptyView: UIView!
     var accounts: [Account]! {
         didSet {

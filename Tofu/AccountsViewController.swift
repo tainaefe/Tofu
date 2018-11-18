@@ -7,7 +7,7 @@ private let scanSegueIdentifier = "ScanSegue"
 private let manualSegueIdentifier = "ManualSegue"
 private let editAccountSegueIdentifier = "EditAccountSegue"
 
-final class AccountsViewController: UITableViewController, UISearchResultsUpdating,
+class AccountsViewController: UITableViewController, UISearchResultsUpdating,
 AccountCreationDelegate, AccountUpdateDelegate {
     @IBOutlet weak var emptyView: UIView!
     fileprivate let keychain = Keychain()

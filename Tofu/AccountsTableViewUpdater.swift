@@ -1,6 +1,6 @@
 import UIKit
 
-final class AccountsTableViewUpdater: NSObject {
+class AccountsTableViewUpdater: NSObject {
     var tableView: UITableView
     
     init(tableView: UITableView) {

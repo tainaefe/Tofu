@@ -1,6 +1,6 @@
 import Foundation
 
-final class Password {
+class Password {
     var algorithm: Algorithm = .sha1
     var counter = 0
     var digits = 6

@@ -72,7 +72,7 @@ private func accountWithPersistentRef(_ persistentRef: Data) -> Account? {
     return account
 }
 
-final class Keychain {
+class Keychain {
     var accounts: [Account] {
         let query: [NSString: AnyObject] = [
             kSecClass: kSecClassGenericPassword,

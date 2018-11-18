@@ -1,6 +1,6 @@
 import UIKit
 
-final class AccountUpdateViewController: UITableViewController {
+class AccountUpdateViewController: UITableViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var issuerField: UITextField!
     var delegate: AccountUpdateDelegate?

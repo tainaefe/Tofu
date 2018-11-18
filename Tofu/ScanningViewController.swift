@@ -1,7 +1,7 @@
 import UIKit
 import AVFoundation
 
-final class ScanningViewController: UIViewController,
+class ScanningViewController: UIViewController,
 AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var allowCameraAccessView: UIView!
     var delegate: AccountCreationDelegate?

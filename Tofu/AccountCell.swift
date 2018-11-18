@@ -77,7 +77,7 @@ private func formattedValue(_ value: String) -> String {
     return "\(prefix) \(suffix)"
 }
 
-final class AccountCell: UITableViewCell {
+class AccountCell: UITableViewCell {
     @IBOutlet weak var accountImageView: UIImageView!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var identifierLabel: UILabel!

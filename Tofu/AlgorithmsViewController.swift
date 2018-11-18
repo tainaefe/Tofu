@@ -2,7 +2,7 @@ import UIKit
 
 private let algorithmCellIdentifier = "AlgorithmCell"
 
-final class AlgorithmsViewController: UITableViewController {
+class AlgorithmsViewController: UITableViewController {
     var algorithms = [Algorithm]()
     var selected: Algorithm!
     var delegate: AlgorithmSelectionDelegate?

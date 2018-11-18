@@ -1,6 +1,6 @@
 import Foundation
 
-final class Account {
+class Account {
     var persistentRef: Data?
     var name: String?
     var issuer: String?
