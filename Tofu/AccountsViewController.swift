@@ -1,9 +1,6 @@
 import UIKit
 
 private let accountOrderKey = "persistentRefs"
-private let scanSegueIdentifier = "ScanSegue"
-private let manualSegueIdentifier = "ManualSegue"
-private let editAccountSegueIdentifier = "EditAccountSegue"
 
 class AccountsViewController: UITableViewController {
     @IBOutlet weak var emptyView: UIView!
@@ -47,12 +44,12 @@ class AccountsViewController: UITableViewController {
 
         let scanQRCodeAction = UIAlertAction(title: "Scan QR Code", style: .default) {
             [unowned self] _ in
-            self.performSegue(withIdentifier: scanSegueIdentifier, sender: self)
+            self.performSegue(withIdentifier: "ScanSegue", sender: self)
         }
 
         let enterManuallyAction = UIAlertAction(title: "Enter Manually", style: .default) {
             [unowned self] _ in
-            self.performSegue(withIdentifier: manualSegueIdentifier, sender: self)
+            self.performSegue(withIdentifier: "ManualSegue", sender: self)
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -190,7 +187,7 @@ class AccountsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath) as? AccountCell {
-            performSegue(withIdentifier: editAccountSegueIdentifier, sender: cell)
+            performSegue(withIdentifier: "EditAccountSegue", sender: cell)
         }
     }
 
