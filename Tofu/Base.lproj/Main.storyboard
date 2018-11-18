@@ -162,7 +162,7 @@
                         <outlet property="emptyView" destination="hT8-ZY-D3A" id="eqL-UC-LWT"/>
                         <segue destination="ERk-zj-Q6A" kind="show" identifier="EditAccountSegue" id="rWD-gI-uHe"/>
                         <segue destination="fMR-de-62D" kind="presentation" identifier="ScanSegue" id="Eo2-wA-mmS"/>
-                        <segue destination="yTV-zU-3QS" kind="presentation" identifier="ManualSegue" id="sz3-ZJ-SNl"/>
+                        <segue destination="yTV-zU-3QS" kind="presentation" identifier="EnterManuallySegue" id="sz3-ZJ-SNl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZK-WF-dPC" userLabel="First Responder" sceneMemberID="firstResponder"/>

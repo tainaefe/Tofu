@@ -49,7 +49,7 @@ class AccountsViewController: UITableViewController {
 
         let enterManuallyAction = UIAlertAction(title: "Enter Manually", style: .default) {
             [unowned self] _ in
-            self.performSegue(withIdentifier: "ManualSegue", sender: self)
+            self.performSegue(withIdentifier: "EnterManuallySegue", sender: self)
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
