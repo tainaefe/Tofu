@@ -1,7 +1,6 @@
 import UIKit
 
 private let accountOrderKey = "persistentRefs"
-private let accountSearchResultsViewControllerIdentifier = "AccountSearchResultsViewController"
 private let accountCellIdentifier = "AccountCell"
 private let scanSegueIdentifier = "ScanSegue"
 private let manualSegueIdentifier = "ManualSegue"
@@ -35,8 +34,7 @@ class AccountsViewController: UITableViewController {
         }
         persistAccountOrder()
 
-        let searchResultsController = storyboard?.instantiateViewController(
-            withIdentifier: accountSearchResultsViewControllerIdentifier) as! AccountSearchResultsViewController
+        let searchResultsController = storyboard?.instantiateViewController(withIdentifier: "AccountSearchResultsViewController") as! AccountSearchResultsViewController
         searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
         if #available(iOS 11.0, *) {
