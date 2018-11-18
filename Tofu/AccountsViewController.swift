@@ -7,8 +7,7 @@ private let scanSegueIdentifier = "ScanSegue"
 private let manualSegueIdentifier = "ManualSegue"
 private let editAccountSegueIdentifier = "EditAccountSegue"
 
-class AccountsViewController: UITableViewController, UISearchResultsUpdating,
-AccountCreationDelegate, AccountUpdateDelegate {
+class AccountsViewController: UITableViewController {
     @IBOutlet weak var emptyView: UIView!
     fileprivate let keychain = Keychain()
     fileprivate let userDefaults = UserDefaults.standard
@@ -216,9 +215,9 @@ AccountCreationDelegate, AccountUpdateDelegate {
                 .replacingOccurrences(of: " ", with: "")
         }
     }
+}
 
-    // MARK: UISearchResultsUpdating
-
+extension AccountsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let accountSearchResultsViewController = searchController.searchResultsController
             as! AccountSearchResultsViewController
@@ -228,9 +227,9 @@ AccountCreationDelegate, AccountUpdateDelegate {
                                         locale: nil) != nil
         }
     }
+}
 
-    // MARK: AccountCreationDelegate
-
+extension AccountsViewController: AccountCreationDelegate {
     func createAccount(_ account: Account) {
         guard keychain.insertAccount(account) else {
             presentTryAgainAlertWithTitle(
@@ -247,9 +246,9 @@ AccountCreationDelegate, AccountUpdateDelegate {
         tableView.insertRows(at: indexPaths, with: .automatic)
         updateEditing()
     }
+}
 
-    // MARK: AccountUpdateDelegate
-
+extension AccountsViewController: AccountUpdateDelegate {
     func updateAccount(_ account: Account) {
         guard keychain.updateAccount(account) else {
             presentTryAgainAlertWithTitle(
