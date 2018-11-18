@@ -8,7 +8,7 @@ class AccountsViewController: UITableViewController {
     private let keychain = Keychain()
     private var accounts = [Account]()
     private lazy var searchController = makeSearchController()
-    private var alertController: UIAlertController!
+    private var addAccountAlertController: UIAlertController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class AccountsViewController: UITableViewController {
             navigationItem.searchController = searchController
         }
 
-        alertController = UIAlertController(
+        addAccountAlertController = UIAlertController(
             title: "Add Account",
             message: "Add an account by scanning a QR code or enter a secret manually.",
             preferredStyle: .actionSheet)
@@ -47,9 +47,9 @@ class AccountsViewController: UITableViewController {
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
-        alertController.addAction(scanQRCodeAction)
-        alertController.addAction(enterManuallyAction)
-        alertController.addAction(cancelAction)
+        addAccountAlertController.addAction(scanQRCodeAction)
+        addAccountAlertController.addAction(enterManuallyAction)
+        addAccountAlertController.addAction(cancelAction)
 
         let updater = AccountsTableViewUpdater(tableView: tableView)
         updater.startUpdating()
@@ -58,7 +58,7 @@ class AccountsViewController: UITableViewController {
     }
 
     @IBAction func addAccount(_ sender: Any) {
-        present(alertController, animated: true, completion: nil)
+        present(addAccountAlertController, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
