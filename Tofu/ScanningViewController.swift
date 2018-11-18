@@ -5,9 +5,9 @@ class ScanningViewController: UIViewController,
 AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet weak var allowCameraAccessView: UIView!
     var delegate: AccountCreationDelegate?
-    fileprivate var session = AVCaptureSession()
-    fileprivate let output = AVCaptureMetadataOutput()
-    fileprivate var layer: AVCaptureVideoPreviewLayer?
+    private var session = AVCaptureSession()
+    private let output = AVCaptureMetadataOutput()
+    private var layer: AVCaptureVideoPreviewLayer?
     
     @IBAction func didPressCancel(_ sender: UIBarButtonItem) {
         output.setMetadataObjectsDelegate(nil, queue: nil)
@@ -34,7 +34,7 @@ AVCaptureMetadataOutputObjectsDelegate {
         updateLayerFrameAndOrientation()
     }
     
-    fileprivate func startScanning() {
+    private func startScanning() {
         let device = AVCaptureDevice.default(for: .video)
         if let input = try? AVCaptureDeviceInput(device: device!) {
             allowCameraAccessView.isHidden = true
@@ -51,7 +51,7 @@ AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    fileprivate func updateLayerFrameAndOrientation() {
+    private func updateLayerFrameAndOrientation() {
         layer?.frame = view.layer.bounds
         switch UIDevice.current.orientation {
         case .landscapeLeft:

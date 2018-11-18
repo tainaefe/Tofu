@@ -9,11 +9,11 @@ private let editAccountSegueIdentifier = "EditAccountSegue"
 
 class AccountsViewController: UITableViewController {
     @IBOutlet weak var emptyView: UIView!
-    fileprivate let keychain = Keychain()
-    fileprivate let userDefaults = UserDefaults.standard
-    fileprivate var accounts: [Account]!
-    fileprivate var searchController: UISearchController!
-    fileprivate var alertController: UIAlertController!
+    private let keychain = Keychain()
+    private let userDefaults = UserDefaults.standard
+    private var accounts: [Account]!
+    private var searchController: UISearchController!
+    private var alertController: UIAlertController!
 
     @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
         present(alertController, animated: true, completion: nil)
@@ -89,12 +89,12 @@ class AccountsViewController: UITableViewController {
         }
     }
 
-    fileprivate func persistAccountOrder() {
+    private func persistAccountOrder() {
         let persistentRefs = accounts.map { $0.persistentRef! }
         userDefaults.set(persistentRefs, forKey: persistentRefsKey)
     }
 
-    fileprivate func updateEditing() {
+    private func updateEditing() {
         if accounts.count == 0 {
             if #available(iOS 11.0, *) {
                 // In this case the search bar is rendered in the navigation bar and there's no need to hide it when there are no accounts.
@@ -172,7 +172,7 @@ class AccountsViewController: UITableViewController {
         }
     }
 
-    fileprivate func deleteAccountForRowAtIndexPath(_ indexPath: IndexPath) {
+    private func deleteAccountForRowAtIndexPath(_ indexPath: IndexPath) {
         let account = self.accounts[indexPath.row]
         guard self.keychain.deleteAccount(account) else {
             presentTryAgainAlertWithTitle(
@@ -264,7 +264,7 @@ extension AccountsViewController: AccountUpdateDelegate {
         cell.updateWithDate(Date())
     }
 
-    fileprivate func presentTryAgainAlertWithTitle(_ title: String, message: String, handler: @escaping () -> Void) {
+    private func presentTryAgainAlertWithTitle(_ title: String, message: String, handler: @escaping () -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         let tryAgainAccountAction = UIAlertAction(title: "Try again", style: .default) { _ in

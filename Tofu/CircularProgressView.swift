@@ -12,9 +12,9 @@ class CircularProgressView: UIView {
             backgroundImageView.tintColor = tintColor
         }
     }
-    fileprivate let maskLayer = CAShapeLayer()
-    fileprivate let imageView: UIImageView
-    fileprivate let backgroundImageView: UIImageView
+    private let maskLayer = CAShapeLayer()
+    private let imageView: UIImageView
+    private let backgroundImageView: UIImageView
 
     init() {
         let backgroundImage = UIImage(named: "CircularProgressViewBorderThin")!

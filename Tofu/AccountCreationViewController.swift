@@ -18,14 +18,14 @@ class AccountCreationViewController: UITableViewController, AlgorithmSelectionDe
     @IBOutlet weak var periodCounterLabel: UILabel!
     @IBOutlet weak var periodCounterField: UITextField!
     var delegate: AccountCreationDelegate?
-    fileprivate var algorithm = Algorithm.sha1
-    fileprivate var periodString: String?
-    fileprivate var counterString: String?
-    fileprivate var period: Int? {
+    private var algorithm = Algorithm.sha1
+    private var periodString: String?
+    private var counterString: String?
+    private var period: Int? {
         guard periodCounterField.text?.count ?? 0 > 0 else { return 30 }
         return formatter.number(from: periodCounterField.text!)?.intValue
     }
-    fileprivate var counter: Int? {
+    private var counter: Int? {
         guard periodCounterField.text?.count ?? 0 > 0 else { return 0 }
         return formatter.number(from: periodCounterField.text!)?.intValue
     }
@@ -99,7 +99,7 @@ class AccountCreationViewController: UITableViewController, AlgorithmSelectionDe
         }
     }
 
-    fileprivate func validate() {
+    private func validate() {
         doneItem.isEnabled = secretField.text?.count ?? 0 > 0 &&
             Data(base32Encoded: secretField.text!) != nil &&
             (timeBasedSwitch.isOn ? period != nil : counter != nil)

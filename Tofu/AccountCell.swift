@@ -82,8 +82,8 @@ class AccountCell: UITableViewCell {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var identifierLabel: UILabel!
     var delegate: AccountUpdateDelegate?
-    fileprivate let button = UIButton(type: .custom)
-    fileprivate let progressView = CircularProgressView()
+    private let button = UIButton(type: .custom)
+    private let progressView = CircularProgressView()
 
     var account: Account! {
         didSet {

@@ -73,7 +73,7 @@ class PasswordTests: XCTestCase {
         XCTAssertEqual(password.timeIntervalRemainingForDate(Date(timeIntervalSince1970: 30)), 0)
     }
     
-    fileprivate func passwordWithSecret(_ secret: Data, algorithm: Algorithm, digits: Int,
+    private func passwordWithSecret(_ secret: Data, algorithm: Algorithm, digits: Int,
                                         timeBased: Bool) -> Password {
         let password = Password()
         password.secret = secret
