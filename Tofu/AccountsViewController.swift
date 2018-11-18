@@ -1,7 +1,6 @@
 import UIKit
 
 private let accountOrderKey = "persistentRefs"
-private let accountCellIdentifier = "AccountCell"
 private let scanSegueIdentifier = "ScanSegue"
 private let manualSegueIdentifier = "ManualSegue"
 private let editAccountSegueIdentifier = "EditAccountSegue"
@@ -139,7 +138,7 @@ class AccountsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: accountCellIdentifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell",
                                                  for: indexPath) as! AccountCell
         cell.account = accounts[indexPath.row]
         cell.delegate = self
