@@ -81,7 +81,7 @@ class AccountsViewController: UITableViewController {
     }
 
     private func makeSearchController() -> UISearchController {
-        let searchResultsController = storyboard?.instantiateViewController(withIdentifier: "AccountSearchResultsViewController") as! AccountSearchResultsViewController
+        let searchResultsController = storyboard!.instantiateViewController(withIdentifier: "AccountSearchResultsViewController") as! AccountSearchResultsViewController
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
         return searchController
