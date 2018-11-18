@@ -60,7 +60,7 @@ class AccountsViewController: UITableViewController {
         updateEditing()
     }
 
-    @IBAction func addAccount(_ sender: UIBarButtonItem) {
+    @IBAction func addAccount(_ sender: Any) {
         present(alertController, animated: true, completion: nil)
     }
 
