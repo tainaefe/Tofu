@@ -4,6 +4,7 @@ private let accountOrderKey = "persistentRefs"
 
 class AccountsViewController: UITableViewController {
     @IBOutlet weak var emptyView: UIView!
+
     private let keychain = Keychain()
     private let userDefaults = UserDefaults.standard
     private var accounts = [Account]()
