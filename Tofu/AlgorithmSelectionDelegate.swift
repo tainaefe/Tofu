@@ -1,3 +1,3 @@
 protocol AlgorithmSelectionDelegate: class {
-  func selectAlgorithm(_ algorithm: Algorithm)
+    func selectAlgorithm(_ algorithm: Algorithm)
 }
