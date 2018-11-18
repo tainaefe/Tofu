@@ -10,10 +10,6 @@ class AccountsViewController: UITableViewController {
     private var searchController: UISearchController!
     private var alertController: UIAlertController!
 
-    @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
-        present(alertController, animated: true, completion: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,6 +58,10 @@ class AccountsViewController: UITableViewController {
         updater.startUpdating()
 
         updateEditing()
+    }
+
+    @IBAction func didPressAdd(_ sender: UIBarButtonItem) {
+        present(alertController, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
