@@ -154,7 +154,7 @@
                     <navigationItem key="navigationItem" title="Accounts" id="QD1-ot-U1H">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JTL-yM-y0g">
                             <connections>
-                                <action selector="didPressAdd:" destination="bOu-aX-zXX" id="Gxq-TA-Oug"/>
+                                <action selector="addAccount:" destination="bOu-aX-zXX" id="Gxq-TA-Oug"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
