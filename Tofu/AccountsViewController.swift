@@ -6,7 +6,6 @@ class AccountsViewController: UITableViewController {
     @IBOutlet weak var emptyView: UIView!
 
     private let keychain = Keychain()
-    private let userDefaults = UserDefaults.standard
     private var accounts = [Account]()
     private var searchController: UISearchController!
     private var alertController: UIAlertController!
@@ -23,7 +22,7 @@ class AccountsViewController: UITableViewController {
         }
 
         accounts = keychain.accounts
-        let sortedPersistentRefs = userDefaults.array(forKey: accountOrderKey) as? [Data] ?? []
+        let sortedPersistentRefs = UserDefaults.standard.array(forKey: accountOrderKey) as? [Data] ?? []
         accounts.sort { a, b in
             let aIndex = sortedPersistentRefs.index(of: a.persistentRef! as Data) ?? 0
             let bIndex = sortedPersistentRefs.index(of: b.persistentRef! as Data) ?? 0
@@ -86,7 +85,7 @@ class AccountsViewController: UITableViewController {
 
     private func persistAccountOrder() {
         let sortedPersistentRefs = accounts.map { $0.persistentRef! }
-        userDefaults.set(sortedPersistentRefs, forKey: accountOrderKey)
+        UserDefaults.standard.set(sortedPersistentRefs, forKey: accountOrderKey)
     }
 
     private func updateEditing() {
