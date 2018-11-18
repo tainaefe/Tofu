@@ -8,7 +8,7 @@ class AccountsViewController: UITableViewController {
     private let keychain = Keychain()
     private var accounts = [Account]()
     private lazy var searchController = makeSearchController()
-    private var addAccountAlertController: UIAlertController!
+    private lazy var addAccountAlertController = makeAddAccountAlertController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +29,6 @@ class AccountsViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         }
-
-        addAccountAlertController = UIAlertController(
-            title: "Add Account",
-            message: "Add an account by scanning a QR code or enter a secret manually.",
-            preferredStyle: .actionSheet)
-
-        let scanQRCodeAction = UIAlertAction(title: "Scan QR Code", style: .default) {
-            [unowned self] _ in
-            self.performSegue(withIdentifier: "ScanSegue", sender: self)
-        }
-
-        let enterManuallyAction = UIAlertAction(title: "Enter Manually", style: .default) {
-            [unowned self] _ in
-            self.performSegue(withIdentifier: "EnterManuallySegue", sender: self)
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-        addAccountAlertController.addAction(scanQRCodeAction)
-        addAccountAlertController.addAction(enterManuallyAction)
-        addAccountAlertController.addAction(cancelAction)
 
         let updater = AccountsTableViewUpdater(tableView: tableView)
         updater.startUpdating()
@@ -85,6 +64,28 @@ class AccountsViewController: UITableViewController {
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
         return searchController
+    }
+
+    private func makeAddAccountAlertController() -> UIAlertController {
+        let title = "Add Account"
+        let message = "Add an account by scanning a QR code or enter a secret manually."
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+
+        let scanQRCode = UIAlertAction(title: "Scan QR Code", style: .default) { [unowned self] _ in
+            self.performSegue(withIdentifier: "ScanSegue", sender: self)
+        }
+
+        let enterManually = UIAlertAction(title: "Enter Manually", style: .default) { [unowned self] _ in
+            self.performSegue(withIdentifier: "EnterManuallySegue", sender: self)
+        }
+
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertController.addAction(scanQRCode)
+        alertController.addAction(enterManually)
+        alertController.addAction(cancel)
+
+        return alertController
     }
 
     private func persistAccountOrder() {
