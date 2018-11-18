@@ -1,6 +1,6 @@
 import UIKit
 
-private let persistentRefsKey = "persistentRefs"
+private let accountOrderKey = "persistentRefs"
 private let accountSearchResultsViewControllerIdentifier = "AccountSearchResultsViewController"
 private let accountCellIdentifier = "AccountCell"
 private let scanSegueIdentifier = "ScanSegue"
@@ -27,10 +27,10 @@ class AccountsViewController: UITableViewController {
         }
 
         accounts = keychain.accounts
-        let persistentRefs = userDefaults.array(forKey: persistentRefsKey) as? [Data] ?? []
+        let sortedPersistentRefs = userDefaults.array(forKey: accountOrderKey) as? [Data] ?? []
         accounts.sort { a, b in
-            let aIndex = persistentRefs.index(of: a.persistentRef! as Data) ?? 0
-            let bIndex = persistentRefs.index(of: b.persistentRef! as Data) ?? 0
+            let aIndex = sortedPersistentRefs.index(of: a.persistentRef! as Data) ?? 0
+            let bIndex = sortedPersistentRefs.index(of: b.persistentRef! as Data) ?? 0
             return aIndex < bIndex
         }
         persistAccountOrder()
@@ -90,8 +90,8 @@ class AccountsViewController: UITableViewController {
     }
 
     private func persistAccountOrder() {
-        let persistentRefs = accounts.map { $0.persistentRef! }
-        userDefaults.set(persistentRefs, forKey: persistentRefsKey)
+        let sortedPersistentRefs = accounts.map { $0.persistentRef! }
+        userDefaults.set(sortedPersistentRefs, forKey: accountOrderKey)
     }
 
     private func updateEditing() {
