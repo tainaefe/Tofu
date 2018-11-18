@@ -7,7 +7,7 @@ class AccountsViewController: UITableViewController {
 
     private let keychain = Keychain()
     private var accounts = [Account]()
-    private var searchController: UISearchController!
+    private lazy var searchController = makeSearchController()
     private var alertController: UIAlertController!
 
     override func viewDidLoad() {
@@ -26,9 +26,6 @@ class AccountsViewController: UITableViewController {
         }
         persistAccountOrder()
 
-        let searchResultsController = storyboard?.instantiateViewController(withIdentifier: "AccountSearchResultsViewController") as! AccountSearchResultsViewController
-        searchController = UISearchController(searchResultsController: searchResultsController)
-        searchController.searchResultsUpdater = self
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         }
@@ -81,6 +78,13 @@ class AccountsViewController: UITableViewController {
             accountUpdateViewController.delegate = self
             accountUpdateViewController.account = cell.account
         }
+    }
+
+    private func makeSearchController() -> UISearchController {
+        let searchResultsController = storyboard?.instantiateViewController(withIdentifier: "AccountSearchResultsViewController") as! AccountSearchResultsViewController
+        let searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.searchResultsUpdater = self
+        return searchController
     }
 
     private func persistAccountOrder() {
