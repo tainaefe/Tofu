@@ -13,10 +13,6 @@ class AccountsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
-
         accounts = keychain.accounts
         let sortedPersistentRefs = UserDefaults.standard.array(forKey: accountOrderKey) as? [Data] ?? []
         accounts.sort { a, b in
