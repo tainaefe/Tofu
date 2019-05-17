@@ -128,4 +128,14 @@ class AccountCell: UITableViewCell {
         progressView.tintColor = account.password.timeIntervalRemainingForDate(date) < 5 ?
             .red : tintColor
     }
+
+    override func copy(_ sender: Any?) {
+        guard let valueLabelText = valueLabel.text else { return }
+
+        UIPasteboard.general.string = valueLabelText.replacingOccurrences(of: " ", with: "")
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
 }

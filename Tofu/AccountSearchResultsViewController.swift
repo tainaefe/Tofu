@@ -16,9 +16,45 @@ class AccountSearchResultsViewController: UITableViewController, AccountUpdateDe
         super.viewDidLoad()
         let updater = AccountsTableViewUpdater(tableView: tableView)
         updater.startUpdating()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(deselectSelectedTableViewRow),
+            name: .UIMenuControllerWillHideMenu,
+            object: nil)
+    }
+
+    @objc func deselectSelectedTableViewRow() {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     // MARK: UITableViewDataSource
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            guard let cellSuperview = cell.superview else {
+                assertionFailure("The cell does not seem to be in the view hierarchy. How is that even possible!?")
+                return
+            }
+
+            let menuController = UIMenuController.shared
+
+            // If you tap the same cell twice, this condition prevents the menu from being
+            // hidden and then instantly shown again otherwise causing an unpleasant flash.
+            //
+            // Since the cell could already be the first responder (from previously showing
+            // its menu and then scrolling the table view) and the menu could already be
+            // visible for another cell, we make sure to check both values.
+            if !(cell.isFirstResponder && menuController.isMenuVisible) {
+                cell.becomeFirstResponder()
+
+                menuController.setTargetRect(cell.frame, in: cellSuperview)
+                menuController.setMenuVisible(true, animated: true)
+            }
+        }
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -53,8 +89,7 @@ class AccountSearchResultsViewController: UITableViewController, AccountUpdateDe
                             forRowAt indexPath: IndexPath, withSender sender: Any?) {
         if action == #selector(copy(_:)) {
             let cell = tableView.cellForRow(at: indexPath) as! AccountCell
-            UIPasteboard.general.string = cell.valueLabel.text?
-                .replacingOccurrences(of: " ", with: "")
+            cell.copy(self)
         }
     }
     
