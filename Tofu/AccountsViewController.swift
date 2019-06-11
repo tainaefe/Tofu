@@ -214,7 +214,7 @@ class AccountsViewController: UITableViewController {
                 let menuController = UIMenuController.shared
 
                 // If you tap the same cell twice, this condition prevents the menu from being
-                // hidden and then instantly shown again otherwise causing an unpleasant flash.
+                // hidden and then instantly shown again causing an unpleasant flash.
                 //
                 // Since the cell could already be the first responder (from previously showing
                 // its menu and then scrolling the table view) and the menu could already be
