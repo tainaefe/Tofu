@@ -130,9 +130,9 @@ class AccountCell: UITableViewCell {
     }
 
     override func copy(_ sender: Any?) {
-        guard let valueLabelText = valueLabel.text else { return }
+        guard let labelText = valueLabel.text else { return }
 
-        UIPasteboard.general.string = valueLabelText.replacingOccurrences(of: " ", with: "")
+        UIPasteboard.general.string = labelText.replacingOccurrences(of: " ", with: "")
     }
 
     override var canBecomeFirstResponder: Bool {
