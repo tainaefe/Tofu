@@ -96,6 +96,6 @@ extension Data {
     init?(base32Encoded string: String) {
         let encodedBytes = Array(string.uppercased().utf8)
         guard let decodedBytes = decoded(bytes: encodedBytes) else { return nil }
-        self.init(bytes: decodedBytes)
+        self.init(decodedBytes)
     }
 }
