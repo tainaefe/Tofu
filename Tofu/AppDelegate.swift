@@ -11,22 +11,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ application: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
+    func application(
+        _ application: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
 
         let rootViewController = window!.rootViewController!
 
         guard let account = Account(url: url) else {
             let alert = UIAlertController(
-                title: "Could not import account",
+                title: "Could Not Import Account",
                 message: "The account information was not of the expected format.",
-                preferredStyle: .alert
-            )
+                preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Close", style: .default))
 
-            rootViewController.present(alert, animated: true, completion: nil)
+            rootViewController.present(alert, animated: true)
+
             return false
         }
 
@@ -37,11 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let alert = UIAlertController(
             title: "Account Imported",
             message: "Successfully imported \(account.description)",
-            preferredStyle: .alert
-        )
+            preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        rootViewController.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+        rootViewController.present(alert, animated: true)
 
         return true
     }
