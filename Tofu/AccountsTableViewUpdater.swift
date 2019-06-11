@@ -10,7 +10,7 @@ class AccountsTableViewUpdater: NSObject {
     func startUpdating() {
         let timer = Timer(timeInterval: 1, target: self, selector: #selector(updateCells),
                           userInfo: nil, repeats: true)
-        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
     }
     
     @objc func updateCells() {

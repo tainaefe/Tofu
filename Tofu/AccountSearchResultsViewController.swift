@@ -20,7 +20,7 @@ class AccountSearchResultsViewController: UITableViewController, AccountUpdateDe
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(deselectSelectedTableViewRow),
-            name: .UIMenuControllerWillHideMenu,
+            name: UIMenuController.willHideMenuNotification,
             object: nil)
     }
 
@@ -97,7 +97,7 @@ class AccountSearchResultsViewController: UITableViewController, AccountUpdateDe
     
     func updateAccount(_ account: Account) {
         (presentingViewController as! AccountUpdateDelegate).updateAccount(account)
-        let row = accounts.index { $0 === account }!
+        let row = accounts.firstIndex { $0 === account }!
         let indexPath = IndexPath(row: row, section: 0)
         guard let cell = tableView.cellForRow(at: indexPath) as? AccountCell else { return }
         cell.updateWithDate(Date())

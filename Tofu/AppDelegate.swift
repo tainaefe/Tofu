@@ -6,14 +6,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(
         _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         return true
     }
 
     func application(_ application: UIApplication,
                      open url: URL,
-                     options: [UIApplicationOpenURLOptionsKey : Any] = [:] ) -> Bool {
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
 
         let rootViewController = window!.rootViewController!
 
@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
 
-        let accountsViewController = rootViewController.childViewControllers.first as! AccountsViewController
+        let accountsViewController = rootViewController.children.first as! AccountsViewController
 
         accountsViewController.createAccount(account)
 

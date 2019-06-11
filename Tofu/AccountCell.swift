@@ -8,7 +8,7 @@ private func placeholderImageWithText(_ text: String) -> UIImage {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
     let fontSize: CGFloat = 36
-    let attributes: [NSAttributedStringKey: Any] = [
+    let attributes: [NSAttributedString.Key: Any] = [
         .font: UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.ultraLight),
         .foregroundColor: UIColor.lightGray,
         .paragraphStyle: paragraphStyle,
@@ -99,8 +99,8 @@ class AccountCell: UITableViewCell {
         let fontDescriptor = valueLabel.font.fontDescriptor.addingAttributes([.featureSettings: featureSettings])
         valueLabel.font = UIFont(descriptor: fontDescriptor, size: 0)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        button.setTitle("NEXT", for: UIControlState())
-        button.setTitleColor(tintColor, for: UIControlState())
+        button.setTitle("NEXT", for: UIControl.State())
+        button.setTitleColor(tintColor, for: UIControl.State())
         button.setTitleColor(UIColor.white, for: .highlighted)
         button.setTitleColor(UIColor.white, for: .selected)
         button.layer.borderColor = button.tintColor.cgColor

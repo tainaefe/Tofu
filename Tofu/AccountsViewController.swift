@@ -16,8 +16,8 @@ class AccountsViewController: UITableViewController {
         accounts = keychain.accounts
         let sortedPersistentRefs = UserDefaults.standard.array(forKey: accountOrderKey) as? [Data] ?? []
         accounts.sort { a, b in
-            let aIndex = sortedPersistentRefs.index(of: a.persistentRef! as Data) ?? 0
-            let bIndex = sortedPersistentRefs.index(of: b.persistentRef! as Data) ?? 0
+            let aIndex = sortedPersistentRefs.firstIndex(of: a.persistentRef! as Data) ?? 0
+            let bIndex = sortedPersistentRefs.firstIndex(of: b.persistentRef! as Data) ?? 0
             return aIndex < bIndex
         }
         persistAccountOrder()
@@ -34,7 +34,7 @@ class AccountsViewController: UITableViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(deselectSelectedTableViewRow),
-            name: .UIMenuControllerWillHideMenu,
+            name: UIMenuController.willHideMenuNotification,
             object: nil)
     }
 
@@ -157,7 +157,7 @@ class AccountsViewController: UITableViewController {
 
     override func tableView(
         _ tableView: UITableView,
-        commit editingStyle: UITableViewCellEditingStyle,
+        commit editingStyle: UITableViewCell.EditingStyle,
         forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let alertController = UIAlertController(
@@ -289,7 +289,7 @@ extension AccountsViewController: AccountUpdateDelegate {
             }
             return
         }
-        let row = accounts.index { $0 === account }!
+        let row = accounts.firstIndex { $0 === account }!
         let indexPath = IndexPath(row: row, section: 0)
         guard let cell = tableView.cellForRow(at: indexPath) as? AccountCell else { return }
         cell.updateWithDate(Date())

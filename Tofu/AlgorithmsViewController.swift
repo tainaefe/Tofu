@@ -32,7 +32,7 @@ class AlgorithmsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let previouslySelectedCell = tableView.cellForRow(
-            at: IndexPath(row: algorithms.index(of: selected)!, section: 0))!
+            at: IndexPath(row: algorithms.firstIndex(of: selected)!, section: 0))!
         previouslySelectedCell.accessoryType = .none
         let selectedCell = tableView.cellForRow(at: indexPath)!
         selectedCell.accessoryType = .checkmark
