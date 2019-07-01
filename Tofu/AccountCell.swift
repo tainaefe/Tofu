@@ -26,6 +26,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("AWS"): return UIImage(named: "AWS")!
     case .some("Backblaze"): return UIImage(named: "Backblaze")!
     case .some("Bitbucket"): return UIImage(named: "Bitbucket")!
+    case .some("Bitwarden"): return UIImage(named: "Bitwarden")!
     case .some("Coinbase"): return UIImage(named: "Coinbase")!
     case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
     case .some("DNSimple"): return UIImage(named: "DNSimple")!
