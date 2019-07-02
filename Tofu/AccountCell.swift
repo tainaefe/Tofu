@@ -28,6 +28,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Binance.com"): return UIImage(named: "Binance")!
     case .some("BitBayAuth"): return UIImage(named: "BitBay")!
     case .some("Bitbucket"): return UIImage(named: "Bitbucket")!
+    case .some("Bittrex"): return UIImage(named: "Bittrex")!
     case .some("Bitwarden"): return UIImage(named: "Bitwarden")!
     case .some("Coinbase"): return UIImage(named: "Coinbase")!
     case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
