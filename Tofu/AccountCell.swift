@@ -30,6 +30,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
     case .some("DNSimple"): return UIImage(named: "DNSimple")!
     case .some("Dropbox"): return UIImage(named: "Dropbox")!
+    case .some("Discord"): return UIImage(named: "Discord")!
     case .some("Electronic Arts"): return UIImage(named: "ElectronicArts")!
     case .some("Evernote"): return UIImage(named: "Evernote")!
     case .some("Facebook"): return UIImage(named: "Facebook")!
