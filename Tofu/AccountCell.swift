@@ -22,19 +22,26 @@ private func placeholderImageWithText(_ text: String) -> UIImage {
 private func imageForAccount(_ account: Account) -> UIImage {
     switch account.issuer {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
+    case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
     case .some("AWS"): return UIImage(named: "AWS")!
     case .some("Backblaze"): return UIImage(named: "Backblaze")!
+    case .some("Binance.com"): return UIImage(named: "Binance")!
+    case .some("BitBayAuth"): return UIImage(named: "BitBay")!
     case .some("Bitbucket"): return UIImage(named: "Bitbucket")!
+    case .some("Bittrex"): return UIImage(named: "Bittrex")!
+    case .some("Bitwarden"): return UIImage(named: "Bitwarden")!
     case .some("Coinbase"): return UIImage(named: "Coinbase")!
     case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
     case .some("DNSimple"): return UIImage(named: "DNSimple")!
     case .some("Dropbox"): return UIImage(named: "Dropbox")!
     case .some("Electronic Arts"): return UIImage(named: "ElectronicArts")!
+    case .some("Epic+Games"): return UIImage(named: "EpicGames")!
     case .some("Evernote"): return UIImage(named: "Evernote")!
     case .some("Facebook"): return UIImage(named: "Facebook")!
     case .some("FastMail"): return UIImage(named: "FastMail")!
     case .some("GitHub"): return UIImage(named: "GitHub")!
+    case .some("gitlab.com"): return UIImage(named: "GitLab")!
     case .some("Google"): return UIImage(named: "Google")!
     case .some("GreenAddress"): return UIImage(named: "GreenAddress")!
     case .some("Heroku"): return UIImage(named: "Heroku")!
@@ -47,8 +54,10 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("LocalBitcoins"): return UIImage(named: "LocalBitcoins")!
     case .some("Microsoft"): return UIImage(named: "Microsoft")!
     case .some("Name.com"): return UIImage(named: "Name.com")!
+    case .some("Nextcloud"): return UIImage(named: "Nextcloud")!
     case .some("ownCloud"): return UIImage(named: "ownCloud")!
     case .some("Privacy.com"): return UIImage(named: "Privacy")!
+    case .some("ProtonMail"): return UIImage(named: "ProtonMail")!
     case .some("Slack"): return UIImage(named: "Slack")!
     case .some("Stripe"): return UIImage(named: "Stripe")!
     case .some("Tumblr"): return UIImage(named: "Tumblr")!
