@@ -306,10 +306,9 @@
 			};
 			buildConfigurationList = 25A81D051C500E9B008E51B9 /* Build configuration list for PBXProject "Tofu" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
