@@ -63,6 +63,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("NiceHash - New platform"): return UIImage(named: "NiceHash")!
     case .some("ownCloud"): return UIImage(named: "ownCloud")!
     case .some("Paladin Extensions"): return UIImage(named: "PaladinExtensions")!
+    case .some("PayPal"): return UIImage(named: "PayPal")!
     case .some("Privacy.com"): return UIImage(named: "Privacy")!
     case .some("ProtonMail"): return UIImage(named: "ProtonMail")!
     case .some("Slack"): return UIImage(named: "Slack")!
