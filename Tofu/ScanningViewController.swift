@@ -35,8 +35,8 @@ AVCaptureMetadataOutputObjectsDelegate {
     }
     
     private func startScanning() {
-        let device = AVCaptureDevice.default(for: .video)
-        if let input = try? AVCaptureDeviceInput(device: device!) {
+        if let device = AVCaptureDevice.default(for: .video),
+            let input = try? AVCaptureDeviceInput(device: device) {
             allowCameraAccessView.isHidden = true
             navigationItem.prompt = "Point your camera at a QR code to scan it."
             session.addInput(input)
