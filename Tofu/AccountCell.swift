@@ -26,6 +26,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Amazon"): return UIImage(named: "Amazon")!
     case .some("AWS"): return UIImage(named: "AWS")!
     case .some("Backblaze"): return UIImage(named: "Backblaze")!
+    case .some("Basecamp's+Launchpad"): return UIImage(named: "Basecamp")!
     case .some("Binance.com"): return UIImage(named: "Binance")!
     case .some("BitBayAuth"): return UIImage(named: "BitBay")!
     case .some("Bitbucket"): return UIImage(named: "Bitbucket")!
@@ -59,13 +60,17 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Microsoft"): return UIImage(named: "Microsoft")!
     case .some("Name.com"): return UIImage(named: "Name.com")!
     case .some("Nextcloud"): return UIImage(named: "Nextcloud")!
+    case .some("NiceHash - New platform"): return UIImage(named: "NiceHash")!
     case .some("ownCloud"): return UIImage(named: "ownCloud")!
     case .some("Paladin Extensions"): return UIImage(named: "PaladinExtensions")!
+    case .some("PayPal"): return UIImage(named: "PayPal")!
     case .some("Privacy.com"): return UIImage(named: "Privacy")!
     case .some("ProtonMail"): return UIImage(named: "ProtonMail")!
     case .some("Slack"): return UIImage(named: "Slack")!
     case .some("STACK"): return UIImage(named: "STACK")!
     case .some("Stripe"): return UIImage(named: "Stripe")!
+    case .some("Time4VPS"): return UIImage(named: "Time4VPS")!
+    case .some("TorGuard"): return UIImage(named: "TorGuard")!
     case .some("Tumblr"): return UIImage(named: "Tumblr")!
     case .some("Tutanota"): return UIImage(named: "Tutanota")!
     case .some("Ubisoft"): return UIImage(named: "Ubisoft")!
