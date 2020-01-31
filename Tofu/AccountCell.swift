@@ -8,9 +8,17 @@ private func placeholderImageWithText(_ text: String) -> UIImage {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
     let fontSize: CGFloat = 36
+
+    let foregroundColor: UIColor
+    if #available(iOS 13.0, *) {
+        foregroundColor = .tertiaryLabel
+    } else {
+        foregroundColor = .lightGray
+    }
+
     let attributes: [NSAttributedString.Key: Any] = [
         .font: UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.ultraLight),
-        .foregroundColor: UIColor.lightGray,
+        .foregroundColor: foregroundColor,
         .paragraphStyle: paragraphStyle,
     ]
     let origin = CGPoint(x: 0, y: (image.size.height - fontSize) / 2 - 0.1 * fontSize)
@@ -146,7 +154,7 @@ class AccountCell: UITableViewCell {
         identifierLabel.text = account.description
         progressView.progress = account.password.progressForDate(date)
         progressView.tintColor = account.password.timeIntervalRemainingForDate(date) < 5 ?
-            .red : tintColor
+            .systemRed : tintColor
     }
 
     override func copy(_ sender: Any?) {
@@ -157,5 +165,16 @@ class AccountCell: UITableViewCell {
 
     override var canBecomeFirstResponder: Bool {
         return true
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if #available(iOS 12.0, *) {
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
+                // When we change between light and dark mode, placeholder images need to be re-generated.
+                accountImageView.image = imageForAccount(account)
+            }
+        }
     }
 }
