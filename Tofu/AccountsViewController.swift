@@ -2,11 +2,13 @@ import UIKit
 
 private let accountOrderKey = "persistentRefs"
 
-class AccountsViewController: UITableViewController {
+class AccountsViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var emptyView: UIView!
 
     private let keychain = Keychain()
     private var accounts = [Account]()
+    private let qrImporter = UIImagePickerController()
+
     private lazy var searchController = makeSearchController()
     private lazy var addAccountAlertController = makeAddAccountAlertController()
 
@@ -36,6 +38,8 @@ class AccountsViewController: UITableViewController {
             selector: #selector(deselectSelectedTableViewRow),
             name: UIMenuController.willHideMenuNotification,
             object: nil)
+        
+        qrImporter.delegate = self
     }
 
     @objc func deselectSelectedTableViewRow() {
@@ -76,11 +80,18 @@ class AccountsViewController: UITableViewController {
 
     private func makeAddAccountAlertController() -> UIAlertController {
         let title = "Add Account"
-        let message = "Add an account by scanning a QR code or enter a secret manually."
+        let message = "Add an account by scanning a QR code, importing a QR image, or entering a secret manually."
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 
         let scanQRCode = UIAlertAction(title: "Scan QR Code", style: .default) { [unowned self] _ in
             self.performSegue(withIdentifier: "ScanSegue", sender: self)
+        }
+        
+        let importQRCode = UIAlertAction(title: "Import QR Image", style: .default) { [unowned self] _ in
+            self.qrImporter.allowsEditing = false
+            self.qrImporter.sourceType = .photoLibrary
+                
+            self.present(self.qrImporter, animated: true, completion: nil)
         }
 
         let enterManually = UIAlertAction(title: "Enter Manually", style: .default) { [unowned self] _ in
@@ -90,12 +101,13 @@ class AccountsViewController: UITableViewController {
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         alertController.addAction(scanQRCode)
+        alertController.addAction(importQRCode)
         alertController.addAction(enterManually)
         alertController.addAction(cancel)
 
         return alertController
     }
-
+    
     private func persistAccountOrder() {
         let sortedPersistentRefs = accounts.map { $0.persistentRef! }
         UserDefaults.standard.set(sortedPersistentRefs, forKey: accountOrderKey)
@@ -122,6 +134,26 @@ class AccountsViewController: UITableViewController {
             tableView.separatorStyle = .singleLine
             navigationItem.leftBarButtonItem = editButtonItem
         }
+    }
+    
+    // MARK: UIImagePickerControlDelegate
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedQRCode = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let detector = CIDetector(ofType: CIDetectorTypeQRCode,
+                                      context: nil,
+                                      options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]),
+            let ciImage = CIImage(image: selectedQRCode),
+            let features = detector.features(in: ciImage) as? [CIQRCodeFeature] else { return }
+
+        let qrCodeURL = URL(string: features.reduce("") { $0 + ($1.messageString ?? "") })
+
+        if qrCodeURL != nil, let account = Account(url: qrCodeURL!) {
+            self.createAccount(account)
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: UITableViewDataSource
