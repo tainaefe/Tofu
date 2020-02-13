@@ -32,7 +32,8 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
-    case .some("AWS"): return UIImage(named: "AWS")!
+    case .some("AWS"): fallthrough
+    case .some("Amazon Web Services"): return UIImage(named: "AWS")!
     case .some("Backblaze"): return UIImage(named: "Backblaze")!
     case .some("Basecamp's+Launchpad"): return UIImage(named: "Basecamp")!
     case .some("Binance.com"): return UIImage(named: "Binance")!
@@ -40,6 +41,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Bitbucket"): return UIImage(named: "Bitbucket")!
     case .some("Bittrex"): return UIImage(named: "Bittrex")!
     case .some("Bitwarden"): return UIImage(named: "Bitwarden")!
+    case .some("Cloudflare"): return UIImage(named: "Cloudflare")!
     case .some("Coinbase"): return UIImage(named: "Coinbase")!
     case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
     case .some("DNSimple"): return UIImage(named: "DNSimple")!
@@ -55,12 +57,14 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("gitlab.com"): return UIImage(named: "GitLab")!
     case .some("Google"): return UIImage(named: "Google")!
     case .some("GreenAddress"): return UIImage(named: "GreenAddress")!
+    case .some("Hack The Box"): return UIImage(named: "HackTheBox")!
     case .some("Heroku"): return UIImage(named: "Heroku")!
     case .some("Hostek"): return UIImage(named: "Hostek")!
     case .some("Hover"): return UIImage(named: "Hover")!
     case .some("HumbleBundle"): return UIImage(named: "HumbleBundle")!
     case .some("IFTTT"): return UIImage(named: "IFTTT")!
     case .some("Intercom"): return UIImage(named: "Intercom")!
+    case .some("JetBrains+Account"): return UIImage(named: "JetBrains")!
     case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
     case .some("LinkedIn"): return UIImage(named: "LinkedIn")!
     case .some("LinodeManager"): return UIImage(named: "Linode")!
