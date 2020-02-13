@@ -28,7 +28,9 @@ private func placeholderImageWithText(_ text: String) -> UIImage {
 }
 
 private func imageForAccount(_ account: Account) -> UIImage {
-    switch account.issuer {
+    let identifier = account.issuer != nil ? account.issuer : account.description
+    
+    switch identifier {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
@@ -47,12 +49,14 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("DNSimple"): return UIImage(named: "DNSimple")!
     case .some("Dropbox"): return UIImage(named: "Dropbox")!
     case .some("Discord"): return UIImage(named: "Discord")!
+    case .some("hub.docker.com"): return UIImage(named: "Docker")!
     case .some("Electronic Arts"): return UIImage(named: "ElectronicArts")!
     case .some("Epic+Games"): return UIImage(named: "EpicGames")!
     case .some("Evernote"): return UIImage(named: "Evernote")!
     case .some("Facebook"): return UIImage(named: "Facebook")!
     case .some("Fastmail"): return UIImage(named: "FastMail")!
     case .some("Firefox"): return UIImage(named: "Firefox")!
+    case .some("gandi.net"): return UIImage(named: "Gandi")!
     case .some("GitHub"): return UIImage(named: "GitHub")!
     case .some("gitlab.com"): return UIImage(named: "GitLab")!
     case .some("Google"): return UIImage(named: "Google")!
@@ -78,6 +82,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("PayPal"): return UIImage(named: "PayPal")!
     case .some("Privacy.com"): return UIImage(named: "Privacy")!
     case .some("ProtonMail"): return UIImage(named: "ProtonMail")!
+    case .some("Robinhood"): return UIImage(named: "Robinhood")!
     case .some("Slack"): return UIImage(named: "Slack")!
     case .some("STACK"): return UIImage(named: "STACK")!
     case .some("Stripe"): return UIImage(named: "Stripe")!
