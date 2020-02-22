@@ -28,15 +28,12 @@ private func placeholderImageWithText(_ text: String) -> UIImage {
 }
 
 private func imageForAccount(_ account: Account) -> UIImage {
-    let identifier = account.issuer != nil ? account.issuer : account.description
-    
-    switch identifier {
+    switch account.issuer {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
-    case .some("AWS"): fallthrough
-    case .some("Amazon Web Services"): return UIImage(named: "AWS")!
-    case .some("Backblaze"): return UIImage(named: "Backblaze")!
+    case .some("AWS"), .some("Amazon Web Services"): return UIImage(named: "AWS")!
+    case .some("Backblaze"): return UIImage(named: "Backblaze")!	
     case .some("Basecamp's+Launchpad"): return UIImage(named: "Basecamp")!
     case .some("Binance.com"): return UIImage(named: "Binance")!
     case .some("BitBayAuth"): return UIImage(named: "BitBay")!
