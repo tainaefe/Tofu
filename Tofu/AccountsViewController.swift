@@ -90,8 +90,16 @@ class AccountsViewController: UITableViewController, UIImagePickerControllerDele
         let importQRCode = UIAlertAction(title: "Import QR Image", style: .default) { [unowned self] _ in
             self.qrImporter.allowsEditing = false
             self.qrImporter.sourceType = .photoLibrary
-                
-            self.present(self.qrImporter, animated: true, completion: nil)
+            
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
+                self.present(self.qrImporter, animated: true, completion: nil)
+            } else {
+                let importAlert = UIAlertController(title: "Error",
+                                                    message: "Unable to access photo library.",
+                                                    preferredStyle: .alert)
+                importAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(importAlert, animated: true, completion: nil)
+            }
         }
 
         let enterManually = UIAlertAction(title: "Enter Manually", style: .default) { [unowned self] _ in
@@ -140,20 +148,26 @@ class AccountsViewController: UITableViewController, UIImagePickerControllerDele
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true, completion: nil)
+        
         guard let selectedQRCode = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
             let detector = CIDetector(ofType: CIDetectorTypeQRCode,
                                       context: nil,
                                       options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]),
             let ciImage = CIImage(image: selectedQRCode),
-            let features = detector.features(in: ciImage) as? [CIQRCodeFeature] else { return }
-
-        let qrCodeURL = URL(string: features.reduce("") { $0 + ($1.messageString ?? "") })
-
-        if qrCodeURL != nil, let account = Account(url: qrCodeURL!) {
-            self.createAccount(account)
+            let features = detector.features(in: ciImage) as? [CIQRCodeFeature],
+            let messageString = features.first?.messageString,
+            let qrCodeURL = URL(string: messageString),
+            let account = Account(url: qrCodeURL) else {
+                let noQRAlert = UIAlertController(title: "Error",
+                                                  message: "Failed to detect QR code in the provided image.",
+                                                  preferredStyle: .alert)
+                noQRAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(noQRAlert, animated: true, completion: nil)
+                return
         }
-        
-        dismiss(animated: true, completion: nil)
+
+        self.createAccount(account)
     }
 
     // MARK: UITableViewDataSource
