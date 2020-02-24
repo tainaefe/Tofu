@@ -171,7 +171,8 @@ class AccountCell: UITableViewCell {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if #available(iOS 12.0, *) {
-            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
+            if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle,
+                let account = account {
                 // When we change between light and dark mode, placeholder images need to be re-generated.
                 accountImageView.image = imageForAccount(account)
             }
