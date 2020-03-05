@@ -32,35 +32,40 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
-    case .some("AWS"): return UIImage(named: "AWS")!
-    case .some("Backblaze"): return UIImage(named: "Backblaze")!
+    case .some("AWS"), .some("Amazon Web Services"): return UIImage(named: "AWS")!
+    case .some("Backblaze"): return UIImage(named: "Backblaze")!	
     case .some("Basecamp's+Launchpad"): return UIImage(named: "Basecamp")!
     case .some("Binance.com"): return UIImage(named: "Binance")!
     case .some("BitBayAuth"): return UIImage(named: "BitBay")!
     case .some("Bitbucket"): return UIImage(named: "Bitbucket")!
     case .some("Bittrex"): return UIImage(named: "Bittrex")!
     case .some("Bitwarden"): return UIImage(named: "Bitwarden")!
+    case .some("Cloudflare"): return UIImage(named: "Cloudflare")!
     case .some("Coinbase"): return UIImage(named: "Coinbase")!
     case .some("DigitalOcean"): return UIImage(named: "DigitalOcean")!
     case .some("DNSimple"): return UIImage(named: "DNSimple")!
     case .some("Dropbox"): return UIImage(named: "Dropbox")!
     case .some("Discord"): return UIImage(named: "Discord")!
+    case .some("hub.docker.com"): return UIImage(named: "Docker")!
     case .some("Electronic Arts"): return UIImage(named: "ElectronicArts")!
     case .some("Epic+Games"): return UIImage(named: "EpicGames")!
     case .some("Evernote"): return UIImage(named: "Evernote")!
     case .some("Facebook"): return UIImage(named: "Facebook")!
     case .some("Fastmail"): return UIImage(named: "FastMail")!
     case .some("Firefox"): return UIImage(named: "Firefox")!
+    case .some("gandi.net"): return UIImage(named: "Gandi")!
     case .some("GitHub"): return UIImage(named: "GitHub")!
     case .some("gitlab.com"): return UIImage(named: "GitLab")!
     case .some("Google"): return UIImage(named: "Google")!
     case .some("GreenAddress"): return UIImage(named: "GreenAddress")!
+    case .some("Hack The Box"): return UIImage(named: "HackTheBox")!
     case .some("Heroku"): return UIImage(named: "Heroku")!
     case .some("Hostek"): return UIImage(named: "Hostek")!
     case .some("Hover"): return UIImage(named: "Hover")!
     case .some("HumbleBundle"): return UIImage(named: "HumbleBundle")!
     case .some("IFTTT"): return UIImage(named: "IFTTT")!
     case .some("Intercom"): return UIImage(named: "Intercom")!
+    case .some("JetBrains+Account"): return UIImage(named: "JetBrains")!
     case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
     case .some("LinkedIn"): return UIImage(named: "LinkedIn")!
     case .some("LinodeManager"): return UIImage(named: "Linode")!
@@ -74,6 +79,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("PayPal"): return UIImage(named: "PayPal")!
     case .some("Privacy.com"): return UIImage(named: "Privacy")!
     case .some("ProtonMail"): return UIImage(named: "ProtonMail")!
+    case .some("Robinhood"): return UIImage(named: "Robinhood")!
     case .some("Slack"): return UIImage(named: "Slack")!
     case .some("STACK"): return UIImage(named: "STACK")!
     case .some("Stripe"): return UIImage(named: "Stripe")!
