@@ -32,6 +32,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
+    case .some("Atlassian"): return UIImage(named: "Atlassian")!
     case .some("AWS"), .some("Amazon Web Services"): return UIImage(named: "AWS")!
     case .some("Backblaze"): return UIImage(named: "Backblaze")!	
     case .some("Basecamp's+Launchpad"): return UIImage(named: "Basecamp")!
