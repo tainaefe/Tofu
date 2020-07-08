@@ -32,6 +32,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
+    case .some("Atlassian"): return UIImage(named: "Atlassian")!
     case .some("AWS"), .some("Amazon Web Services"): return UIImage(named: "AWS")!
     case .some("Backblaze"): return UIImage(named: "Backblaze")!	
     case .some("Basecamp's+Launchpad"): return UIImage(named: "Basecamp")!
@@ -60,6 +61,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("GreenAddress"): return UIImage(named: "GreenAddress")!
     case .some("Hack The Box"): return UIImage(named: "HackTheBox")!
     case .some("Heroku"): return UIImage(named: "Heroku")!
+    case .some("HEY"): return UIImage(named: "HEY")!
     case .some("Hostek"): return UIImage(named: "Hostek")!
     case .some("Hover"): return UIImage(named: "Hover")!
     case .some("HumbleBundle"): return UIImage(named: "HumbleBundle")!
