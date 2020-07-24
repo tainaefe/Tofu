@@ -69,6 +69,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Intercom"): return UIImage(named: "Intercom")!
     case .some("JetBrains+Account"): return UIImage(named: "JetBrains")!
     case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
+    case .some("LastPass"): return UIImage(named: "LastPass")!
     case .some("LinkedIn"): return UIImage(named: "LinkedIn")!
     case .some("LinodeManager"): return UIImage(named: "Linode")!
     case .some("LocalBitcoins"): return UIImage(named: "LocalBitcoins")!
