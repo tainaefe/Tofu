@@ -66,6 +66,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Hover"): return UIImage(named: "Hover")!
     case .some("HumbleBundle"): return UIImage(named: "HumbleBundle")!
     case .some("IFTTT"): return UIImage(named: "IFTTT")!
+    case .some("Instagram"): return UIImage(named: "Instagram")!
     case .some("Intercom"): return UIImage(named: "Intercom")!
     case .some("JetBrains+Account"): return UIImage(named: "JetBrains")!
     case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
