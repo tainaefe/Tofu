@@ -95,6 +95,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Tresorit"): return UIImage(named: "Tresorit")!
     case .some("Tumblr"): return UIImage(named: "Tumblr")!
     case .some("Tutanota"): return UIImage(named: "Tutanota")!
+    case .some("Twitter"): return UIImage(named: "Twitter")!
     case .some("Ubisoft"): return UIImage(named: "Ubisoft")!
     case .some("WordPress"): return UIImage(named: "WordPress")!
     default:
