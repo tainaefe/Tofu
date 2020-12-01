@@ -66,6 +66,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Hover"): return UIImage(named: "Hover")!
     case .some("HumbleBundle"): return UIImage(named: "HumbleBundle")!
     case .some("IFTTT"): return UIImage(named: "IFTTT")!
+    case .some("Instagram"): return UIImage(named: "Instagram")!
     case .some("Intercom"): return UIImage(named: "Intercom")!
     case .some("JetBrains+Account"): return UIImage(named: "JetBrains")!
     case .some("Kickstarter"): return UIImage(named: "Kickstarter")!
@@ -77,19 +78,25 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Name.com"): return UIImage(named: "Name.com")!
     case .some("Nextcloud"): return UIImage(named: "Nextcloud")!
     case .some("NiceHash - New platform"): return UIImage(named: "NiceHash")!
+    case .some("NordPass"): return UIImage(named: "NordPass")!
     case .some("ownCloud"): return UIImage(named: "ownCloud")!
     case .some("Paladin Extensions"): return UIImage(named: "PaladinExtensions")!
+    case .some("Parler"): return UIImage(named: "Parler")!
     case .some("PayPal"): return UIImage(named: "PayPal")!
     case .some("Privacy.com"): return UIImage(named: "Privacy")!
     case .some("ProtonMail"): return UIImage(named: "ProtonMail")!
+    case .some("Reddit"): return UIImage(named: "Reddit")!
     case .some("Robinhood"): return UIImage(named: "Robinhood")!
     case .some("Slack"): return UIImage(named: "Slack")!
+    case .some("Snapchat"): return UIImage(named: "Snapchat")!
     case .some("STACK"): return UIImage(named: "STACK")!
     case .some("Stripe"): return UIImage(named: "Stripe")!
     case .some("Time4VPS"): return UIImage(named: "Time4VPS")!
     case .some("TorGuard"): return UIImage(named: "TorGuard")!
+    case .some("Tresorit"): return UIImage(named: "Tresorit")!
     case .some("Tumblr"): return UIImage(named: "Tumblr")!
     case .some("Tutanota"): return UIImage(named: "Tutanota")!
+    case .some("Twitter"): return UIImage(named: "Twitter")!
     case .some("Ubisoft"): return UIImage(named: "Ubisoft")!
     case .some("WordPress"): return UIImage(named: "WordPress")!
     default:
