@@ -16,3 +16,9 @@ and can be used in airplane mode.
 Tofu is available for free on the App Store.
 
 [![Download on the App Store](https://tofuauth.com/images/app-store.svg)](https://itunes.apple.com/app/tofu-authenticator/id1082229305)
+
+## Sponsors
+
+The ongoing development of Tofu is made possible by the support of our generous sponsors:
+
+[![Corporate Trust](https://user-images.githubusercontent.com/66666/100761071-c11df400-33f2-11eb-9c81-962e9107f93c.png)](https://www.corporate-trust.de/en/)
