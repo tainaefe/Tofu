@@ -24,9 +24,7 @@ class AccountsViewController: UITableViewController, UIImagePickerControllerDele
         }
         persistAccountOrder()
 
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        }
+        navigationItem.searchController = searchController
 
         let updater = AccountsTableViewUpdater(tableView: tableView)
         updater.startUpdating()
@@ -123,21 +121,11 @@ class AccountsViewController: UITableViewController, UIImagePickerControllerDele
 
     private func updateEditing() {
         if accounts.count == 0 {
-            if #available(iOS 11.0, *) {
-                // In this case the search bar is rendered in the navigation bar and there's no need to hide it when there are no accounts.
-            } else {
-                tableView.tableHeaderView = nil
-            }
             tableView.backgroundView = emptyView
             tableView.separatorStyle = .none
             navigationItem.leftBarButtonItem = nil
             setEditing(false, animated: true)
         } else {
-            if #available(iOS 11.0, *) {
-                // Since the search bar is already rendered in the navigation bar we don't need to render it in the table header view.
-            } else {
-                tableView.tableHeaderView = searchController.searchBar
-            }
             tableView.backgroundView = nil
             tableView.separatorStyle = .singleLine
             navigationItem.leftBarButtonItem = editButtonItem
