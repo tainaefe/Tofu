@@ -1,8 +1,7 @@
 import Foundation
 
 private func archivedDataWithAccount(_ account: Account) -> Data {
-    let data = NSMutableData()
-    let coder = NSKeyedArchiver(forWritingWith: data)
+    let coder = NSKeyedArchiver(requiringSecureCoding: true)
 
     coder.encode(account.password.timeBased, forKey: "timeBased")
     let algorithmIdentifier: Int32
@@ -18,22 +17,20 @@ private func archivedDataWithAccount(_ account: Account) -> Data {
     coder.encode(Int32(account.password.period), forKey: "period")
     coder.encode(account.name, forKey: "name")
     coder.encode(account.issuer, forKey: "issuer")
-    coder.finishEncoding()
 
     var version: UInt8 = 1
     let size = MemoryLayout.size(ofValue: version)
     let versionedData = NSMutableData(bytes: &version, length: size)
-    versionedData.append(data as Data)
+    versionedData.append(coder.encodedData)
 
     return versionedData as Data
 }
 
 private func unarchiveAccountWithData(_ data: Data) -> Account? {
     let version = data.first
-    guard version == 1 else { return nil }
-    let coder = NSKeyedUnarchiver(forReadingWith: data.subdata(in: 1..<data.count))
-
-    guard let secret = coder.decodeObject(forKey: "secret") as? Data else { return nil }
+    guard version == 1,
+          let coder = try? NSKeyedUnarchiver(forReadingFrom: data.subdata(in: 1..<data.count)),
+          let secret = coder.decodeObject(forKey: "secret") as? Data else { return nil }
 
     let password = Password()
 
