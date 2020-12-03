@@ -3,7 +3,7 @@ import XCTest
 
 class DataTests: XCTestCase {
     func testInitBase32Encoded() {
-        let tests = [
+        let examples: [(encoded: String, decoded: String)] = [
             ("", ""),
             ("MY======", "f"),
             ("MZXQ====", "fo"),
@@ -18,11 +18,13 @@ class DataTests: XCTestCase {
             ("MZXW6YTB", "fooba"),
             ("MZXW6YTBOI", "foobar"),
             ("mzxw6ytboi", "foobar"),
-            ]
+        ]
         
-        for (actual, expected) in tests {
-            XCTAssertEqual(Data(base32Encoded: actual),
-                           expected.data(using: String.Encoding.ascii))
+        for example in examples {
+            let actual = Data(base32Encoded: example.encoded)
+            let expected = example.decoded.data(using: .ascii)
+
+            XCTAssertEqual(actual, expected)
         }
         
         XCTAssertNil(Data(base32Encoded: "1")) // Invalid character
