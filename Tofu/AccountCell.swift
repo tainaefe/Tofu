@@ -94,6 +94,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Snapchat"): return UIImage(named: "Snapchat")!
     case .some("STACK"): return UIImage(named: "STACK")!
     case .some("Stripe"): return UIImage(named: "Stripe")!
+    case .some("Surfshark"): return UIImage(named: "Surfshark")!
     case .some("Time4VPS"): return UIImage(named: "Time4VPS")!
     case .some("TorGuard"): return UIImage(named: "TorGuard")!
     case .some("Tresorit"): return UIImage(named: "Tresorit")!
