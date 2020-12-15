@@ -32,6 +32,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
     case .some("Amazon"): return UIImage(named: "Amazon")!
+    case .some("AnonAddy"): return UIImage(named: "AnonAddy")!
     case .some("Atlassian"): return UIImage(named: "Atlassian")!
     case .some("AWS"), .some("Amazon Web Services"): return UIImage(named: "AWS")!
     case .some("Backblaze"): return UIImage(named: "Backblaze")!	
@@ -93,10 +94,12 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Snapchat"): return UIImage(named: "Snapchat")!
     case .some("STACK"): return UIImage(named: "STACK")!
     case .some("Stripe"): return UIImage(named: "Stripe")!
+    case .some("Surfshark"): return UIImage(named: "Surfshark")!
     case .some("Time4VPS"): return UIImage(named: "Time4VPS")!
     case .some("TorGuard"): return UIImage(named: "TorGuard")!
     case .some("Tresorit"): return UIImage(named: "Tresorit")!
     case .some("Tumblr"): return UIImage(named: "Tumblr")!
+    case .some("TurboTax"): return UIImage(named: "TurboTax")!
     case .some("Tutanota"): return UIImage(named: "Tutanota")!
     case .some("Twitter"): return UIImage(named: "Twitter")!
     case .some("Ubisoft"): return UIImage(named: "Ubisoft")!
