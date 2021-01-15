@@ -58,6 +58,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Fastmail"): return UIImage(named: "FastMail")!
     case .some("Firefox"): return UIImage(named: "Firefox")!
     case .some("gandi.net"): return UIImage(named: "Gandi")!
+    case .some("Gitea"): return UIImage(named: "Gitea")!
     case .some("GitHub"): return UIImage(named: "GitHub")!
     case .some("gitlab.com"): return UIImage(named: "GitLab")!
     case .some("Google"): return UIImage(named: "Google")!
