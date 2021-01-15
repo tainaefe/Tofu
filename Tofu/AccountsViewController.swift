@@ -7,7 +7,6 @@ class AccountsViewController: UITableViewController {
 
     private let keychain = Keychain()
     private var accounts = [Account]()
-    private let imagePickerController = UIImagePickerController()
 
     private lazy var searchController = makeSearchController()
     private lazy var addAccountAlertController = makeAddAccountAlertController()
@@ -36,8 +35,6 @@ class AccountsViewController: UITableViewController {
             selector: #selector(deselectSelectedTableViewRow),
             name: UIMenuController.willHideMenuNotification,
             object: nil)
-        
-        imagePickerController.delegate = self
     }
 
     @objc func deselectSelectedTableViewRow() {
@@ -86,11 +83,14 @@ class AccountsViewController: UITableViewController {
         }
         
         let importQRCode = UIAlertAction(title: "Import QR Image", style: .default) { [unowned self] _ in
-            self.imagePickerController.allowsEditing = false
-            self.imagePickerController.sourceType = .photoLibrary
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let imagePickerController = UIImagePickerController()
 
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
-                self.present(self.imagePickerController, animated: true, completion: nil)
+                imagePickerController.delegate = self
+                imagePickerController.allowsEditing = false
+                imagePickerController.sourceType = .photoLibrary
+
+                self.present(imagePickerController, animated: true, completion: nil)
             } else {
                 let importAlert = UIAlertController(title: "Error",
                                                     message: "Unable to access photo library.",
