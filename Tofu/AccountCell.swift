@@ -81,7 +81,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Microsoft"): return UIImage(named: "Microsoft")!
     case .some("Name.com"): return UIImage(named: "Name.com")!
     case .some("Nextcloud"): return UIImage(named: "Nextcloud")!
-    case .some("NiceHash - New platform"): return UIImage(named: "NiceHash")!
+    case .some("NiceHash"), .some("NiceHash - New platform"): return UIImage(named: "NiceHash")!
     case .some("NordPass"): return UIImage(named: "NordPass")!
     case .some("ownCloud"): return UIImage(named: "ownCloud")!
     case .some("Paladin Extensions"): return UIImage(named: "PaladinExtensions")!
