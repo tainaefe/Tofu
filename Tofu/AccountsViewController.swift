@@ -88,7 +88,7 @@ class AccountsViewController: UITableViewController, UIImagePickerControllerDele
         let importQRCode = UIAlertAction(title: "Import QR Image", style: .default) { [unowned self] _ in
             self.qrImporter.allowsEditing = false
             self.qrImporter.sourceType = .photoLibrary
-            
+
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
                 self.present(self.qrImporter, animated: true, completion: nil)
             } else {
@@ -113,7 +113,7 @@ class AccountsViewController: UITableViewController, UIImagePickerControllerDele
 
         return alertController
     }
-    
+
     private func persistAccountOrder() {
         let sortedPersistentRefs = accounts.map { $0.persistentRef! }
         UserDefaults.standard.set(sortedPersistentRefs, forKey: accountOrderKey)
@@ -131,13 +131,13 @@ class AccountsViewController: UITableViewController, UIImagePickerControllerDele
             navigationItem.leftBarButtonItem = editButtonItem
         }
     }
-    
+
     // MARK: UIImagePickerControlDelegate
-    
+
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true, completion: nil)
-        
+
         guard let selectedQRCode = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
             let detector = CIDetector(ofType: CIDetectorTypeQRCode,
                                       context: nil,
