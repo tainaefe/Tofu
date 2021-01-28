@@ -1,33 +1,6 @@
 import UIKit
 
-private func placeholderImageWithText(_ text: String) -> UIImage {
-    let image = UIImage(named: "Placeholder")!
-    UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
-    image.draw(at: CGPoint.zero)
-    defer { UIGraphicsEndImageContext() }
-    let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.alignment = .center
-    let fontSize: CGFloat = 36
-
-    let foregroundColor: UIColor
-    if #available(iOS 13.0, *) {
-        foregroundColor = .tertiaryLabel
-    } else {
-        foregroundColor = .lightGray
-    }
-
-    let attributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.systemFont(ofSize: fontSize, weight: UIFont.Weight.ultraLight),
-        .foregroundColor: foregroundColor,
-        .paragraphStyle: paragraphStyle,
-    ]
-    let origin = CGPoint(x: 0, y: (image.size.height - fontSize) / 2 - 0.1 * fontSize)
-    text.draw(with: CGRect(origin: origin, size: image.size), options: .usesLineFragmentOrigin,
-              attributes: attributes, context: nil)
-    return UIGraphicsGetImageFromCurrentImageContext()!
-}
-
-private func imageForAccount(_ account: Account) -> UIImage {
+private func imageForAccount(_ account: Account) -> UIImage? {
     switch account.issuer {
     case .some("Adobe ID"): return UIImage(named: "Adobe")!
     case .some("Allegro"): return UIImage(named: "Allegro")!
@@ -106,9 +79,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("Twitter"): return UIImage(named: "Twitter")!
     case .some("Ubisoft"): return UIImage(named: "Ubisoft")!
     case .some("WordPress"): return UIImage(named: "WordPress")!
-    default:
-        let text = String(account.description.first ?? "?").uppercased()
-        return placeholderImageWithText(text)
+    default: return nil
     }
 }
 
@@ -130,6 +101,7 @@ private func formattedValue(_ value: String) -> String {
 
 class AccountCell: UITableViewCell {
     @IBOutlet weak var accountImageView: UIImageView!
+    @IBOutlet weak var issuerLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var identifierLabel: UILabel!
     var delegate: AccountUpdateDelegate?
@@ -145,6 +117,13 @@ class AccountCell: UITableViewCell {
     }
 
     override func awakeFromNib() {
+        accountImageView.layer.cornerRadius = accountImageView.bounds.size.width / 4.5
+        accountImageView.layer.cornerCurve = .continuous
+        accountImageView.layer.masksToBounds = true
+        accountImageView.layer.borderWidth = 1
+
+        updateColors()
+
         let featureSettings: [[UIFontDescriptor.FeatureKey: Any]] =
             [[.featureIdentifier: kNumberSpacingType, .typeIdentifier: kMonospacedNumbersSelector]]
         let fontDescriptor = valueLabel.font.fontDescriptor.addingAttributes([.featureSettings: featureSettings])
@@ -173,6 +152,8 @@ class AccountCell: UITableViewCell {
 
     func updateWithDate(_ date: Date) {
         accountImageView.image = imageForAccount(account)
+        issuerLabel.text = (account.description.first ?? "?").uppercased()
+        issuerLabel.isHidden = accountImageView.image != nil
         valueLabel.text = formattedValue(account.password.valueForDate(date))
         identifierLabel.text = account.description
         progressView.progress = account.password.progressForDate(date)
@@ -197,6 +178,18 @@ class AccountCell: UITableViewCell {
            let account = account {
             // When we change between light and dark mode, placeholder images need to be re-generated.
             accountImageView.image = imageForAccount(account)
+
+            updateColors()
+        }
+    }
+
+    private func updateColors() {
+        if traitCollection.userInterfaceStyle == .dark {
+            accountImageView.layer.backgroundColor = CGColor(red: 0.08, green: 0.08, blue: 0.1, alpha: 1)
+            accountImageView.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        } else {
+            accountImageView.layer.backgroundColor = CGColor(red: 0.97, green: 0.97, blue: 0.98, alpha: 1)
+            accountImageView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.1)
         }
     }
 }
