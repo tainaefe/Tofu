@@ -50,8 +50,7 @@ class AccountSearchResultsViewController: UITableViewController, AccountUpdateDe
             if !(cell.isFirstResponder && menuController.isMenuVisible) {
                 cell.becomeFirstResponder()
 
-                menuController.setTargetRect(cell.frame, in: cellSuperview)
-                menuController.setMenuVisible(true, animated: true)
+                menuController.showMenu(from: cellSuperview, rect: cell.frame)
             }
         }
     }
