@@ -25,6 +25,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Binance.com": "Binance",
     "BitBayAuth": "BitBay",
     "Bitbucket": "Bitbucket",
+    "Bitstamp": "Bitstamp",
     "Bittrex": "Bittrex",
     "Bitwarden": "Bitwarden",
     "Cloudflare": "Cloudflare",
