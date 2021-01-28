@@ -82,7 +82,7 @@ let imageNames = [
     "WordPress": "WordPress",
 ]
 
-private func imageForAccount(_ account: Account) -> UIImage? {
+private func image(for account: Account) -> UIImage? {
     if let issuer = account.issuer,
        let imageName = imageNames[issuer] {
         return UIImage(named: imageName)!
@@ -158,7 +158,7 @@ class AccountCell: UITableViewCell {
     }
 
     func updateWithDate(_ date: Date) {
-        accountImageView.image = imageForAccount(account)
+        accountImageView.image = Tofu.image(for: account)
         issuerLabel.text = (account.description.first ?? "?").uppercased()
         issuerLabel.isHidden = accountImageView.image != nil
         valueLabel.text = formattedValue(account.password.valueForDate(date))
@@ -184,7 +184,7 @@ class AccountCell: UITableViewCell {
         if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle,
            let account = account {
             // When we change between light and dark mode, placeholder images need to be re-generated.
-            accountImageView.image = imageForAccount(account)
+            accountImageView.image = Tofu.image(for: account)
 
             updateColors()
         }
