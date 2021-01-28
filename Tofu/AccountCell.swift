@@ -78,6 +78,7 @@ private func imageForAccount(_ account: Account) -> UIImage {
     case .some("LinkedIn"): return UIImage(named: "LinkedIn")!
     case .some("LinodeManager"): return UIImage(named: "Linode")!
     case .some("LocalBitcoins"): return UIImage(named: "LocalBitcoins")!
+    case .some("Mastodon"): return UIImage(named: "Mastodon")!
     case .some("Microsoft"): return UIImage(named: "Microsoft")!
     case .some("Name.com"): return UIImage(named: "Name.com")!
     case .some("Nextcloud"): return UIImage(named: "Nextcloud")!
