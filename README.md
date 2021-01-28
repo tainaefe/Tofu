@@ -33,16 +33,16 @@ Here's how you can help add new icons to the app:
 
 4. Add an entry for the icon to [the `imageNames` dictionary](https://github.com/calleerlandsson/Tofu/blob/master/Tofu/AccountCell.swift#L15).
 
-   The key should be the string that shows up in the Issue field when scanning
-   a QR code for the service. The value should be the name of the icon file.
+   The key should be the string that shows up in the account's Issuer field
+   when scanning a QR code for the service. The value should be the name of the
+   icon file.
 
-5. Commit your work and open a PR.
+5. Commit your changes and open a PR.
 
-Here's an example commit for adding a new icon:
-https://github.com/calleerlandsson/Tofu/commit/692e32a9744bcaa360e4d7db9f00c4e90f6f66ac
+Here's an example commit for adding a new icon: [692e32a](https://github.com/calleerlandsson/Tofu/commit/692e32a9744bcaa360e4d7db9f00c4e90f6f66ac)
 
-If you don't feel comfortable adding icons yourself, you can ask that someone
-else does so by [opening an issue using the issuer icon request template](https://github.com/calleerlandsson/Tofu/issues/new?labels=icon+request&template=issuer-icon-request.md&title=Add+an+icon+for+Example).
+If you don't feel comfortable adding icons yourself, you can ask others to do
+so by [opening issues using the Issuer Icon Request template](https://github.com/calleerlandsson/Tofu/issues/new?labels=icon+request&template=issuer-icon-request.md&title=Add+an+icon+for+Example).
 
 ## Sponsors
 
