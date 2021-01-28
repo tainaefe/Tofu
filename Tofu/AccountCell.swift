@@ -1,6 +1,18 @@
 import UIKit
 
-let imageNames = [
+private struct CaseInsensitiveString: Hashable, ExpressibleByStringLiteral {
+    let value: String
+
+    init(stringLiteral: String) {
+        self.init(stringLiteral)
+    }
+
+    init(_ string: String) {
+        self.value = string.lowercased()
+    }
+}
+
+private let imageNames: [CaseInsensitiveString: String] = [
     "Adobe ID": "Adobe",
     "Allegro": "Allegro",
     "Amazon": "Amazon",
@@ -84,7 +96,7 @@ let imageNames = [
 
 private func image(for account: Account) -> UIImage? {
     if let issuer = account.issuer,
-       let imageName = imageNames[issuer] {
+       let imageName = imageNames[CaseInsensitiveString(issuer)] {
         return UIImage(named: imageName)!
     }
     return nil
