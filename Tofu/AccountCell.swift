@@ -95,6 +95,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Twilio": "Twilio",
     "Twitter": "Twitter",
     "Ubisoft": "Ubisoft",
+    "Wallabag": "Wallabag",
     "WordPress": "WordPress",
 ]
 
