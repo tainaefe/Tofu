@@ -67,6 +67,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Mastodon": "Mastodon",
     "Microsoft": "Microsoft",
     "Name.com": "Name.com",
+    "Netlify": "Netlify",
     "Nextcloud": "Nextcloud",
     "NiceHash - New platform": "NiceHash",
     "NiceHash": "NiceHash",
