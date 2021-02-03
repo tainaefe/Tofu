@@ -55,6 +55,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Hover": "Hover",
     "hub.docker.com": "Docker",
     "HumbleBundle": "HumbleBundle",
+    "id.unity.com": "Unity",
     "IFTTT": "IFTTT",
     "Instagram": "Instagram",
     "Intercom": "Intercom",
