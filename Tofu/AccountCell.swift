@@ -66,6 +66,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "LinodeManager": "Linode",
     "LocalBitcoins": "LocalBitcoins",
     "Mastodon": "Mastodon",
+    "Mailchimp": "Mailchimp",
     "Mega": "Mega",
     "Microsoft": "Microsoft",
     "Name.com": "Name.com",
@@ -110,6 +111,13 @@ private func image(for account: Account) -> UIImage? {
        let imageName = imageNames[CaseInsensitiveString(issuer)] {
         return UIImage(named: imageName)!
     }
+
+    // Scanning Mailchimp's QR codes generates accounts without issuers and with names similar to this: username@us20.admin.mailchimp.com
+    if let name = account.name,
+       name.contains("admin.mailchimp.com") {
+        return UIImage(named: "Mailchimp")!
+    }
+
     return nil
 }
 
