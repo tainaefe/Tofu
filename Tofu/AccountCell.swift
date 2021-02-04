@@ -101,6 +101,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "VKontakte": "VKontakte",
     "Wallabag": "Wallabag",
     "WordPress": "WordPress",
+    "Zoom": "Zoom",
 ]
 
 private func image(for account: Account) -> UIImage? {
