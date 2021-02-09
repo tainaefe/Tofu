@@ -69,10 +69,21 @@ AVCaptureMetadataOutputObjectsDelegate {
         _ output: AVCaptureMetadataOutput,
         didOutput metadataObjects: [AVMetadataObject],
         from connection: AVCaptureConnection) {
-        guard metadataObjects.count > 0,
-            let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject, metadataObject.type == AVMetadataObject.ObjectType.qr,
-            let url = URL(string: metadataObject.stringValue!),
-            let account = Account(url: url) else { return }
+
+        guard presentedViewController == nil, // Not presenting an error alert
+              metadataObjects.count > 0,
+              let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
+              metadataObject.type == .qr,
+              let urlString = metadataObject.stringValue else { return }
+
+        guard let url = URL(string: urlString),
+              let account = Account(url: url) else {
+
+            presentErrorAlert(title: "Invalid QR Code",
+                              message: "The detected QR code is invalid. Please try scanning a different code.")
+            return
+        }
+
         output.setMetadataObjectsDelegate(nil, queue: nil)
         delegate?.createAccount(account)
         presentingViewController?.dismiss(animated: true, completion: nil)
