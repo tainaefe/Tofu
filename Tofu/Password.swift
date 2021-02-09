@@ -25,6 +25,7 @@ class Password {
         get { return _period }
         set {
             if newValue < 1 {
+                assertionFailure("period must be > 1")
                 _period = 30
             } else {
                 _period = newValue
