@@ -92,11 +92,8 @@ class AccountsViewController: UITableViewController {
 
                 self.present(imagePickerController, animated: true, completion: nil)
             } else {
-                let importAlert = UIAlertController(title: "Photo Library Empty",
-                                                    message: "The photo library is empty and there are no images to import.",
-                                                    preferredStyle: .alert)
-                importAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(importAlert, animated: true, completion: nil)
+                presentErrorAlert(title: "Photo Library Empty",
+                                  message: "The photo library is empty and there are no images to import.")
             }
         }
 
@@ -253,6 +250,12 @@ class AccountsViewController: UITableViewController {
             cell.copy(self)
         }
     }
+
+    private func presentErrorAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension AccountsViewController: UISearchResultsUpdating {
@@ -280,22 +283,16 @@ extension AccountsViewController: UIImagePickerControllerDelegate, UINavigationC
               let features = detector.features(in: ciImage) as? [CIQRCodeFeature],
               let messageString = features.first?.messageString else {
 
-            let alertController = UIAlertController(title: "Could Not Detect QR Code",
-                                                    message: "No QR code was detected in the provided image. Please try importing a different image.",
-                                                    preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+            presentErrorAlert(title: "Could Not Detect QR Code",
+                              message: "No QR code was detected in the provided image. Please try importing a different image.")
             return
         }
 
         guard let qrCodeURL = URL(string: messageString),
               let account = Account(url: qrCodeURL) else {
 
-            let alertController = UIAlertController(title: "Invalid QR Code",
-                                                    message: "The QR code detected in the provided image is invalid. Please try a different image.",
-                                                    preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+            presentErrorAlert(title: "Invalid QR Code",
+                              message: "The QR code detected in the provided image is invalid. Please try a different image.")
             return
         }
 
