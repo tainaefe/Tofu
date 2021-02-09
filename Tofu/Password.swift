@@ -20,7 +20,18 @@ class Password {
         }
     }
 
-    var period = 30
+    private var _period = 30
+    var period: Int {
+        get { return _period }
+        set {
+            if newValue < 1 {
+                _period = 30
+            } else {
+                _period = newValue
+            }
+        }
+    }
+
     var secret = Data()
     var timeBased = false
     
