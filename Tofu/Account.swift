@@ -44,6 +44,7 @@ class Account {
                 password.counter = counter
             case "period":
                 guard let string = queryItem.value, let period = Int(string) else { break }
+                if period < 1 { return nil }
                 password.period = period
             default: break
             }
