@@ -9,11 +9,11 @@ class Password {
         get { return _digits }
         set {
             if newValue < 6 {
-                _digits = 6
                 assertionFailure("digits must be >= 6")
+                _digits = 6
             } else if newValue > 9 {
-                _digits = 9
                 assertionFailure("digits must be <= 9")
+                _digits = 9
             } else {
                 _digits = newValue
             }
