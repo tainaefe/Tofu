@@ -51,6 +51,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Hack The Box": "HackTheBox",
     "Heroku": "Heroku",
     "HEY": "HEY",
+    "Honeybadger.io": "Honeybadger",
     "Hostek": "Hostek",
     "Hover": "Hover",
     "hub.docker.com": "Docker",
