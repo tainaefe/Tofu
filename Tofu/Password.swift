@@ -3,7 +3,23 @@ import Foundation
 class Password {
     var algorithm: Algorithm = .sha1
     var counter = 0
-    var digits = 6
+
+    private var _digits = 6
+    var digits: Int {
+        get { return _digits }
+        set {
+            if newValue < 6 {
+                _digits = 6
+                assertionFailure("digits must be >= 6")
+            } else if newValue > 9 {
+                _digits = 9
+                assertionFailure("digits must be <= 9")
+            } else {
+                _digits = newValue
+            }
+        }
+    }
+
     var period = 30
     var secret = Data()
     var timeBased = false
