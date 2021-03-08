@@ -94,6 +94,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "STACK": "STACK",
     "Stripe": "Stripe",
     "Surfshark": "Surfshark",
+    "TETR.IO": "TETR.IO",
     "Time4VPS": "Time4VPS",
     "TorGuard": "TorGuard",
     "Tresorit": "Tresorit",
