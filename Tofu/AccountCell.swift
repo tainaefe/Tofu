@@ -59,6 +59,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "HumbleBundle": "HumbleBundle",
     "id.unity.com": "Unity",
     "IFTTT": "IFTTT",
+    "ID.me": "IDme",
     "Instagram": "Instagram",
     "Intercom": "Intercom",
     "JetBrains+Account": "JetBrains",
