@@ -42,6 +42,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Evernote": "Evernote",
     "Facebook": "Facebook",
     "Fastmail": "FastMail",
+    "Fidelity": "Fidelity",
     "Firefox": "Firefox",
     "gandi.net": "Gandi",
     "Gitea": "Gitea",
