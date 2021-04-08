@@ -78,6 +78,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "NiceHash - New platform": "NiceHash",
     "NiceHash": "NiceHash",
     "Nintendo Account": "Nintendo",
+    "Njalla": "Njalla",
     "NordPass": "NordPass",
     "ownCloud": "ownCloud",
     "Paladin Extensions": "PaladinExtensions",
