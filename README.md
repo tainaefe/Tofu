@@ -60,4 +60,6 @@ Tofu from the App Store.
 
 The ongoing development of Tofu is made possible by the support of our generous sponsors:
 
+[![svandragt](https://avatars.githubusercontent.com/u/594871?s=40&amp;v=4) @svandragt](https://github.com/svandragt)
+
 [![Corporate Trust](https://user-images.githubusercontent.com/66666/100761071-c11df400-33f2-11eb-9c81-962e9107f93c.png)](https://www.corporate-trust.de/en/)
