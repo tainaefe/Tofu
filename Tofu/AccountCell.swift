@@ -57,6 +57,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Heroku": "Heroku",
     "Hetzner": "Hetzner",
     "HEY": "HEY",
+    "Home Assistant": "HomeAssistant",
     "Honeybadger.io": "Honeybadger",
     "Hostek": "Hostek",
     "Hover": "Hover",
