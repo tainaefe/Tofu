@@ -1,3 +1,3 @@
-protocol AlgorithmSelectionDelegate: class {
+protocol AlgorithmSelectionDelegate: AnyObject {
     func selectAlgorithm(_ algorithm: Algorithm)
 }
