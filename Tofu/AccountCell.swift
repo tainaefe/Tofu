@@ -94,6 +94,7 @@ private let imageNames: [CaseInsensitiveString: String] = [
     "Parler": "Parler",
     "PayPal": "PayPal",
     "Philips Hue": "PhilipsHue",
+    "Posteo": "Posteo",
     "Postmark": "Postmark",
     "Privacy.com": "Privacy",
     "ProfitBricks": "ProfitBricks",
