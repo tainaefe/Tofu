@@ -55,7 +55,6 @@
 /* Begin PBXFileReference section */
 		2506E6E21C6F83AE00E694D3 /* Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
-		2508F1151C526E3A00164467 /* Tofu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tofu-Bridging-Header.h"; sourceTree = "<group>"; };
 		250CB0101C81BF0B00D48AC9 /* AccountsTableViewUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsTableViewUpdater.swift; sourceTree = "<group>"; };
 		251A79861C7A68BC00E2747E /* AccountSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSearchResultsViewController.swift; sourceTree = "<group>"; };
 		259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCreationDelegate.swift; sourceTree = "<group>"; };
@@ -163,7 +162,6 @@
 				25A81D5C1C5F6E1F008E51B9 /* Views */,
 				25A81D5D1C5F6E36008E51B9 /* Controllers */,
 				25A81D0D1C500E9C008E51B9 /* AppDelegate.swift */,
-				2508F1151C526E3A00164467 /* Tofu-Bridging-Header.h */,
 				25A81D111C500E9C008E51B9 /* Main.storyboard */,
 				25A81D161C500E9C008E51B9 /* LaunchScreen.storyboard */,
 				25A81D141C500E9C008E51B9 /* Assets.xcassets */,
@@ -591,7 +589,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.calleerlandsson.Tofu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tofu/Tofu-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -617,7 +614,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.calleerlandsson.Tofu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tofu/Tofu-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

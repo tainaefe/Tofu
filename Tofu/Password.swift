@@ -1,4 +1,5 @@
 import Foundation
+import CommonCrypto
 
 class Password {
     var algorithm: Algorithm = .sha1

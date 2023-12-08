@@ -1,4 +1,5 @@
 import Foundation
+import CommonCrypto
 
 enum Algorithm {
     case sha1
