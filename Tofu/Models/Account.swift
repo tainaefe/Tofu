@@ -3,6 +3,9 @@ import Foundation
 @objc(Account) class Account: NSObject, NSSecureCoding {
     static var supportsSecureCoding: Bool { return true }
 
+    /// This is a "pointer" to the account in the Keychain, and is set upon encode to/decode from such. It's not
+    /// included in serialisation or equality checks, since it's not required for exporting to/importing from from
+    /// elsewhere, and isn't useful for duplicate checking etc.
     var persistentRef: Data?
     var name: String?
     var issuer: String?
@@ -69,12 +72,6 @@ import Foundation
         issuer = coder.decodeObject(of: NSString.self, forKey: "issuer") as? String
     }
 
-    override var description: String {
-        guard let issuer = issuer, issuer.count > 0 else { return name ?? "" }
-        guard let name = name, name.count > 0 else { return issuer }
-        return "\(issuer) (\(name))"
-    }
-
     func encode(with coder: NSCoder) {
         coder.encode(password.timeBased, forKey: "timeBased")
         coder.encode(password.algorithm.rawValue, forKey: "algorithm")
@@ -84,5 +81,24 @@ import Foundation
         coder.encode(Int32(password.period), forKey: "period")
         coder.encode(name, forKey: "name")
         coder.encode(issuer, forKey: "issuer")
+    }
+
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let other = object as? Account else { return false }
+        return name == other.name && issuer == other.issuer && password == other.password
+    }
+
+    override var hash: Int { 
+        var hasher = Hasher()
+        hasher.combine(name)
+        hasher.combine(issuer)
+        hasher.combine(password)
+        return hasher.finalize()
+    }
+
+    override var description: String {
+        guard let issuer = issuer, issuer.count > 0 else { return name ?? "" }
+        guard let name = name, name.count > 0 else { return issuer }
+        return "\(issuer) (\(name))"
     }
 }

@@ -1,7 +1,22 @@
 import Foundation
 import CommonCrypto
 
-class Password {
+class Password: Equatable, Hashable {
+
+    static func == (lhs: Password, rhs: Password) -> Bool {
+        return lhs.algorithm == rhs.algorithm && lhs.secret == rhs.secret && lhs.digits == rhs.digits &&
+        lhs.period == rhs.period && lhs.counter == rhs.counter && lhs.timeBased == rhs.timeBased
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(algorithm)
+        hasher.combine(counter)
+        hasher.combine(digits)
+        hasher.combine(secret)
+        hasher.combine(period)
+        hasher.combine(timeBased)
+    }
+
     var algorithm: Algorithm = .sha1
     var counter = 0
 

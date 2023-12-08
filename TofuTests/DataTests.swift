@@ -35,4 +35,46 @@ class DataTests: XCTestCase {
         XCTAssertNil(Data(base32Encoded: "MY====="))
         XCTAssertNil(Data(base32Encoded: "MZXW6Y==="))
     }
+
+    func testEncryption() throws {
+        let interop = ExternalDataInterop()
+
+        let sourceData = Data("My cool secrets".utf8)
+        let encodedData = try interop.encrypt(sourceData, with: "12345678")
+        let decodedData = try interop.decrypt(encodedData, with: "12345678")
+        XCTAssertEqual(sourceData, decodedData)
+        XCTAssertThrowsError(try interop.encrypt(sourceData, with: ""))
+        XCTAssertThrowsError(try interop.decrypt(decodedData, with: ""))
+        XCTAssertThrowsError(try interop.decrypt(encodedData, with: "87654321"))
+    }
+
+    func testExportRoundTrip() throws {
+        let interop = ExternalDataInterop()
+
+        let account1 = Account()
+        account1.name = "Test"
+        account1.issuer = "Xcode"
+        account1.password.algorithm = .sha1
+        account1.password.secret = Data(base32Encoded: "aaaaaaa")!
+        account1.password.timeBased = true
+        account1.password.period = 30
+        account1.password.digits = 6
+
+        let account2 = Account()
+        account2.name = "Test 2"
+        account2.issuer = "Xcode"
+        account2.password.algorithm = .sha1
+        account2.password.secret = Data(base32Encoded: "bbbbbbb")!
+        account2.password.timeBased = true
+        account2.password.period = 30
+        account2.password.digits = 6
+
+        XCTAssertNotEqual(account1, account2)
+
+        let sourceAccounts: [Account] = [account1, account2]
+        let encryptedAccounts = try interop.encryptedData(for: sourceAccounts, with: "12345678")
+        let decryptedAccounts = try interop.decryptAccounts(from: encryptedAccounts, with: "12345678")
+        XCTAssertEqual(sourceAccounts, decryptedAccounts)
+        XCTAssertThrowsError(try interop.decryptAccounts(from: encryptedAccounts, with: "87654321"))
+    }
 }
