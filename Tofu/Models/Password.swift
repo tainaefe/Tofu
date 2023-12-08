@@ -44,7 +44,9 @@ class Password {
         defer { digest.deallocate() }
         secret.withUnsafeBytes { secretBytes in CCHmac(algorithm.hmacAlgorithm, secretBytes.baseAddress, secret.count, &input, MemoryLayout.size(ofValue: input), digest) }
         let offset = digest[algorithm.digestLength - 1] & 0x0f
-        let number = (digest + Int(offset)).withMemoryRebound(to: UInt32.self, capacity: 1) { UInt32(bigEndian: $0.pointee) } & 0x7fffffff
+        let digestData = Data(bytes: digest, count: algorithm.digestLength)
+        let bigEndianNumber = try! digestData.alignmentSafeLoad(fromByteOffset: Int(offset), as: UInt32.self)
+        let number = UInt32(bigEndian: bigEndianNumber) & 0x7fffffff
         return String(format: "%0\(digits)d", number % UInt32(pow(10, Float(digits))))
     }
     
