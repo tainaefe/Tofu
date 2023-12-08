@@ -113,25 +113,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		259FAC551C7665620013B4F7 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */,
-				259FAC511C765F4B0013B4F7 /* AccountUpdateDelegate.swift */,
-				259FAC531C765FEB0013B4F7 /* AlgorithmSelectionDelegate.swift */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
-		259FAC561C7665710013B4F7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				25A81D441C53923D008E51B9 /* Data.swift */,
-				EB61B64C25D2BE15000B1735 /* UIViewController.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
 		25A81D011C500E9B008E51B9 = {
 			isa = PBXGroup;
 			children = (
@@ -156,11 +137,11 @@
 		25A81D0C1C500E9C008E51B9 /* Tofu */ = {
 			isa = PBXGroup;
 			children = (
-				259FAC561C7665710013B4F7 /* Extensions */,
-				259FAC551C7665620013B4F7 /* Protocols */,
-				25A81D5E1C5F6E4D008E51B9 /* Models */,
-				25A81D5C1C5F6E1F008E51B9 /* Views */,
-				25A81D5D1C5F6E36008E51B9 /* Controllers */,
+				50C4569B2B2324E2009C83C6 /* Extensions */,
+				50C4569C2B2324F3009C83C6 /* Protocols */,
+				50C4569D2B232507009C83C6 /* Models */,
+				50C4569E2B23251B009C83C6 /* Views */,
+				50C4569F2B23252D009C83C6 /* Controllers */,
 				25A81D0D1C500E9C008E51B9 /* AppDelegate.swift */,
 				25A81D111C500E9C008E51B9 /* Main.storyboard */,
 				25A81D161C500E9C008E51B9 /* LaunchScreen.storyboard */,
@@ -190,16 +171,46 @@
 			path = TofuUITests;
 			sourceTree = "<group>";
 		};
-		25A81D5C1C5F6E1F008E51B9 /* Views */ = {
+		50C4569B2B2324E2009C83C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				25A81D441C53923D008E51B9 /* Data.swift */,
+				EB61B64C25D2BE15000B1735 /* UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		50C4569C2B2324F3009C83C6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				259FAC4F1C765BB00013B4F7 /* AccountCreationDelegate.swift */,
+				259FAC511C765F4B0013B4F7 /* AccountUpdateDelegate.swift */,
+				259FAC531C765FEB0013B4F7 /* AlgorithmSelectionDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		50C4569D2B232507009C83C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				25A81D421C5176F0008E51B9 /* Account.swift */,
+				25A81D3B1C502755008E51B9 /* Keychain.swift */,
+				2506E6E21C6F83AE00E694D3 /* Password.swift */,
+				2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		50C4569E2B23251B009C83C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				25A81D501C551F17008E51B9 /* AccountCell.swift */,
 				25A81D5A1C5F656A008E51B9 /* CircularProgressView.swift */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		25A81D5D1C5F6E36008E51B9 /* Controllers */ = {
+		50C4569F2B23252D009C83C6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				25A81D0F1C500E9C008E51B9 /* AccountsViewController.swift */,
@@ -210,18 +221,7 @@
 				251A79861C7A68BC00E2747E /* AccountSearchResultsViewController.swift */,
 				250CB0101C81BF0B00D48AC9 /* AccountsTableViewUpdater.swift */,
 			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		25A81D5E1C5F6E4D008E51B9 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				25A81D421C5176F0008E51B9 /* Account.swift */,
-				25A81D3B1C502755008E51B9 /* Keychain.swift */,
-				2506E6E21C6F83AE00E694D3 /* Password.swift */,
-				2506E6E41C6F9A5A00E694D3 /* Algorithm.swift */,
-			);
-			name = Models;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
