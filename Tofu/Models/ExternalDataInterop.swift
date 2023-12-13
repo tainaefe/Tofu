@@ -1,17 +1,39 @@
 import Foundation
 import CryptoKit
+import CommonCrypto
 
 class ExternalDataInterop {
 
     enum ExternalDataInteropError: Error {
         case invalidPasscode
         case invalidData
+        case encryptionFailed
     }
     
+    /// Generate a PBKDF2 derived key from the given password.
+    private func derivedPBKDF2Key(from password: String, keySize: SymmetricKeySize, rounds: Int) throws -> Data {
+
+        // To perform PBKDF2 key derivation, we need to use CommonCrypto, which isn't very Swift-y.
+        let passwordData = Data(password.utf8)
+
+        let derivedKeyByteLength = keySize.bitCount / 8
+        var derivedKeyData = Data(repeating: 0, count: derivedKeyByteLength)
+
+        let derivationStatus: Int32 = derivedKeyData.withUnsafeMutableBytes { derivedKeyBytes in
+            let keyBuffer: UnsafeMutablePointer<UInt8> = derivedKeyBytes.baseAddress!.assumingMemoryBound(to: UInt8.self)
+            return CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2), password, passwordData.count, nil, 0,
+                                        CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA256), UInt32(rounds),
+                                        keyBuffer, derivedKeyByteLength)
+        }
+
+        guard derivationStatus == kCCSuccess else { throw ExternalDataInteropError.encryptionFailed }
+        return derivedKeyData
+    }
+
     /// Generate an encryption/decryption key for the given passcode.
     private func encryptionKey(from passcode: String) throws -> SymmetricKey {
         guard !passcode.isEmpty else { throw ExternalDataInteropError.invalidPasscode }
-        return SymmetricKey(data: SHA256.hash(data: Data(passcode.utf8)))
+        return SymmetricKey(data: try derivedPBKDF2Key(from: passcode, keySize: .bits256, rounds: 100_000))
     }
 
     /// Encrypt the given data with the given passcode.
