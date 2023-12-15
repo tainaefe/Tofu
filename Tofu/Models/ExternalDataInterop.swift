@@ -15,15 +15,20 @@ class ExternalDataInterop {
 
         // To perform PBKDF2 key derivation, we need to use CommonCrypto, which isn't very Swift-y.
         let passwordData = Data(password.utf8)
+        let saltData = Data("twofusalt".utf8)
+        let saltLength = saltData.count
 
         let derivedKeyByteLength = keySize.bitCount / 8
         var derivedKeyData = Data(repeating: 0, count: derivedKeyByteLength)
 
         let derivationStatus: Int32 = derivedKeyData.withUnsafeMutableBytes { derivedKeyBytes in
-            let keyBuffer: UnsafeMutablePointer<UInt8> = derivedKeyBytes.baseAddress!.assumingMemoryBound(to: UInt8.self)
-            return CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2), password, passwordData.count, nil, 0,
-                                        CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA256), UInt32(rounds),
-                                        keyBuffer, derivedKeyByteLength)
+            saltData.withUnsafeBytes { saltBytes in
+                let keyBuffer: UnsafeMutablePointer<UInt8> = derivedKeyBytes.baseAddress!.assumingMemoryBound(to: UInt8.self)
+                let saltBuffer: UnsafePointer<UInt8> = saltBytes.baseAddress!.assumingMemoryBound(to: UInt8.self)
+                return CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2), password, passwordData.count, saltBuffer, saltLength,
+                                            CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA256), UInt32(rounds),
+                                            keyBuffer, derivedKeyByteLength)
+            }
         }
 
         guard derivationStatus == kCCSuccess else { throw ExternalDataInteropError.encryptionFailed }
