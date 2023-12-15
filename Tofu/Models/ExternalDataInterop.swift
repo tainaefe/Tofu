@@ -38,7 +38,8 @@ class ExternalDataInterop {
     /// Generate an encryption/decryption key for the given passcode.
     private func encryptionKey(from passcode: String) throws -> SymmetricKey {
         guard !passcode.isEmpty else { throw ExternalDataInteropError.invalidPasscode }
-        return SymmetricKey(data: try derivedPBKDF2Key(from: passcode, keySize: .bits256, rounds: 100_000))
+        // 600k figure from https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2
+        return SymmetricKey(data: try derivedPBKDF2Key(from: passcode, keySize: .bits256, rounds: 600_000))
     }
 
     /// Encrypt the given data with the given passcode.
