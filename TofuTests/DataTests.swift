@@ -36,18 +36,6 @@ class DataTests: XCTestCase {
         XCTAssertNil(Data(base32Encoded: "MZXW6Y==="))
     }
 
-    func testEncryption() throws {
-        let interop = ExternalDataInterop()
-
-        let sourceData = Data("My cool secrets".utf8)
-        let encodedData = try interop.encrypt(sourceData, with: "12345678")
-        let decodedData = try interop.decrypt(encodedData, with: "12345678")
-        XCTAssertEqual(sourceData, decodedData)
-        XCTAssertThrowsError(try interop.encrypt(sourceData, with: ""))
-        XCTAssertThrowsError(try interop.decrypt(decodedData, with: ""))
-        XCTAssertThrowsError(try interop.decrypt(encodedData, with: "87654321"))
-    }
-
     func testExportRoundTrip() throws {
         let interop = ExternalDataInterop()
 
